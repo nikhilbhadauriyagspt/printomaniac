@@ -1,53 +1,53 @@
-import { motion } from "framer-motion";
+import { Truck, RefreshCcw, ShieldCheck, Headset } from 'lucide-react';
 
 const features = [
   {
-    title: "Fast Shipping",
-    desc: "Orders delivered quickly and safely to your doorstep.",
+    icon: <Truck size={32} strokeWidth={1.5} />,
+    title: "FREE SHIPPING",
+    desc: "On all orders above $500 across USA",
   },
   {
-    title: "Best Prices",
-    desc: "Premium quality at rates that fit your budget.",
+    icon: <RefreshCcw size={32} strokeWidth={1.5} />,
+    title: "30-DAY RETURNS",
+    desc: "Hassle-free money back guarantee",
   },
   {
-    title: "Great Quality",
-    desc: "Excellence in every unit, built for durability.",
+    icon: <ShieldCheck size={32} strokeWidth={1.5} />,
+    title: "OFFICIAL WARRANTY",
+    desc: "100% genuine products with warranty",
   },
   {
-    title: "Helpful Support",
-    desc: "Friendly team ready to assist with any questions.",
+    icon: <Headset size={32} strokeWidth={1.5} />,
+    title: "EXPERT SUPPORT",
+    desc: "24/7 Dedicated help for your office",
   }
 ];
 
 export default function Features() {
   return (
-    <section className="bg-white font-urbanist py-20 lg:py-28">
-      <div className="max-w-[1920px] mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+    <section className="bg-white py-12 border-b border-gray-100 font-sans">
+      <div className="max-w-[1650px] mx-auto px-6 md:px-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {features.map((item, index) => (
-            <motion.div
+            <div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center text-center space-y-6 group cursor-default"
+              className="flex items-center gap-6 group"
             >
-              {/* Centered Small Line Accent */}
-              <div className="relative h-1 w-12 bg-gray-100 overflow-hidden">
-                <div className="absolute inset-0 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out" />
+              {/* Icon Circle */}
+              <div className="shrink-0 h-16 w-16 rounded-full bg-gray-50 flex items-center justify-center text-[#0047ab] group-hover:bg-[#0047ab] group-hover:text-white transition-all duration-500 shadow-sm border border-gray-100">
+                {item.icon}
               </div>
 
-              {/* Typographic Content */}
-              <div className="space-y-2">
-                <h3 className="text-xl font-black text-slate-900 group-hover:text-blue-600 transition-colors duration-500 leading-tight">
+              {/* Text Content */}
+              <div className="space-y-1">
+                <h3 className="text-[13px] font-black text-gray-900 uppercase tracking-widest leading-none">
                   {item.title}
                 </h3>
-                <p className="text-[13px] font-bold text-slate-400 leading-relaxed group-hover:text-slate-500 transition-colors duration-500 max-w-[200px] mx-auto">
+                <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider leading-tight">
                   {item.desc}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

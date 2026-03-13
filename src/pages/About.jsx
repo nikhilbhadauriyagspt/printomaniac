@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Zap, Heart, Star, Globe, Target, TrendingUp } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Heart, Star, Globe, Target, TrendingUp, CheckCircle2, Award, Users2, Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { cn } from '../lib/utils';
@@ -9,123 +9,155 @@ import sideBanner from "@/assets/bannerr/banner4.jpg";
 
 const About = () => {
   return (
-    <div className="bg-white min-h-screen font-sans text-slate-900">
+    <div className="bg-[#fcfcfc] min-h-screen font-snpro text-slate-900 overflow-x-hidden">
       <SEO 
-        title="About Us | MaxPrinter" 
-        description="Learn about the philosophy and engineering behind MaxPrinter hardware solutions."
+        title="About Our Mission | Printer Brother"
+        description="Learn about the philosophy and engineering behind Printer Brother hardware solutions and our commitment to office excellence."
       />
 
-      {/* --- AUTHENTIC HERO (SQUARE) --- */}
-      <section className="w-full bg-white py-4 px-6 md:px-10">
-        <div className="max-w-[1920px] mx-auto">
-          <div className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden group">
-            <img src={aboutHero} alt="Hardware Excellence" className="absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent z-10" />
+      {/* --- BENTO HERO SECTION --- */}
+      <section className="pt-12 pb-24 px-6 md:px-10">
+        <div className="max-w-[1650px] mx-auto">
+          <div className="grid lg:grid-cols-12 gap-8">
             
-            <div className="relative z-20 h-full flex items-center px-10 md:px-20">
-              <div className="max-w-2xl space-y-6">
-                <span className="text-blue-400 font-bold text-sm">Professional office hardware</span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1]">
-                  Engineering the <br />
-                  <span className="text-blue-600">modern workplace.</span>
-                </h1>
-                <p className="text-white/70 text-sm md:text-lg font-medium leading-relaxed max-w-lg">
-                  We are a specialized hardware partner focused on bridging the gap between high-performance technology and seamless office deployment.
-                </p>
-                <div className="pt-2">
-                  <Link to="/shop" className="inline-flex items-center gap-3 bg-white text-black h-12 px-8 text-xs font-black hover:bg-blue-600 hover:text-white transition-all group/btn">
-                    Browse inventory <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
+            {/* Main Text Block */}
+            <div className="lg:col-span-7 bg-white border border-gray-100 p-10 md:p-16 flex flex-col justify-center space-y-8 relative overflow-hidden group">
+               <div className="absolute top-0 left-0 w-2 h-full bg-[#0047ab]" />
+               <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-1 bg-[#0047ab]" />
+                    <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#0047ab]">Our Profile</span>
+                  </div>
+                  <h1 className="text-4xl md:text-7xl font-black text-black uppercase italic tracking-tighter leading-[0.9]">
+                    Engineering <br />
+                    <span className="text-[#0047ab]">The Future.</span>
+                  </h1>
+               </div>
+               <p className="text-gray-500 text-sm md:text-xl font-medium leading-relaxed max-w-2xl">
+                 We are a specialized hardware partner focused on bridging the gap between high-performance technology and seamless office deployment.
+               </p>
+               <div className="pt-4">
+                 <Link to="/shop" className="inline-flex items-center gap-4 bg-black text-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#0047ab] transition-all active:scale-95 shadow-xl">
+                    View Catalog <ArrowRight size={18} strokeWidth={3} />
+                 </Link>
+               </div>
             </div>
+
+            {/* Visual Block */}
+            <div className="lg:col-span-5 relative h-[400px] lg:h-auto overflow-hidden group border border-gray-100">
+               <img src={aboutHero} alt="Office Hardware" className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+               <div className="absolute bottom-8 left-8 text-white">
+                  <p className="text-[10px] font-black uppercase tracking-widest opacity-70 mb-1">Standard Reference</p>
+                  <p className="text-xl font-black italic uppercase">Verified Excellence.</p>
+               </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* --- ENGINEERING PHILOSOPHY: ARCHITECTURAL GRID --- */}
-      <section className="py-20 lg:py-32 bg-white px-6 md:px-10">
-        <div className="max-w-[1920px] mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20 items-start">
+      {/* --- PHILOSOPHY: BENTO GRID --- */}
+      <section className="py-24 bg-white border-y border-gray-100 px-6 md:px-10">
+        <div className="max-w-[1650px] mx-auto">
+          <div className="mb-20 space-y-4">
+             <div className="flex items-center gap-3">
+                <div className="w-10 h-1 bg-[#0047ab]" />
+                <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#0047ab]">Our Philosophy</span>
+             </div>
+             <h2 className="text-3xl md:text-5xl font-black text-black uppercase italic tracking-tighter">
+                Professional <span className="text-[#0047ab]">Foundations.</span>
+              </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { 
+                icon: <Globe size={28} />, 
+                title: "Global Sourcing", 
+                desc: "Direct partnerships with manufacturer laboratories to ensure 100% genuine hardware and terminal supplies.",
+                accent: "bg-blue-50"
+              },
+              { 
+                icon: <ShieldCheck size={28} />, 
+                title: "Internal Audit", 
+                desc: "Every unit undergoes a rigorous 48-point verification process before it enters our active inventory catalog.",
+                accent: "bg-gray-50"
+              },
+              { 
+                icon: <Zap size={28} />, 
+                title: "Rapid Deployment", 
+                desc: "Optimized logistics network designed for next-day professional office hardware deployment across the region.",
+                accent: "bg-[#0047ab]/5"
+              }
+            ].map((item, i) => (
+              <div key={i} className={cn("p-10 border border-gray-100 space-y-6 group hover:border-[#0047ab]/30 transition-all duration-500", item.accent)}>
+                <div className="h-14 w-14 bg-white border border-gray-100 flex items-center justify-center text-[#0047ab] group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <h4 className="text-xl font-black text-black uppercase italic tracking-tight">{item.title}</h4>
+                <p className="text-gray-500 text-sm font-medium leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- INTEGRATED STATS SECTION --- */}
+      <section className="py-24 px-6 md:px-10">
+        <div className="max-w-[1650px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            <div className="relative h-[500px] overflow-hidden group border border-gray-100">
+               <img src={sideBanner} alt="Precision hardware" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700" />
+            </div>
+
             <div className="space-y-12">
-              <div className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-[1.1]">
-                  Our professional <br /> foundation.
-                </h2>
-                <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-xl">
-                  Every unit in our inventory undergoes a rigorous internal verification process. We don't just sell hardware; we ensure every device meets a specific standard for performance, clarity, and lifecycle reliability.
-                </p>
-              </div>
-              
-              <div className="space-y-8">
-                {[
-                  { title: "Hardware sourcing", desc: "We work directly with manufacturer laboratories to ensure 100% genuine hardware and supplies." },
-                  { title: "Internal verification", desc: "Our team performs comprehensive stress tests on every new model before it enters our catalog." },
-                  { title: "Office scaling", desc: "Providing the guidance needed to grow your office infrastructure sustainably and efficiently." }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-8 group">
-                    <div className="h-px w-10 bg-blue-600 mt-3 shrink-0 group-hover:w-16 transition-all duration-500" />
-                    <div className="space-y-2">
-                      <h4 className="text-xl font-black text-slate-900">{item.title}</h4>
-                      <p className="text-[15px] text-slate-400 font-bold leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+               <div className="space-y-6">
+                  <h3 className="text-3xl md:text-5xl font-black text-black uppercase italic tracking-tighter leading-tight">
+                    Beyond <br /> 
+                    <span className="text-[#0047ab]">Conventional Support.</span>
+                  </h3>
+                  <p className="text-gray-500 text-base md:text-lg font-medium leading-relaxed">
+                    We believe that professional hardware shouldn't come with complicated support. Our team consists of trained specialists ready to provide clear, actionable advice.
+                  </p>
+               </div>
 
-            <div className="relative group">
-              <div className="relative bg-gray-50 p-4 border border-gray-100">
-                <div className="bg-slate-900 p-10 md:p-16 text-white space-y-10">
-                  <div className="h-14 w-14 bg-white/5 border border-white/10 flex items-center justify-center">
-                    <Heart className="text-blue-500" size={28} />
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-3xl font-black leading-tight">
-                      A human approach <br /> to complex gear.
-                    </h3>
-                    <p className="text-slate-400 text-base font-bold leading-relaxed">
-                      We believe that professional hardware shouldn't come with complicated support. Our team consists of trained specialists ready to provide clear, actionable advice for your specific workplace needs.
-                    </p>
-                  </div>
-                  <Link to="/contact" className="inline-flex items-center gap-3 text-white border-b border-white/20 pb-1 hover:text-blue-400 hover:border-blue-400 transition-all font-black text-xs uppercase tracking-widest">
-                    Connect with an expert
+               <div className="pt-4">
+                  <Link to="/contact" className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#0047ab] transition-all active:scale-95 shadow-xl">
+                    Connect With Us <ArrowRight size={16} strokeWidth={3} />
                   </Link>
-                </div>
-              </div>
+               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* --- SECONDARY IMAGE BLOCK --- */}
-      <section className="px-6 md:px-10 pb-20">
-        <div className="max-w-[1920px] mx-auto">
-          <div className="relative h-[300px] md:h-[400px] overflow-hidden border border-gray-100">
-            <img src={sideBanner} alt="Precision hardware" className="w-full h-full object-cover grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-1000" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white/90 backdrop-blur-md p-8 md:p-12 text-center max-w-lg border border-gray-100 shadow-2xl">
-                <h3 className="text-2xl font-black text-slate-900 mb-2">Quality without compromise.</h3>
-                <p className="text-sm text-slate-500 font-bold uppercase tracking-widest">Verified terminal standards</p>
-              </div>
+      {/* --- CTA: FINAL IMPACT --- */}
+      <section className="pb-24 px-6 md:px-10">
+         <div className="max-w-[1650px] mx-auto">
+            <div className="bg-black p-12 md:p-24 text-center relative overflow-hidden group">
+               <div className="absolute top-0 left-0 w-full h-1 bg-[#0047ab]" />
+               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#0047ab 1px, transparent 1px)', size: '20px 20px' }} />
+               
+               <div className="max-w-3xl mx-auto space-y-10 relative z-10">
+                  <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter leading-tight">
+                    Ready to scale <br /> 
+                    <span className="text-[#0047ab]">Your infrastructure?</span>
+                  </h2>
+                  <div className="flex flex-wrap items-center justify-center gap-6">
+                    <Link to="/shop" className="bg-[#0047ab] text-white px-12 py-5 text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all active:scale-95 shadow-2xl shadow-[#0047ab]/20">
+                      Explore Inventory
+                    </Link>
+                    <Link to="/contact" className="border border-white/20 text-white px-12 py-5 text-[11px] font-black uppercase tracking-[0.2em] hover:border-[#0047ab] hover:text-[#0047ab] transition-all active:scale-95">
+                      Consult An Expert
+                    </Link>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- FINAL CALL: MINIMALIST --- */}
-      <section className="py-24 bg-white text-center px-6 border-t border-gray-50">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-[1.1]">
-            Ready to find your <br /> perfect hardware?
-          </h2>
-          <div className="pt-4">
-            <Link to="/shop" className="inline-flex items-center gap-4 bg-black text-white h-14 px-12 text-xs font-black hover:bg-blue-600 transition-all group/cta">
-              Explore inventory
-              <ArrowRight size={18} className="group-hover/cta:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
+         </div>
       </section>
     </div>
   );

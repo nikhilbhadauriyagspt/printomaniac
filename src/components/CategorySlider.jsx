@@ -1,18 +1,14 @@
 import { motion } from "framer-motion";
-import { Heart, Check, ChevronLeft, ChevronRight, Plus } from "lucide-react";
+import { Heart, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { useState, useRef } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import * as React from "react";
+import { useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { cn } from "../lib/utils";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export default function CategorySlider({ title, subtitle, products = [], bgColor = "bg-white" }) {
   const { addToCart, toggleWishlist, isInWishlist } = useCart();
@@ -26,10 +22,6 @@ export default function CategorySlider({ title, subtitle, products = [], bgColor
     }, 2000);
   };
 
-  const plugin = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  );
-
   const getImagePath = (images) => {
     try {
       const imgs = typeof images === 'string' ? JSON.parse(images) : images;
@@ -41,102 +33,111 @@ export default function CategorySlider({ title, subtitle, products = [], bgColor
   if (products.length === 0) return null;
 
   return (
-    <section className={cn("px-6 md:px-10 py-20 font-urbanist overflow-hidden relative", bgColor)}>
+    <section className={cn("px-6 md:px-10 py-24 font-sans relative overflow-hidden", bgColor)}>
       
-      <div className="max-w-[1920px] mx-auto">
+      <div className="max-w-[1650px] mx-auto">
         
-        {/* --- MINIMALIST HEADER --- */}
-        <div className="flex items-end justify-between mb-12 relative">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight uppercase">
-              {title}
-            </h2>
-            <p className="mt-2 text-slate-400 text-sm font-bold tracking-wide">
-              {subtitle || "Premium selection of professional hardware."}
+        {/* --- SECTION HEADER (CENTERED & LARGE) --- */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-[0.15em]">
+            {title}
+          </h2>
+          <div className="w-20 h-1 bg-[#0047ab] mx-auto mt-4" />
+          {subtitle && (
+            <p className="mt-4 text-gray-400 text-[11px] font-black uppercase tracking-widest">
+              {subtitle}
             </p>
-          </div>
+          )}
         </div>
 
-        <div className="relative group/carousel">
-          <Carousel
-            plugins={[plugin.current]}
-            opts={{ align: "start", loop: true }}
-            className="w-full"
+        <div className="relative group">
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1.2}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            navigation={{ prevEl: '.cs-prev', nextEl: '.cs-next' }}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 },
+              1600: { slidesPerView: 5 },
+            }}
+            className="!overflow-visible !pb-4"
           >
-            <CarouselContent className="-ml-4">
-              {products.map((p) => (
-                <CarouselItem key={p.id} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-                  <div 
-                    className="relative bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-500 flex flex-col group hover:border-blue-600/30 h-[480px]"
-                  >
-                    {/* Image Panel (Upper) */}
-                    <div className="relative h-[260px] bg-white flex items-center justify-center p-8 overflow-hidden transition-colors duration-500">
-                      <div className="absolute top-4 left-4 z-20">
-                        <span className="text-[9px] font-black text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">
-                          {p.brand_name || 'Premium'}
-                        </span>
-                      </div>
-                      
-                      <button 
-                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(p); }}
-                        className={cn(
-                          "absolute top-4 right-4 z-20 h-10 w-10 bg-white rounded-xl flex items-center justify-center transition-all duration-300 border border-gray-100 shadow-sm hover:scale-110",
-                          isInWishlist(p.id) ? "text-red-500" : "text-gray-300 hover:text-red-500"
-                        )}
-                      >
-                        <Heart size={18} fill={isInWishlist(p.id) ? "currentColor" : "none"} />
-                      </button>
-
-                      <img 
-                        src={getImagePath(p.images)} 
-                        className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-110" 
-                        alt={p.name} 
-                      />
-                    </div>
-
-                    {/* Metadata Panel (Lower) */}
-                    <div className="flex-1 p-6 flex flex-col justify-between bg-white relative">
-                      <div className="space-y-3">
-                        <Link to={`/product/${p.slug}`} className="block">
-                          <h3 className="font-black text-slate-900 text-[16px] leading-[1.2] line-clamp-2 group-hover:text-blue-600 transition-colors">
-                            {p.name}
-                          </h3>
-                        </Link>
-                      </div>
-
-                      {/* Integrated Action Panel */}
-                      <div className="flex items-stretch mt-6 h-12 border border-gray-100 rounded-xl overflow-hidden group/actions">
-                        <div className="flex-1 flex flex-col justify-center px-4 bg-gray-50 group-hover/actions:bg-white transition-colors">
-                           <span className="text-[8px] font-black text-gray-400 uppercase tracking-tighter leading-none mb-1">Standard Price</span>
-                           <span className="text-base font-black text-slate-900 leading-none">${p.price}</span>
-                        </div>
-                        <button 
-                          onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(p); }}
-                          disabled={addedItems[p.id]}
-                          className={cn(
-                            "w-14 flex items-center justify-center transition-all duration-500 active:scale-95 z-30 relative",
-                            addedItems[p.id] 
-                              ? "bg-emerald-500 text-white" 
-                              : "bg-black text-white hover:bg-blue-600"
-                          )}
-                        >
-                          {addedItems[p.id] ? <Check size={20} strokeWidth={3} /> : <Plus size={20} strokeWidth={3} />}
-                        </button>
-                      </div>
-                    </div>
-
-                    <Link to={`/product/${p.slug}`} className="absolute top-0 left-0 w-full h-[85%] z-0" />
+            {products.map((p, idx) => (
+              <SwiperSlide key={p.id}>
+                <div 
+                  className="relative bg-white border border-gray-100 p-6 transition-all duration-500 flex flex-col group/card hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-2 hover:border-[#0047ab]/30 h-full"
+                >
+                  {/* BRAND LABEL (Restored) */}
+                  <div className="absolute top-4 left-4 z-20">
+                    <span className="text-[9px] font-black text-[#0047ab] bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">
+                      {p.brand_name || 'Premium'}
+                    </span>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
 
-            {/* Fixed Navigation Arrows */}
-            <div className="absolute -top-24 right-0 flex items-center gap-3">
-              <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-xl border border-gray-100 bg-white hover:bg-black hover:text-white transition-all shadow-sm" />
-              <CarouselNext className="static translate-y-0 h-12 w-12 rounded-xl border border-gray-100 bg-white hover:bg-black hover:text-white transition-all shadow-sm" />
-            </div>
-          </Carousel>
+                  {/* Image Area */}
+                  <div className="relative aspect-square w-full flex items-center justify-center mb-8 px-4 overflow-hidden">
+                    <img 
+                      src={getImagePath(p.images)} 
+                      className="max-w-full max-h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover/card:scale-110" 
+                      alt={p.name} 
+                    />
+                  </div>
+
+                  {/* Metadata */}
+                  <div className="space-y-3 mb-8">
+                    <Link to={`/product/${p.slug}`} className="block">
+                      <h3 className="font-bold text-gray-800 text-[14px] leading-tight line-clamp-1 uppercase tracking-tight group-hover/card:text-[#0047ab] transition-colors">
+                        {p.name}
+                      </h3>
+                    </Link>
+                    
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-base font-black text-gray-900">${p.price}</span>
+                    </div>
+                  </div>
+
+                  {/* Bottom Action Area */}
+                  <div className="mt-auto grid grid-cols-3 gap-2 relative z-30">
+                    <button 
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(p); }}
+                      disabled={addedItems[p.id]}
+                      className={cn(
+                        "col-span-2 h-10 border text-[10px] font-black uppercase tracking-widest transition-all duration-300 active:scale-90",
+                        addedItems[p.id] 
+                          ? "bg-emerald-500 border-emerald-500 text-white" 
+                          : "bg-white border-gray-200 text-gray-800 hover:bg-[#0047ab] hover:text-white hover:border-[#0047ab]"
+                      )}
+                    >
+                      {addedItems[p.id] ? <Check size={16} className="mx-auto" /> : "Add To Cart"}
+                    </button>
+                    
+                    <button 
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(p); }}
+                      className={cn(
+                        "h-10 border border-gray-200 flex items-center justify-center transition-all duration-300 active:scale-90",
+                        isInWishlist(p.id) ? "text-red-500 border-red-100 bg-red-50" : "text-gray-400 hover:bg-red-50 hover:text-red-500 hover:border-red-100"
+                      )}
+                    >
+                      <Heart size={16} fill={isInWishlist(p.id) ? "currentColor" : "none"} />
+                    </button>
+                  </div>
+
+                  <Link to={`/product/${p.slug}`} className="absolute top-0 left-0 w-full h-[80%] z-0" />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Navigation Arrows (Side, Hover Visible) */}
+          <button className="cs-prev absolute left-[-20px] top-[45%] -translate-y-1/2 z-20 h-12 w-12 bg-white flex items-center justify-center shadow-md border border-gray-100 cursor-pointer hover:bg-gray-50 transition-all opacity-0 group-hover:opacity-100 disabled:hidden rounded-sm active:scale-90">
+            <ChevronLeft size={20} strokeWidth={2.5} className="text-gray-600" />
+          </button>
+          <button className="cs-next absolute right-[-20px] top-[45%] -translate-y-1/2 z-20 h-12 w-12 bg-white flex items-center justify-center shadow-md border border-gray-100 cursor-pointer hover:bg-gray-50 transition-all opacity-0 group-hover:opacity-100 disabled:hidden rounded-sm active:scale-90">
+            <ChevronRight size={20} strokeWidth={2.5} className="text-gray-600" />
+          </button>
         </div>
       </div>
     </section>

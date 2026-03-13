@@ -6,27 +6,27 @@ export default function TermsAndConditions() {
     <PolicyLayout
       title="Terms & Conditions"
       subtitle="Read our legal terms and conditions for using our services."
-      lastUpdated="March 13, 2026"
+      lastUpdated="March 14, 2026"
     >
       <h2>AGREEMENT TO OUR LEGAL TERMS</h2>
       <p>
-        We are MaxPrinter
+        We are PrinterBrother
  
-  ("Company," "we," "us," "our"), a company registered in Kentucky, United States at Prestonia Louisville, KY 40213.
+  ("Company," "we," "us," "our"), a company registered in Virginia, United States at 11872 Sunrise Valley Dr, Reston, VA 20191, USA.
       </p>
       <p>
-        We operate the website <a href="http://maxprinter.shop/">http://maxprinter.shop/</a> (the "Site"), as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services").
+        We operate the website <a href="http://printerbrother.shop/">http://printerbrother.shop/</a> (the "Site"), as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services").
       </p>
       <p>
-        MaxPrinter
+        PrinterBrother
  
   is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading technology brands.
       </p>
       <p>
-        You can contact us by email at <a href="mailto:info@maxprinter.shop">info@maxprinter.shop</a>, or by mail to Prestonia Louisville, KY 40213, United States.
+        You can contact us by email at <a href="mailto:info@printerbrother.shop">info@printerbrother.shop</a>, or by mail to 11872 Sunrise Valley Dr, Reston, VA 20191, USA.
       </p>
       <p>
-        These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and MaxPrinter
+        These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and PrinterBrother
  
   , concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. <strong>IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.</strong>
       </p>
@@ -94,7 +94,7 @@ export default function TermsAndConditions() {
       </ul>
       <p>solely for your personal, non-commercial use or internal business purpose.</p>
       <p>Except as set out in this section or elsewhere in our Legal Terms, no part of the Services and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.</p>
-      <p>If you wish to make any use of the Services, Content, or Marks other than as set out in this section or elsewhere in our Legal Terms, please address your request to: <a href="mailto:info@maxprinter.shop">info@maxprinter.shop</a>. If we ever grant you the permission to post, reproduce, or publicly display any part of our Services or Content, you must identify us as the owners or licensors of the Services, Content, or Marks and ensure that any copyright or proprietary notice appears or is visible on posting, reproducing, or displaying our Content.</p>
+      <p>If you wish to make any use of the Services, Content, or Marks other than as set out in this section or elsewhere in our Legal Terms, please address your request to: <a href="mailto:info@printerbrother.shop">info@printerbrother.shop</a>. If we ever grant you the permission to post, reproduce, or publicly display any part of our Services or Content, you must identify us as the owners or licensors of the Services, Content, or Marks and ensure that any copyright or proprietary notice appears or is visible on posting, reproducing, or displaying our Content.</p>
       <p>We reserve all rights not expressly granted to you in and to the Services, Content, and Marks.</p>
       <p>Any breach of these Intellectual Property Rights will constitute a material breach of our Legal Terms and your right to use our Services will terminate immediately.</p>
 
@@ -127,7 +127,7 @@ export default function TermsAndConditions() {
       <p>We reserve the right to refuse any order placed through the Services. We may, in our sole discretion, limit or cancel quantities purchased per person, per household, or per order. These restrictions may include orders placed by or under the same customer account, the same payment method, and/or orders that use the same billing or shipping address. We reserve the right to limit or prohibit orders that, in our sole judgment, appear to be placed by dealers, resellers, or distributors.</p>
 
       <h2>7. RETURN POLICY</h2>
-      <p>Please review our Return Policy prior to making any purchases: <a href="http://maxprinter.shop/return-policy">http://maxprinter.shop/return-policy</a>.</p>
+      <p>Please review our Return Policy prior to making any purchases: <a href="http://printerbrother.shop/return-policy">http://printerbrother.shop/return-policy</a>.</p>
 
       <h2>8. PROHIBITED ACTIVITIES</h2>
       <p>You may not access or use the Services for any purpose other than that for which we make the Services available. The Services may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.</p>
@@ -170,7 +170,7 @@ export default function TermsAndConditions() {
       <p>We reserve the right, but not the obligation, to: (1) monitor the Services for violations of these Legal Terms; (2) take appropriate legal action against anyone who, in our sole discretion, violates the law or these Legal Terms, including without limitation, reporting such user to law enforcement authorities; (3) in our sole discretion and without limitation, refuse, restrict access to, limit the availability of, or disable (to the extent technologically feasible) any of your Contributions or any portion thereof; (4) in our sole discretion and without limitation, notice, or liability, to remove from the Services or otherwise disable all files and content that are excessive in size or are in any way burdensome to our systems; and (5) otherwise manage the Services in a manner designed to protect our rights and property and to facilitate the proper functioning of the Services.</p>
 
       <h2>12. PRIVACY POLICY</h2>
-      <p>We care about data privacy and security. Please review our Privacy Policy: <a href="http://maxprinter.shop/privacy-policy">http://maxprinter.shop/privacy-policy</a>. By using the Services, you agree to be bound by our Privacy Policy, which is incorporated into these Legal Terms. Please be advised the Services are hosted in the United States. If you access the Services from any other region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ from applicable laws in the United States, then through your continued use of the Services, you are transferring your data to the United States, and you expressly consent to have your data transferred to and processed in the United States.</p>
+      <p>We care about data privacy and security. Please review our Privacy Policy: <a href="http://printerbrother.shop/privacy-policy">http://printerbrother.shop/privacy-policy</a>. By using the Services, you agree to be bound by our Privacy Policy, which is incorporated into these Legal Terms. Please be advised the Services are hosted in the United States. If you access the Services from any other region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ from applicable laws in the United States, then through your continued use of the Services, you are transferring your data to the United States, and you expressly consent to have your data transferred to and processed in the United States.</p>
 
       <h2>13. TERM AND TERMINATION</h2>
       <p>These Legal Terms shall remain in full force and effect while you use the Services. WITHOUT LIMITING ANY OTHER PROVISION OF THESE LEGAL TERMS, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SERVICES (INCLUDING BLOCKING CERTAIN IP ADDRESSES), TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE LEGAL TERMS OR OF ANY APPLICABLE LAW OR REGULATION. WE MAY TERMINATE YOUR USE OR PARTICIPATION IN THE SERVICES OR DELETE YOUR ACCOUNT AND ANY CONTENT OR INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR SOLE DISCRETION.</p>
@@ -179,10 +179,10 @@ export default function TermsAndConditions() {
       <p>We reserve the right to change, modify, or remove the contents of the Services at any time or for any reason at our sole discretion without notice. However, we have no obligation to update any information on our Services. We also reserve the right to modify or discontinue all or part of the Services without notice at any time. We will not be liable to you or any third party for any modification, price change, suspension, or discontinuance of the Services.</p>
 
       <h2>15. GOVERNING LAW</h2>
-      <p>These Legal Terms and your use of the Services are governed by and construed in accordance with the laws of the State of Kentucky applicable to agreements made and to be entirely performed within the State of Kentucky, without regard to its conflict of law principles.</p>
+      <p>These Legal Terms and your use of the Services are governed by and construed in accordance with the laws of the State of Virginia applicable to agreements made and to be entirely performed within the State of Virginia, without regard to its conflict of law principles.</p>
 
       <h2>16. DISPUTE RESOLUTION</h2>
-      <p>Any legal action of whatever nature brought by either you or us (collectively, the "Parties" and individually, a "Party") shall be commenced or prosecuted in the state and federal courts located in Kentucky, and the Parties hereby consent to, and waive all defenses of lack of personal jurisdiction and forum non conveniens with respect to venue and jurisdiction in such state and federal courts.</p>
+      <p>Any legal action of whatever nature brought by either you or us (collectively, the "Parties" and individually, a "Party") shall be commenced or prosecuted in the state and federal courts located in Virginia, and the Parties hereby consent to, and waive all defenses of lack of personal jurisdiction and forum non conveniens with respect to venue and jurisdiction in such state and federal courts.</p>
 
       <h2>17. CORRECTIONS</h2>
       <p>There may be information on the Services that contains typographical errors, inaccuracies, or omissions, including descriptions, pricing, availability, and various other information. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update the information on the Services at any time, without prior notice.</p>
@@ -206,11 +206,11 @@ export default function TermsAndConditions() {
       <p>In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us at:</p>
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase tracking-tighter">
-          <p className="text-slate-900 font-black">MaxPrinter </p>
-          <p>Prestonia Louisville</p>
-          <p>KY 40213</p>
+          <p className="text-slate-900 font-black">PrinterBrother </p>
+          <p>11872 Sunrise Valley Dr</p>
+          <p>Reston, VA 20191</p>
           <p>United States</p>
-          <p className="pt-4 text-blue-600 font-black lowercase">Email: info@maxprinter.shop</p>
+          <p className="pt-4 text-blue-600 font-black lowercase">Email: info@printerbrother.shop</p>
         </address>
       </div>
     </PolicyLayout>

@@ -1,49 +1,42 @@
-import { useState, useEffect } from 'react';
-import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 import { 
   LayoutDashboard, 
-  Package, 
+  ShoppingBag, 
   Users, 
+  Package, 
   Settings, 
   LogOut, 
-  Menu,
+  Menu, 
   X,
   Bell,
-  FolderTree,
-  MessageCircle,
-  Mail
+  Search,
+  User,
+  PlusCircle,
+  TrendingUp,
+  Mail,
+  HelpCircle,
+  FileText
 } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-export default function AdminLayout() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+const AdminLayout = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const [admin, setAdmin] = useState(null);
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('admin_user'));
-    if (!user || user.role !== 'admin') {
-      navigate('/admin-login'); // Redirect if not admin
-    } else {
-      setAdmin(user);
-    }
-  }, [navigate]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('admin_user');
-    navigate('/admin-login');
-  };
 
   const navItems = [
-    { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Products', path: '/admin/products', icon: Package },
-    { name: 'Categories', path: '/admin/categories', icon: FolderTree },
-    { name: 'Orders', path: '/admin/orders', icon: Package },
-    { name: 'Inquiries', path: '/admin/contacts', icon: MessageCircle },
-    { name: 'Subscribers', path: '/admin/newsletter', icon: Mail },
-    { name: 'Users', path: '/admin/users', icon: Users },
-    { name: 'Settings', path: '/admin/settings', icon: Settings },
+    { label: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
+    { label: 'Orders', icon: ShoppingBag, path: '/admin/orders' },
+    { label: 'Products', icon: Package, path: '/admin/products' },
+    { label: 'Customers', icon: Users, path: '/admin/customers' },
+    { label: 'Reports', icon: TrendingUp, path: '/admin/reports' },
+    { label: 'Settings', icon: Settings, path: '/admin/settings' },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAdmin');
+    navigate('/admin/login');
+  };
 
   return (
     <div className="flex h-screen bg-gray-50 font-urbanist">
@@ -51,9 +44,10 @@ export default function AdminLayout() {
       {/* SIDEBAR */}
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:relative lg:translate-x-0`}>
         <div className="flex items-center justify-between h-16 px-6 border-b border-slate-800">
-                     <span className="text-xl font-black tracking-tighter">MaxPrinter
- 
- <span className="text-blue-500">.</span> ADMIN</span>          <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-slate-400 hover:text-white">
+          <div className="flex items-center">
+            <span className="text-xl font-black tracking-tighter">Printer Brother<span className="text-blue-500">.</span>ADMIN</span>
+          </div>
+          <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-slate-400 hover:text-white">
             <X size={20} />
           </button>
         </div>
@@ -63,58 +57,68 @@ export default function AdminLayout() {
             <Link 
               key={item.path} 
               to={item.path} 
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                 location.pathname === item.path 
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' 
-                : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' 
+                  : 'text-slate-400 hover:bg-slate-800 hover:text-white'
               }`}
             >
-              <item.icon size={18} />
-              {item.name}
+              <item.icon size={20} />
+              <span className="font-bold text-sm tracking-tight">{item.label}</span>
             </Link>
           ))}
         </nav>
 
         <div className="absolute bottom-0 w-full p-4 border-t border-slate-800">
-          <button onClick={handleLogout} className="flex items-center gap-3 w-full px-4 py-3 text-red-400 hover:bg-slate-800 hover:text-red-300 rounded-xl text-sm font-bold transition-all">
-            <LogOut size={18} /> Logout
+          <button 
+            onClick={handleLogout}
+            className="flex items-center gap-3 w-full px-4 py-3 text-slate-400 hover:text-red-400 hover:bg-red-400/5 rounded-xl transition-all"
+          >
+            <LogOut size={20} />
+            <span className="font-bold text-sm">Sign Out</span>
           </button>
         </div>
       </aside>
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        
-        {/* HEADER */}
-        <header className="flex items-center justify-between h-16 px-6 bg-white border-b border-gray-200 shadow-sm">
-          <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-slate-500 hover:text-slate-900">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        {/* TOP HEADER */}
+        <header className="h-16 bg-white border-b border-gray-100 flex items-center justify-between px-4 lg:px-8 shrink-0">
+          <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-slate-600">
             <Menu size={24} />
           </button>
-          
-          <div className="flex items-center gap-6 ml-auto">
-            <button className="relative text-slate-400 hover:text-slate-600">
+
+          <div className="hidden lg:flex items-center gap-3 bg-gray-50 border border-gray-100 px-4 py-2 rounded-xl w-96">
+            <Search size={18} className="text-slate-400" />
+            <input type="text" placeholder="Global system search..." className="bg-transparent border-none focus:outline-none text-sm font-medium w-full" />
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button className="relative p-2 text-slate-500 hover:bg-gray-50 rounded-lg transition-all">
               <Bell size={20} />
-              <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full border border-white"></span>
+              <span className="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full border-2 border-white" />
             </button>
+            <div className="h-8 w-px bg-gray-100 mx-1" />
             <div className="flex items-center gap-3">
-              <div className="text-right hidden md:block">
-                <p className="text-sm font-bold text-slate-900">{admin?.name}</p>
-                <p className="text-xs font-medium text-slate-500">Administrator</p>
+              <div className="flex flex-col items-end">
+                <p className="text-sm font-black text-slate-900 leading-none">System Admin</p>
+                <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest mt-1">Superuser</p>
               </div>
-              <div className="h-9 w-9 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">
-                {admin?.name?.charAt(0)}
+              <div className="h-10 w-10 bg-slate-900 rounded-xl flex items-center justify-center text-white font-black text-sm">
+                AD
               </div>
             </div>
           </div>
         </header>
 
         {/* PAGE CONTENT */}
-        <main className="flex-1 overflow-y-auto p-6 lg:p-8">
-          <Outlet />
+        <main className="flex-1 overflow-y-auto p-4 lg:p-8">
+          {children}
         </main>
-
       </div>
+
     </div>
   );
-}
+};
 
+export default AdminLayout;

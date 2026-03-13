@@ -7,12 +7,12 @@ export default function CookiePolicy() {
     <PolicyLayout
       title="Cookie Policy"
       subtitle="This Cookie Policy explains how we use cookies and similar technologies."
-      lastUpdated="March 13, 2026"
+      lastUpdated="March 14, 2026"
     >
       <p className="lead">
-        This Cookie Policy explains how MaxPrinter
+        This Cookie Policy explains how Printer Brother
  
-   ("Company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://maxprinter.shop/">https://maxprinter.shop/</a>
+   ("Company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://printerbrother.shop/">https://printerbrother.shop/</a>
       </p>
       <p>
         This Cookie Policy should be read together with our <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-and-conditions">Terms and Conditions</Link>.
@@ -140,8 +140,8 @@ export default function CookiePolicy() {
         We do not sell personal information. If cookies are considered â€œsharingâ€ under certain US state privacy laws (such as targeted advertising), you may exercise your rights by:
       </p>
       <ul>
-        <li>Emailing: <a href="mailto:info@maxprinter.shop">info@maxprinter.shop</a></li>
-        <li>Visiting: <Link to="/contact">https://maxprinter.shop/contact</Link></li>
+        <li>Emailing: <a href="mailto:info@printerbrother.shop">info@printerbrother.shop</a></li>
+        <li>Visiting: <Link to="/contact">https://printerbrother.shop/contact</Link></li>
       </ul>
 
       <h2>9. CHILDRENâ€™S PRIVACY</h2>
@@ -157,12 +157,12 @@ export default function CookiePolicy() {
       <p>If you have any questions regarding this Cookie Policy, please contact:</p>
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase tracking-tighter">
-          <p className="text-slate-900 font-black">MaxPrinter</p>
+          <p className="text-slate-900 font-black">Printer Brother</p>
           <p></p>
-          <p>Prestonia Louisville</p>
-          <p>KY 40213</p>
+          <p>11872 Sunrise Valley Dr</p>
+          <p>Reston, VA 20191</p>
           <p>United States</p>
-          <p className="pt-4 text-blue-600 font-black lowercase">info@maxprinter.shop</p>
+          <p className="pt-4 text-blue-600 font-black lowercase">info@printerbrother.shop</p>
         </address>
       </div>
     </PolicyLayout>
