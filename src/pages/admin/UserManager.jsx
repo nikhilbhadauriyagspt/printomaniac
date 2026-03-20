@@ -8,11 +8,18 @@ export default function UserManager() {
   const [search, setSearch] = useState('');
 
   const fetchUsers = () => {
+    const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+    const token = adminUser.token;
+
     setLoading(true);
-    fetch(`${API_BASE_URL}/users`)
+    fetch(`${API_BASE_URL}/users`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
       .then(res => res.json())
       .then(data => {
-        if(data.status === 'success') setUsers(data.data);
+        if (data.status === 'success') setUsers(data.data);
         setLoading(false);
       })
       .catch(err => {
@@ -27,9 +34,15 @@ export default function UserManager() {
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+      const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+      const token = adminUser.token;
+
       try {
         const response = await fetch(`${API_BASE_URL}/users/${id}`, {
           method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         });
         const data = await response.json();
         if (data.status === 'success') {
@@ -43,8 +56,8 @@ export default function UserManager() {
     }
   };
 
-  const filteredUsers = users.filter(u => 
-    u.name.toLowerCase().includes(search.toLowerCase()) || 
+  const filteredUsers = users.filter(u =>
+    u.name.toLowerCase().includes(search.toLowerCase()) ||
     u.email.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -52,7 +65,7 @@ export default function UserManager() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight">Registered Users</h1>
+          <h1 className="text-2xl font-bold text-slate-900 ">Registered Users</h1>
           <p className="text-sm font-medium text-slate-500">Manage customer accounts and access levels ({users.length} users)</p>
         </div>
       </div>
@@ -61,9 +74,9 @@ export default function UserManager() {
         <div className="p-4 border-b border-gray-100 flex gap-4">
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search by name or email..." 
+            <input
+              type="text"
+              placeholder="Search by name or email..."
               className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-blue-500 transition-all"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -73,7 +86,7 @@ export default function UserManager() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="bg-gray-50 text-slate-500 font-bold uppercase tracking-wider text-xs">
+            <thead className="bg-gray-50 text-slate-500 font-bold capitalize tracking-wider text-xs">
               <tr>
                 <th className="px-6 py-4">User Details</th>
                 <th className="px-6 py-4">Contact Info</th>
@@ -93,12 +106,12 @@ export default function UserManager() {
                 <tr key={u.id} className="hover:bg-gray-50/50 transition-colors group">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-black">
+                      <div className="h-10 w-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">
                         {u.name.charAt(0).toUpperCase()}
                       </div>
                       <div className="flex flex-col">
                         <span className="font-bold text-slate-900">{u.name}</span>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ID: #{u.id}</span>
+                        <span className="text-[10px] font-bold text-slate-400 capitalize tracking-widest">ID: #{u.id}</span>
                       </div>
                     </div>
                   </td>
@@ -123,7 +136,7 @@ export default function UserManager() {
                     </div>
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button 
+                    <button
                       onClick={() => handleDelete(u.id)}
                       className="p-2.5 hover:bg-red-50 text-red-500 rounded-xl transition-colors inline-flex items-center gap-2 font-bold text-xs"
                     >

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   LayoutDashboard, 
   ShoppingBag, 
@@ -17,25 +17,32 @@ import {
   HelpCircle,
   FileText
 } from 'lucide-react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, Outlet } from 'react-router-dom';
 
-const AdminLayout = ({ children }) => {
+const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const adminUser = localStorage.getItem('admin_user');
+    if (!adminUser) {
+      navigate('/admin-login');
+    }
+  }, [navigate]);
 
   const navItems = [
     { label: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
     { label: 'Orders', icon: ShoppingBag, path: '/admin/orders' },
     { label: 'Products', icon: Package, path: '/admin/products' },
-    { label: 'Customers', icon: Users, path: '/admin/customers' },
-    { label: 'Reports', icon: TrendingUp, path: '/admin/reports' },
+    { label: 'Categories', icon: LayoutDashboard, path: '/admin/categories' },
+    { label: 'Customers', icon: Users, path: '/admin/users' },
     { label: 'Settings', icon: Settings, path: '/admin/settings' },
   ];
 
   const handleLogout = () => {
-    localStorage.removeItem('isAdmin');
-    navigate('/admin/login');
+    localStorage.removeItem('admin_user');
+    navigate('/admin-login');
   };
 
   return (
@@ -113,7 +120,7 @@ const AdminLayout = ({ children }) => {
 
         {/* PAGE CONTENT */}
         <main className="flex-1 overflow-y-auto p-4 lg:p-8">
-          {children}
+          <Outlet />
         </main>
       </div>
 

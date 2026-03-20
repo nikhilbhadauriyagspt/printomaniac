@@ -27,7 +27,7 @@ export default function ProductForm() {
     // Fetch Brands
     fetch(`${API_BASE_URL}/brands`)
       .then(res => res.json())
-      .then(data => { if(data.status === 'success') setBrands(data.data); });
+      .then(data => { if (data.status === 'success') setBrands(data.data); });
 
     // If Edit, Fetch Product Data
     if (isEdit) {
@@ -80,7 +80,7 @@ export default function ProductForm() {
         <Link to="/admin/products" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
           <ArrowLeft size={20} />
         </Link>
-        <h1 className="text-2xl font-black text-slate-900 tracking-tight">
+        <h1 className="text-2xl font-bold text-slate-900 ">
           {isEdit ? 'Edit Product' : 'Add New Product'}
         </h1>
       </div>
@@ -89,19 +89,19 @@ export default function ProductForm() {
         <div className="md:col-span-2 space-y-6">
           <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Product Title</label>
-              <input 
+              <label className="block text-xs font-bold text-slate-500 capitalize tracking-widest mb-2">Product Title</label>
+              <input
                 type="text" required
                 className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 font-bold transition-all"
-                value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
+                value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Description</label>
-              <textarea 
+              <label className="block text-xs font-bold text-slate-500 capitalize tracking-widest mb-2">Description</label>
+              <textarea
                 rows="6"
                 className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 font-medium transition-all"
-                value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})}
+                value={formData.description} onChange={e => setFormData({ ...formData, description: e.target.value })}
               ></textarea>
             </div>
           </div>
@@ -110,36 +110,36 @@ export default function ProductForm() {
         <div className="space-y-6">
           <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Regular Price ($)</label>
-              <input 
+              <label className="block text-xs font-bold text-slate-500 capitalize tracking-widest mb-2">Regular Price ($)</label>
+              <input
                 type="number" required
                 className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 font-bold transition-all"
-                value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})}
+                value={formData.price} onChange={e => setFormData({ ...formData, price: e.target.value })}
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Inventory (Stock)</label>
-              <input 
+              <label className="block text-xs font-bold text-slate-500 capitalize tracking-widest mb-2">Inventory (Stock)</label>
+              <input
                 type="number" required
                 className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 font-bold transition-all"
-                value={formData.quantity} onChange={e => setFormData({...formData, quantity: e.target.value})}
+                value={formData.quantity} onChange={e => setFormData({ ...formData, quantity: e.target.value })}
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Brand</label>
-              <select 
+              <label className="block text-xs font-bold text-slate-500 capitalize tracking-widest mb-2">Brand</label>
+              <select
                 className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 font-bold transition-all appearance-none"
-                value={formData.brand_id} onChange={e => setFormData({...formData, brand_id: e.target.value})}
+                value={formData.brand_id} onChange={e => setFormData({ ...formData, brand_id: e.target.value })}
               >
                 <option value="">Select Brand</option>
                 {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Status</label>
-              <select 
+              <label className="block text-xs font-bold text-slate-500 capitalize tracking-widest mb-2">Status</label>
+              <select
                 className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 font-bold transition-all appearance-none"
-                value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})}
+                value={formData.status} onChange={e => setFormData({ ...formData, status: e.target.value })}
               >
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
@@ -147,10 +147,10 @@ export default function ProductForm() {
             </div>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
-            className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-black text-xs tracking-widest shadow-xl shadow-blue-600/20 transition-all flex items-center justify-center gap-2"
+            className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-xs tracking-widest shadow-xl shadow-blue-600/20 transition-all flex items-center justify-center gap-2"
           >
             {loading ? <Loader2 className="animate-spin h-4 w-4" /> : <Save size={18} />}
             {isEdit ? 'UPDATE PRODUCT' : 'SAVE PRODUCT'}

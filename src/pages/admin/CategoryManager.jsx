@@ -9,10 +9,17 @@ export default function CategoryManager() {
   const [loading, setLoading] = useState(true);
 
   const fetchCategories = () => {
-    fetch(`${API_BASE_URL}/categories`)
+    const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+    const token = adminUser.token;
+
+    fetch(`${API_BASE_URL}/categories`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
       .then(res => res.json())
       .then(data => {
-        if(data.status === 'success') setCategories(data.data);
+        if (data.status === 'success') setCategories(data.data);
         setLoading(false);
       });
   };
@@ -23,9 +30,15 @@ export default function CategoryManager() {
 
   const handleAdd = async (e) => {
     e.preventDefault();
+    const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+    const token = adminUser.token;
+
     await fetch(`${API_BASE_URL}/categories`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({ name, parent_id: parentId })
     });
     setName('');
@@ -34,8 +47,16 @@ export default function CategoryManager() {
   };
 
   const handleDelete = async (id) => {
-    if(confirm('Delete category?')) {
-      await fetch(`${API_BASE_URL}/categories/${id}`, { method: 'DELETE' });
+    if (confirm('Delete category?')) {
+      const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+      const token = adminUser.token;
+
+      await fetch(`${API_BASE_URL}/categories/${id}`, { 
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       fetchCategories();
     }
   };
@@ -43,7 +64,7 @@ export default function CategoryManager() {
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-black text-slate-900 tracking-tight">Categories</h1>
+        <h1 className="text-2xl font-bold text-slate-900 ">Categories</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -52,15 +73,15 @@ export default function CategoryManager() {
           <h3 className="font-bold text-lg mb-4">Add Category</h3>
           <form onSubmit={handleAdd} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Name</label>
-              <input 
+              <label className="block text-xs font-bold text-slate-500 capitalize tracking-wide mb-1">Name</label>
+              <input
                 className="w-full p-3 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-blue-500"
-                value={name} onChange={e => setName(e.target.value)} required 
+                value={name} onChange={e => setName(e.target.value)} required
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Parent Category</label>
-              <select 
+              <label className="block text-xs font-bold text-slate-500 capitalize tracking-wide mb-1">Parent Category</label>
+              <select
                 className="w-full p-3 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:border-blue-500 bg-white"
                 value={parentId} onChange={e => setParentId(e.target.value)}
               >
@@ -90,11 +111,11 @@ export default function CategoryManager() {
                       <div className="flex items-center gap-3">
                         <FolderTree size={18} className="text-blue-600" />
                         <span className="font-bold text-slate-900">{root.name}</span>
-                        <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-[10px] font-black rounded uppercase">Main</span>
+                        <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-[10px] font-bold rounded capitalize">Main</span>
                       </div>
-                      <button onClick={() => handleDelete(root.id)} className="p-2 hover:bg-red-50 text-slate-400 hover:text-red-500 rounded-lg"><Trash2 size={16}/></button>
+                      <button onClick={() => handleDelete(root.id)} className="p-2 hover:bg-red-50 text-slate-400 hover:text-red-500 rounded-lg"><Trash2 size={16} /></button>
                     </div>
-                    
+
                     {/* Children */}
                     {root.children && root.children.length > 0 && (
                       <div className="bg-white p-2 space-y-1">
@@ -104,7 +125,7 @@ export default function CategoryManager() {
                               <ChevronRight size={14} className="text-gray-300" />
                               <span className="text-sm font-medium text-slate-700">{child.name}</span>
                             </div>
-                            <button onClick={() => handleDelete(child.id)} className="p-1 hover:text-red-500 text-slate-300"><Trash2 size={14}/></button>
+                            <button onClick={() => handleDelete(child.id)} className="p-1 hover:text-red-500 text-slate-300"><Trash2 size={14} /></button>
                           </div>
                         ))}
                       </div>
