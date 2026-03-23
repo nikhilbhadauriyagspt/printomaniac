@@ -40,7 +40,7 @@ export default function CategorySlider({ title, products = [] }) {
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
               {title.split(' ')[0]} <span className="text-blue-600">{title.split(' ')[1]}</span>
             </h2>
-            <p className="text-slate-500 text-sm font-medium">Premium hardware for professional output</p>
+            <p className="text-slate-500 text-sm font-medium">Premium printer for professional output</p>
           </div>
           
           <div className="flex gap-2">

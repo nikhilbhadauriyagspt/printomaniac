@@ -117,7 +117,7 @@ export default function Shop() {
     <div className="bg-white min-h-screen font-jakarta text-slate-900 overflow-x-hidden pt-20">
       <SEO 
         title="Shop Collections | Axel Printing" 
-        description="Browse our curated selection of high-performance printers and professional hardware."
+        description="Browse our curated selection of high-performance printers and professional printer."
       />
 
       {/* --- CLEAN HEADER --- */}

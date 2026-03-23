@@ -86,7 +86,7 @@ export default function Home() {
     <div className="bg-white font-jakarta overflow-x-hidden text-slate-900">
       <SEO 
         title="Axel Printing | Quality Printers & Hardware"
-        description="Your trusted source for high-quality printers and printing hardware. Delivering excellence across the USA."
+        description="Your trusted source for high-quality printers and printing printer. Delivering excellence across the USA."
       />
 
       <Hero />

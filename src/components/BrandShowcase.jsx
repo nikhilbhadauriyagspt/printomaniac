@@ -25,7 +25,7 @@ export default function BrandShowcase({ brands = [] }) {
             Official Partners
           </h2>
           <p className="mt-2 text-slate-400 text-sm font-bold tracking-wide">
-            We directly collaborate with global leaders to provide authentic hardware and reliable supplies.
+            We directly collaborate with global leaders to provide authentic printer and reliable supplies.
           </p>
         </div>
 

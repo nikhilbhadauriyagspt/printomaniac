@@ -35,7 +35,7 @@ const Hero = () => {
       id: 3,
       title: "Ultimate Inkjet",
       subtitle: "Vivid Color Tech",
-      desc: "Where heritage meets the future of hardware in every print. Perfect for photographers and designers who demand the widest color gamut and deepest blacks.",
+      desc: "Where heritage meets the future of printer in every print. Perfect for photographers and designers who demand the widest color gamut and deepest blacks.",
       image: png3,
       bg: "bg-gradient-to-br from-blue-200 via-white to-blue-500"
     }

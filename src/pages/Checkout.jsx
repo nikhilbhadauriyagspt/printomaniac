@@ -137,7 +137,7 @@ export default function Checkout() {
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-none">
               Checkout
             </h1>
-            <p className="text-slate-500 font-medium text-base">Complete your professional hardware order</p>
+            <p className="text-slate-500 font-medium text-base">Complete your professional printer order</p>
           </div>
           
           <div className="flex items-center gap-2 text-xs font-bold text-slate-400">

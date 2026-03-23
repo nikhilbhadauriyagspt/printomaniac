@@ -18,7 +18,7 @@ const features = [
   {
     icon: <Headphones className="text-blue-600" size={24} />,
     title: "Expert Concierge",
-    desc: "Specialized expert hardware support",
+    desc: "Specialized expert printer support",
     delay: 0.3
   },
   {

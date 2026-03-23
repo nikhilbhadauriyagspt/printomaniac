@@ -92,7 +92,7 @@ const About = () => {
                 Focus on <span className="text-blue-600">reliability.</span>
               </h2>
               <p className="text-lg text-slate-500 font-medium leading-relaxed">
-                We know that your time is valuable. That's why we focus on delivering hardware that works consistently, so you can spend less time troubleshooting and more time creating.
+                We know that your time is valuable. That's why we focus on delivering printer that works consistently, so you can spend less time troubleshooting and more time creating.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Easy installation", "Reliable output", "Friendly help"].map((feat, i) => (

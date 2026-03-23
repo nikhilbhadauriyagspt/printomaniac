@@ -196,7 +196,7 @@ export default function ProductDetail() {
                   <h4 className="text-xs font-black uppercase tracking-widest">Description</h4>
                </div>
                <p className="text-slate-500 text-base leading-relaxed font-medium">
-                 {product.description || "A high-performance hardware solution engineered for professional creative environments. Delivering consistent precision and absolute reliability."}
+                 {product.description || "A high-performance printer solution engineered for professional creative environments. Delivering consistent precision and absolute reliability."}
                </p>
             </div>
 
@@ -244,7 +244,7 @@ export default function ProductDetail() {
                 <h2 className="text-2xl md:text-4xl font-black text-slate-900 tracking-tight">
                   You might <span className="text-blue-600">also like</span>
                 </h2>
-                <p className="text-slate-500 font-medium text-sm">Specially curated hardware for your needs</p>
+                <p className="text-slate-500 font-medium text-sm">Specially curated printer for your needs</p>
               </div>
               <Link to="/shop" className="group flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-widest">
                 View gallery <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
