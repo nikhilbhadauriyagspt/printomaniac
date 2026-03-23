@@ -117,7 +117,7 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-white pt-40 pb-24 font-urbanist overflow-hidden">
-      <SEO title="Account Dashboard | DominicPrinters" />
+      <SEO title="Account Dashboard | Axel Printing" />
       
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-indigo-50/50 blur-[120px] rounded-full pointer-events-none" />

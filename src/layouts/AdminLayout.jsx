@@ -52,7 +52,7 @@ const AdminLayout = () => {
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:relative lg:translate-x-0`}>
         <div className="flex items-center justify-between h-16 px-6 border-b border-slate-800">
           <div className="flex items-center">
-            <span className="text-xl font-black tracking-tighter">DominicPrinters<span className="text-blue-500">.</span>ADMIN</span>
+            <span className="text-xl font-black tracking-tighter">Axel Printing<span className="text-blue-500">.</span>ADMIN</span>
           </div>
           <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-slate-400 hover:text-white">
             <X size={20} />

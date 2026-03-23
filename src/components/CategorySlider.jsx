@@ -1,9 +1,15 @@
-import { motion } from "framer-motion";
-import { Heart, Plus, ArrowRight, Sparkles, ShoppingBag } from "lucide-react";
+import React from 'react';
+import { ChevronLeft, ChevronRight, ShoppingBag, Eye, Heart } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
 import { cn } from "../lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export default function CategorySlider({ title, products = [] }) {
   const { addToCart, toggleWishlist, isInWishlist, openCartDrawer } = useCart();
@@ -24,100 +30,122 @@ export default function CategorySlider({ title, products = [] }) {
     return "https://via.placeholder.com/400x400?text=Product";
   };
 
-  if (products.length === 0) return null;
-
   return (
-    <section className="bg-[#FAF9F6] py-20 md:py-24 w-full font-jakarta overflow-hidden border-t border-red-900/5">
-      <div className="max-w-[1920px] mx-auto px-6 lg:px-16">
+    <section className="bg-white py-12 md:py-16 w-full font-jakarta overflow-hidden">
+      <div className="w-full px-4 md:px-6 lg:px-10">
         
-        {/* --- CENTERED REFINED HEADER --- */}
-        <div className="flex flex-col items-center text-center mb-16 space-y-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3"
-          >
-            
-          </motion.div>
+        {/* --- HEADER --- */}
+        <div className="flex items-end justify-between mb-10">
+          <div className="space-y-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
+              {title.split(' ')[0]} <span className="text-blue-600">{title.split(' ')[1]}</span>
+            </h2>
+            <p className="text-slate-500 text-sm font-medium">Premium hardware for professional output</p>
+          </div>
           
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#450a0a]  leading-tight"
+          <div className="flex gap-2">
+            <button className="cs-prev h-10 w-10 flex items-center justify-center rounded-full border border-slate-200 hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-20 shadow-sm">
+              <ChevronLeft size={18} />
+            </button>
+            <button className="cs-next h-10 w-10 flex items-center justify-center rounded-full border border-slate-200 hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-20 shadow-sm">
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </div>
+
+        {/* --- LANDSCAPE CARDS CAROUSEL --- */}
+        <div className="relative group/carousel">
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={16}
+            slidesPerView={1.2}
+            navigation={{
+              prevEl: '.cs-prev',
+              nextEl: '.cs-next',
+            }}
+            breakpoints={{
+              640: { slidesPerView: 2.2 },
+              1024: { slidesPerView: 3.2 },
+              1280: { slidesPerView: 4.2 },
+            }}
+            className="!overflow-visible"
           >
-            {title.split(' ').slice(0, -1).join(' ')} <span className="italic font-medium text-red-900">{title.split(' ').pop()}</span>
-          </motion.h2>
-        </div>
-
-        {/* --- REFINED LANDSCAPE GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
-          {products.slice(0, 9).map((p, idx) => (
-            <motion.div 
-              key={p.id}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: (idx % 3) * 0.05, duration: 0.6 }}
-              onMouseEnter={() => setHoveredId(p.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              className="group flex flex-row items-center gap-6 p-4 rounded-[2rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#450a0a]/10 transition-all duration-500"
-            >
-              {/* Landscape Image Container */}
-              <div className="relative w-32 h-32 md:w-36 md:h-36 shrink-0 bg-[#FAF9F6] rounded-2xl flex items-center justify-center p-4 overflow-hidden border border-gray-100 group-hover:bg-white transition-all duration-500">
-                <motion.img 
-                  src={getImagePath(p.images)} 
-                  alt={p.name} 
-                  className="max-h-full max-w-full object-contain mix-blend-multiply relative z-10"
-                  animate={hoveredId === p.id ? { scale: 1.1 } : { scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                />
-                
-                {/* Micro Wishlist Overlay */}
-                <button 
-                  onClick={(e) => { e.preventDefault(); toggleWishlist(p); }}
-                  className={cn(
-                    "absolute top-2 right-2 h-8 w-8 rounded-full flex items-center justify-center bg-white/80 backdrop-blur-md shadow-sm transition-all",
-                    isInWishlist(p.id) ? "text-red-600" : "text-[#450a0a]/20 hover:text-[#450a0a]"
-                  )}
+            {products.slice(0, 10).map((p) => (
+              <SwiperSlide key={p.id}>
+                <div 
+                  className="group relative flex flex-col h-full bg-white transition-all duration-500"
+                  onMouseEnter={() => setHoveredId(p.id)}
+                  onMouseLeave={() => setHoveredId(null)}
                 >
-                  <Heart size={12} fill={isInWishlist(p.id) ? "currentColor" : "none"} strokeWidth={2} />
-                </button>
-              </div>
+                  {/* Landscape Image Card */}
+                  <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden border border-slate-100 group-hover:border-blue-100 transition-all duration-500">
+                    <Link to={`/product/${p.slug}`} className="absolute inset-0 z-10" />
+                    
+                    <img 
+                      src={getImagePath(p.images)} 
+                      alt={p.name} 
+                      className="w-full h-full object-contain p-8 mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
+                      onError={(e) => { e.target.src = "https://via.placeholder.com/400x400?text=" + p.name; }}
+                    />
 
-              {/* Landscape Info Area */}
-              <div className="flex-1 min-w-0 flex flex-col justify-center h-full">
-                <div className="space-y-1">
-                  <Link to={`/product/${p.slug}`}>
-                    <h3 className="text-[14px] font-bold text-[#450a0a] uppercase tracking-tighter line-clamp-2 leading-snug group-hover:text-red-600 transition-colors">
-                      {p.name}
-                    </h3>
-                  </Link>
-                  <span className="text-[15px] font-black text-[#450a0a] opacity-40 tracking-tight">${p.price}</span>
+                    {/* Hover Actions Overlay */}
+                    <AnimatePresence>
+                      {hoveredId === p.id && (
+                        <motion.div 
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="absolute inset-0 bg-black/5 z-20 flex flex-col items-center justify-center gap-3 p-4 backdrop-blur-[2px]"
+                        >
+                          <button 
+                            onClick={(e) => handleAddToCart(e, p)}
+                            className="w-3/4 h-11 bg-blue-600 text-white rounded-full flex items-center justify-center gap-2 shadow-lg hover:bg-blue-700 active:scale-95 transition-all text-xs font-bold uppercase tracking-wider"
+                          >
+                            <ShoppingBag size={16} />
+                            Quick Add
+                          </button>
+                          
+                          <div className="flex gap-2 w-3/4">
+                            <button 
+                              onClick={(e) => { e.preventDefault(); toggleWishlist(p); }}
+                              className={cn(
+                                "flex-1 h-11 rounded-full flex items-center justify-center gap-2 border bg-white shadow-md transition-all text-[10px] font-bold uppercase tracking-tight",
+                                isInWishlist(p.id) ? "text-red-500 border-red-100" : "text-slate-600 hover:text-blue-600 border-slate-100"
+                              )}
+                            >
+                              <Heart size={14} fill={isInWishlist(p.id) ? "currentColor" : "none"} />
+                              Wishlist
+                            </button>
+                            <Link 
+                              to={`/product/${p.slug}`}
+                              className="flex-1 h-11 rounded-full bg-slate-900 text-white flex items-center justify-center gap-2 shadow-md hover:bg-slate-800 transition-all text-[10px] font-bold uppercase tracking-tight"
+                            >
+                              <Eye size={14} />
+                              View
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Details */}
+                  <div className="pt-4 px-1 flex justify-between items-start">
+                    <div className="space-y-1 max-w-[70%]">
+                      <Link to={`/product/${p.slug}`} className="block">
+                        <h3 className="text-[14px] font-bold text-slate-800 line-clamp-1 group-hover:text-blue-600 transition-colors uppercase tracking-tight">
+                          {p.name}
+                        </h3>
+                      </Link>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-lg font-black text-slate-900 leading-none">${p.price}</span>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="mt-4 flex justify-start">
-                  {/* Floating Add Button */}
-                  <button 
-                    onClick={(e) => handleAddToCart(e, p)}
-                    className="h-10 w-10 bg-[#450a0a] text-white rounded-xl flex items-center justify-center hover:scale-110 shadow-lg active:scale-95 transition-all"
-                  >
-                    <ShoppingBag size={16} strokeWidth={2} />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* --- CENTERED VIEW ALL --- */}
-        <div className="mt-16 text-center">
-          <Link to="/shop" className="group inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#450a0a] border border-gray-200 px-8 py-3 rounded-full hover:bg-[#450a0a] hover:text-white transition-all duration-500 shadow-sm">
-            Discover Full Series
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
       </div>

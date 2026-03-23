@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '@/components/SEO';
-import { ChevronDown, ArrowRight, Sparkles, MessageCircle, HelpCircle } from 'lucide-react';
+import { ChevronDown, ArrowRight, MessageCircle, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -65,58 +65,45 @@ export default function FAQ() {
   const filteredFaqs = faqs.find(f => f.category === activeCategory)?.questions || [];
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen font-jakarta text-[#450a0a] overflow-x-hidden">
+    <div className="bg-white min-h-screen font-jakarta text-slate-900 overflow-x-hidden ">
       <SEO 
-        title="FAQ | DominicPrinters" 
+        title="FAQ | Axel Printing" 
         description="Find simple answers to your questions about printers, delivery, and support."
       />
 
-      {/* --- ARCHITECTURAL BACKGROUND --- */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5 }}
-          className="absolute top-0 right-0 w-1/3 h-1/2 bg-red-900/[0.02] border-l border-b border-red-900/[0.05] rounded-bl-[10rem]"
-        />
-      </div>
-      
       {/* --- HERO HEADER --- */}
-      <section className="relative pt-28 pb-12 px-6 lg:px-16 text-center">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#450a0a] tracking-tight leading-[0.9]"
-        >
-          Common <span className="font-black italic text-red-900 whitespace-nowrap">Questions</span>
-        </motion.h1>
+      <section className="relative pt-12 pb-16 px-4 md:px-6 lg:px-10 border-b border-slate-50">
+        <div className="max-w-[1200px] mx-auto text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+            <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Help center</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight">
+            Common <span className="text-blue-600">questions</span>
+          </h1>
+          <p className="text-base text-slate-500 font-medium max-w-lg mx-auto">
+            Find quick answers to common questions about our products, shipping, and more.
+          </p>
+        </div>
       </section>
 
       {/* --- MAIN CONTENT --- */}
-      <div className="max-w-[1440px] mx-auto px-6 py-12 md:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 py-16 md:py-24 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           
-          {/* --- CATEGORY NAVIGATION: BOUTIQUE STYLE --- */}
-          <div className="lg:col-span-4 space-y-10">
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="h-10 w-10 rounded-full bg-[#450a0a] flex items-center justify-center text-white shadow-lg">
-                  <HelpCircle size={18} />
-                </div>
-                <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-[#450a0a]">Categories</h4>
-              </div>
-              
-              <div className="flex flex-col gap-3">
+          {/* --- CATEGORY NAVIGATION --- */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="space-y-4">
+              <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Categories</h4>
+              <div className="flex flex-col gap-2">
                 {faqs.map((f) => (
                   <button
                     key={f.category}
                     onClick={() => { setActiveCategory(f.category); setActiveIdx(null); }}
                     className={cn(
-                      "w-full text-left p-5 rounded-[2rem] text-[13px] font-bold transition-all uppercase tracking-widest border",
+                      "w-full text-left px-6 py-4 rounded-xl text-sm font-bold transition-all border",
                       activeCategory === f.category 
-                        ? "bg-[#450a0a] text-white border-[#450a0a] shadow-xl" 
-                        : "bg-white text-[#450a0a]/40 border-red-900/5 hover:border-[#450a0a] hover:text-[#450a0a]"
+                        ? "bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-600/20" 
+                        : "bg-white text-slate-500 border-slate-100 hover:border-slate-300"
                     )}
                   >
                     {f.category}
@@ -125,101 +112,96 @@ export default function FAQ() {
               </div>
             </div>
 
-            {/* Status Bento Block */}
-            <div className="p-8 rounded-[3rem] bg-white border border-red-900/5 shadow-sm space-y-4">
+            {/* Quick Contact Box */}
+            <div className="p-8 rounded-2xl bg-slate-50 border border-slate-100 space-y-4">
                <div className="flex items-center gap-3">
-                  <MessageCircle size={16} className="text-red-600" />
-                  <span className="text-[10px] font-black uppercase tracking-widest text-[#450a0a]">Support Live</span>
+                  <MessageCircle size={18} className="text-blue-600" />
+                  <span className="text-xs font-black uppercase tracking-widest text-slate-900">Need more help?</span>
                </div>
-               <p className="text-[13px] text-[#7A7A75] font-medium leading-relaxed">
-                 Can't find what you need? Our team is available for direct assistance.
+               <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                 If you can't find your answer here, our team is always ready to help you directly.
                </p>
+               <Link to="/contact" className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-700">
+                 Contact us <ArrowRight size={14} />
+               </Link>
             </div>
           </div>
 
-          {/* --- ACCORDION PANEL: REFINED CANVAS --- */}
+          {/* --- ACCORDION PANEL --- */}
           <div className="lg:col-span-8">
-            <div className="space-y-6">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeCategory}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="space-y-4"
-                >
-                  {filteredFaqs.map((faq, i) => (
-                    <div 
-                      key={i}
-                      className={cn(
-                        "bg-white rounded-[2.5rem] transition-all duration-500 overflow-hidden border border-red-900/5 shadow-sm",
-                        activeIdx === i ? "shadow-xl border-[#450a0a]/10" : "hover:shadow-md"
-                      )}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-4"
+              >
+                {filteredFaqs.map((faq, i) => (
+                  <div 
+                    key={i}
+                    className={cn(
+                      "bg-white rounded-2xl transition-all duration-300 overflow-hidden border border-slate-100",
+                      activeIdx === i ? "shadow-xl shadow-slate-200/40 border-blue-100" : "hover:border-slate-200"
+                    )}
+                  >
+                    <button
+                      onClick={() => toggle(i)}
+                      className="w-full flex items-center justify-between p-6 text-left group"
                     >
-                      <button
-                        onClick={() => toggle(i)}
-                        className="w-full flex items-center justify-between p-8 text-left group"
-                      >
-                        <span className={cn(
-                          "text-lg font-bold transition-colors leading-snug pr-8",
-                          activeIdx === i ? "text-[#450a0a]" : "text-[#450a0a]/60 group-hover:text-[#450a0a]"
-                        )}>
-                          {faq.q}
-                        </span>
-                        <div className={cn(
-                          "h-10 w-10 rounded-full border border-red-900/5 flex items-center justify-center transition-all duration-500 shrink-0",
-                          activeIdx === i ? "bg-[#450a0a] text-white rotate-180" : "bg-[#FAF9F6] text-[#450a0a]/40 group-hover:bg-[#450a0a] group-hover:text-white"
-                        )}>
-                          <ChevronDown size={18} strokeWidth={2} />
-                        </div>
-                      </button>
+                      <span className={cn(
+                        "text-base md:text-lg font-bold transition-colors leading-snug pr-8",
+                        activeIdx === i ? "text-slate-900" : "text-slate-600 group-hover:text-slate-900"
+                      )}>
+                        {faq.q}
+                      </span>
+                      <div className={cn(
+                        "h-8 w-8 rounded-full border border-slate-100 flex items-center justify-center transition-all duration-300 shrink-0",
+                        activeIdx === i ? "bg-blue-600 text-white rotate-180" : "bg-slate-50 text-slate-400 group-hover:bg-slate-100"
+                      )}>
+                        <ChevronDown size={16} />
+                      </div>
+                    </button>
 
-                      <AnimatePresence>
-                        {activeIdx === i && (
-                          <motion.div 
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                          >
-                            <div className="px-8 pb-10 pt-2">
-                              <div className="h-px w-full bg-red-900/5 mb-8" />
-                              <p className="text-[#7A7A75] text-lg font-light leading-relaxed max-w-2xl">
-                                {faq.a}
-                              </p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
-            </div>
+                    <AnimatePresence>
+                      {activeIdx === i && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="px-6 pb-8 pt-2">
+                            <div className="h-px w-full bg-slate-50 mb-6" />
+                            <p className="text-slate-500 text-base font-medium leading-relaxed max-w-2xl">
+                              {faq.a}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
         </div>
       </div>
 
       {/* --- CTA SECTION --- */}
-      <section className="py-32 md:py-48 bg-white text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-900/[0.02] rounded-full blur-[120px] -z-10" />
-        
-        <div className="max-w-3xl mx-auto px-6 space-y-16">
-          <div className="space-y-6">
-            <h2 className="text-5xl md:text-7xl font-bold text-[#450a0a] tracking-tighter leading-[0.9]">
-              Still Need <span className="font-black italic text-red-900 whitespace-nowrap">Clarity?</span>
-            </h2>
-          </div>
-
+      <section className="py-24 text-center bg-white border-t border-slate-50 px-4 md:px-6 lg:px-10">
+        <div className="max-w-[800px] mx-auto space-y-10">
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+            Still need <span className="text-blue-600">clarity?</span>
+          </h2>
           <div className="flex justify-center">
             <Link 
               to="/contact" 
-              className="group bg-[#450a0a] text-white px-12 h-16 flex items-center justify-center rounded-2xl font-bold text-[12px] uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-xl shadow-red-900/20"
+              className="bg-blue-600 text-white px-10 h-14 flex items-center justify-center rounded-xl font-bold text-sm transition-all hover:bg-blue-700 shadow-xl shadow-blue-600/20 active:scale-95"
             >
-              <span>Speak with Our Team</span>
-              <ArrowRight size={18} className="ml-4 group-hover:translate-x-1 transition-transform" />
+              Speak with our team <ArrowRight size={18} className="ml-3" />
             </Link>
           </div>
         </div>

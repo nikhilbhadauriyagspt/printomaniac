@@ -1,8 +1,8 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import { Trash2, Plus, Minus, ArrowRight, ChevronLeft, ShieldCheck, ShoppingBag, Package, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X, Plus, Minus, ArrowRight, ShoppingBag, Trash2, ChevronLeft, Package, ShieldCheck } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { cn } from '../lib/utils';
 
@@ -16,85 +16,62 @@ export default function Cart() {
       const imgs = typeof images === 'string' ? JSON.parse(images) : images;
       if (Array.isArray(imgs) && imgs.length > 0) return `/${imgs[0]}`;
     } catch (e) { }
-    return "https://via.placeholder.com/400x400?text=Product";
+    return "https://via.placeholder.com/200x200?text=Product";
   };
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center pt-20 px-6 font-jakarta bg-[#FAF9F6] text-[#450a0a]">
-        <SEO title="Empty Bag | DominicPrinters" />
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="h-24 w-24 bg-white rounded-full border border-red-900/5 flex items-center justify-center mb-8 shadow-sm"
-        >
-          <ShoppingBag size={32} className="text-red-900/20" strokeWidth={1} />
-        </motion.div>
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-center">Your bag is <span className="font-light italic text-red-900">empty</span></h2>
-        <p className="text-[#7A7A75] text-sm font-light mb-10 text-center max-w-xs leading-relaxed">Discover our collection of Quality hardware and find the perfect addition to your workspace.</p>
-        <Link to="/shop" className="group relative inline-flex items-center gap-6 bg-[#450a0a] text-white h-14 px-10 rounded-full overflow-hidden transition-all duration-500 shadow-xl shadow-red-900/20 active:scale-95">
-          <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.2em]">Start Shopping</span>
-          <ArrowRight size={16} className="relative z-10 transition-transform duration-500 group-hover:translate-x-1" />
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900 to-[#450a0a] opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="min-h-screen flex flex-col items-center justify-center pt-20 px-6 font-jakarta bg-white text-slate-900">
+        <SEO title="Empty Cart | Axel Printing" />
+        <div className="h-24 w-24 bg-blue-50 rounded-full flex items-center justify-center mb-8 border border-blue-100">
+          <ShoppingBag size={40} className="text-blue-600/40" />
+        </div>
+        <h2 className="text-4xl font-black tracking-tight mb-4 text-center">Your cart is empty</h2>
+        <p className="text-slate-500 text-sm font-medium mb-10 text-center max-w-xs leading-relaxed">It looks like you haven't added anything to your cart yet. Discover our latest printers to get started.</p>
+        <Link to="/shop" className="inline-flex items-center gap-3 bg-slate-900 text-white h-14 px-10 rounded-2xl font-bold text-sm transition-all shadow-xl hover:bg-blue-600 active:scale-95">
+          Start shopping <ArrowRight size={18} />
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] font-jakarta text-[#450a0a] overflow-x-hidden pb-24">
-      <SEO title="My Bag | DominicPrinters" description="Review your selected hardware before checkout." />
+    <div className="min-h-screen bg-white font-jakarta text-slate-900 overflow-x-hidden pt-32 pb-24">
+      <SEO title="Shopping Cart | Axel Printing" />
       
-      {/* --- ARCHITECTURAL BACKGROUND --- */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5 }}
-          className="absolute top-0 right-0 w-1/3 h-1/2 bg-red-900/[0.02] border-l border-b border-red-900/[0.05] rounded-bl-[10rem]"
-        />
-      </div>
-
-      {/* --- HERO HEADER --- */}
-      <section className="relative pt-32 pb-16 px-6 lg:px-16 text-center space-y-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center justify-center gap-4"
-        >
-         
-        </motion.div>
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10">
         
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#450a0a] tracking-tight leading-[0.9]"
-        >
-          Shopping <span className="font-black italic text-red-900 whitespace-nowrap">Bag</span>
-        </motion.h1>
-      </section>
-
-      <div className="max-w-[1920px] mx-auto px-6 lg:px-16 py-12 md:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
+        {/* --- HEADER --- */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 mb-12 border-b border-slate-100">
+          <div className="space-y-2 text-left">
+            <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-none">
+              Your <span className="text-blue-600">cart</span>
+            </h1>
+            <p className="text-slate-500 font-medium text-base">You have {cartCount} items in your selection</p>
+          </div>
           
-          {/* --- CART ITEMS --- */}
-          <div className="lg:col-span-8 space-y-12">
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-400">
+            <ShieldCheck size={16} className="text-blue-600" />
+            <span className="tracking-widest uppercase text-[10px]">Secure transactions</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+          {/* --- ITEMS LIST --- */}
+          <div className="lg:col-span-8 space-y-10">
             <AnimatePresence mode="popLayout">
               {cart.map((item) => (
                 <motion.div 
-                  key={item.id}
                   layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="flex flex-col sm:flex-row items-center gap-10 group relative pb-12 border-b border-red-900/5 last:border-0"
+                  key={item.id} 
+                  className="group flex flex-col md:flex-row gap-10 items-center pb-10 border-b border-slate-50 last:border-0"
                 >
-                  {/* Image Platform: High End Frame */}
-                  <div className="h-48 w-full sm:w-48 bg-white rounded-[2.5rem] border border-red-900/5 flex items-center justify-center p-8 shrink-0 transition-all duration-700 group-hover:bg-[#FAF9F6] group-hover:shadow-[0_20px_50px_-15px_rgba(69,10,10,0.06)] group-hover:border-[#450a0a]/10 overflow-hidden relative">
-                    <Link to={`/product/${item.slug}`} className="absolute inset-0 z-10" />
+                  {/* Large Product Image */}
+                  <div className="h-48 w-48 md:h-40 md:w-40 bg-slate-50 rounded-[2.5rem] flex items-center justify-center p-8 border border-slate-100 transition-all duration-500 group-hover:bg-white group-hover:shadow-2xl group-hover:border-blue-100 flex-shrink-0 relative overflow-hidden">
                     <img 
                       src={getImagePath(item.images)} 
                       alt={item.name}
@@ -102,33 +79,31 @@ export default function Cart() {
                     />
                   </div>
 
-                  <div className="flex-1 min-w-0 flex flex-col justify-between h-full w-full py-2">
-                    <div className="flex justify-between items-start mb-6">
-                      <div className="space-y-3">
-                        <span className="text-[9px] font-black text-[#450a0a]/40 uppercase tracking-[0.2em] bg-red-50/50 px-3 py-1 rounded-full">Imperial Selection</span>
+                  <div className="flex-1 min-w-0 flex flex-col h-full py-2 w-full">
+                    <div className="flex justify-between items-start gap-6">
+                      <div className="space-y-2">
                         <Link to={`/product/${item.slug}`}>
-                           <h3 className="text-xl md:text-2xl font-bold text-[#450a0a] uppercase tracking-tighter leading-[0.9] group-hover:text-red-600 transition-colors line-clamp-2">{item.name}</h3>
+                          <h3 className="text-xl font-bold text-slate-900 hover:text-blue-600 transition-colors leading-tight line-clamp-2">{item.name}</h3>
                         </Link>
+                        <p className="text-xs font-bold text-blue-600/60">Elite Series Professional Hardware</p>
                       </div>
                       <button 
                         onClick={() => removeFromCart(item.id)}
-                        className="h-10 w-10 rounded-full border border-red-900/5 flex items-center justify-center text-[#450a0a]/20 hover:text-red-600 hover:border-red-100 transition-all"
+                        className="h-10 w-10 rounded-full bg-slate-50 text-slate-300 hover:text-red-500 hover:bg-red-50 transition-all flex items-center justify-center shrink-0"
                       >
-                        <Trash2 size={18} strokeWidth={1.5} />
+                        <Trash2 size={18} />
                       </button>
                     </div>
-                    
-                    <div className="flex items-center justify-between mt-auto pt-8 border-t border-red-900/5">
-                      {/* Refined Counter */}
-                      <div className="h-11 bg-[#FAF9F6] border border-red-900/5 rounded-full flex items-center justify-between px-1.5 w-[140px] shadow-sm">
-                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="h-8 w-8 flex items-center justify-center rounded-full bg-white text-[#450a0a] hover:bg-[#450a0a] hover:text-white transition-all shadow-sm"><Minus size={12} strokeWidth={2} /></button>
-                        <span className="text-[13px] font-black text-[#450a0a]">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="h-8 w-8 flex items-center justify-center rounded-full bg-white text-[#450a0a] hover:bg-[#450a0a] hover:text-white transition-all shadow-sm"><Plus size={12} strokeWidth={2} /></button>
+
+                    <div className="flex items-center justify-between mt-8 md:mt-auto">
+                      <div className="flex items-center border border-slate-100 rounded-xl h-11 px-1 bg-slate-50/50">
+                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="w-10 h-9 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-colors"><Minus size={14} /></button>
+                        <span className="text-base font-black w-10 text-center text-slate-900">{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="w-10 h-9 flex items-center justify-center text-slate-400 hover:text-slate-900 transition-colors"><Plus size={14} /></button>
                       </div>
-                      
-                      <div className="text-right flex flex-col">
-                         <span className="text-[10px] font-black uppercase tracking-widest text-[#450a0a]/30 mb-1">Item Total</span>
-                         <span className="text-2xl font-black text-[#450a0a] tracking-tighter leading-none">${(item.price * item.quantity).toLocaleString()}</span>
+                      <div className="text-right">
+                        <p className="text-xs text-slate-400 font-bold mb-1">${item.price.toLocaleString()} per unit</p>
+                        <span className="text-2xl font-black text-slate-900 tracking-tight">${(item.price * item.quantity).toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
@@ -136,56 +111,53 @@ export default function Cart() {
               ))}
             </AnimatePresence>
 
-            <Link to="/shop" className="inline-flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.3em] text-[#450a0a]/40 hover:text-[#450a0a] transition-all pt-12 group">
-              <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-              Return to Gallery
-            </Link>
+            <div className="pt-10">
+              <Link to="/shop" className="group inline-flex items-center gap-3 text-xs font-bold text-slate-400 hover:text-blue-600 transition-all">
+                <ChevronLeft size={18} className="transition-transform group-hover:-translate-x-1" />
+                Return to gallery
+              </Link>
+            </div>
           </div>
 
-          {/* --- SUMMARY SIDEBAR: BENTO CANVAS --- */}
-          <div className="lg:col-span-4 lg:sticky lg:top-[140px]">
-            <div className="bg-white border border-red-900/5 p-10 rounded-[3.5rem] space-y-12 shadow-[0_30px_80px_-20px_rgba(69,10,10,0.08)]">
-              <div className="space-y-8">
-                <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-red-900/20 border-b border-red-900/5 pb-4">Order Manifest</h3>
-                <div className="space-y-6">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[11px] font-bold text-[#450a0a]/40 uppercase tracking-[0.2em]">Subtotal Value</span>
-                    <span className="text-[15px] font-bold text-[#450a0a]">${total.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[11px] font-bold text-[#450a0a]/40 uppercase tracking-[0.2em]">Logistics</span>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 bg-red-50 px-4 py-1.5 rounded-full">Complimentary</span>
-                  </div>
-                </div>
+          {/* --- SUMMARY CARD --- */}
+          <div className="lg:col-span-4">
+            <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white space-y-10 sticky top-32 shadow-2xl overflow-hidden relative group/summary">
+              <div className="space-y-2 relative z-10">
+                <h2 className="text-3xl font-black tracking-tight">Summary</h2>
+                <div className="h-1 w-12 bg-blue-600 rounded-full" />
               </div>
 
-              <div className="pt-10 border-t border-red-900/5 space-y-10">
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-red-900/20 mb-3">Total Investment</span>
-                  <span className="text-5xl font-black text-[#450a0a] tracking-tighter leading-none">${total.toLocaleString()}</span>
+              <div className="space-y-6 relative z-10">
+                <div className="flex justify-between items-center text-sm font-medium text-slate-400">
+                  <span>Subtotal</span>
+                  <span className="text-white font-bold">${total.toLocaleString()}</span>
                 </div>
-
-                <div className="space-y-6">
-                  <Link 
-                    to="/checkout"
-                    className="group relative w-full h-16 bg-[#450a0a] text-white rounded-2xl flex items-center justify-center gap-6 text-[12px] font-bold uppercase tracking-[0.3em] transition-all hover:scale-[1.02] shadow-xl shadow-red-900/20 active:scale-95 overflow-hidden"
-                  >
-                    <span className="relative z-10">Proceed to Checkout</span>
-                    <ArrowRight size={20} className="relative z-10 transition-transform duration-500 group-hover:translate-x-2" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-900 to-[#450a0a] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </Link>
-                  
-                  <div className="flex items-center justify-center gap-3 py-2 text-[#450a0a]/30">
-                    <ShieldCheck size={18} strokeWidth={1.5} />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">Secure Checkout Verified</span>
+                <div className="flex justify-between items-center text-sm font-medium text-slate-400">
+                  <span>Shipping fee</span>
+                  <span className="text-blue-400 font-bold">Complimentary</span>
+                </div>
+                <div className="h-px bg-white/10 w-full" />
+                <div className="flex justify-between items-end">
+                  <div className="space-y-1">
+                    <span className="text-xs text-slate-500 font-bold uppercase tracking-widest">Grand total</span>
+                    <p className="text-4xl font-black text-blue-400 leading-none tracking-tighter">${total.toLocaleString()}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Payments */}
-              <div className="flex items-center justify-center gap-10 opacity-30 grayscale hover:opacity-100 transition-all duration-700">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4" />
+              <div className="pt-6 relative z-10">
+                <Link 
+                  to="/checkout"
+                  className="w-full h-16 bg-blue-600 text-white rounded-2xl font-bold text-sm hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-[0.98] flex items-center justify-center gap-4 group/btn"
+                >
+                  Begin checkout
+                  <ArrowRight size={20} className="transition-transform group-hover/btn:translate-x-1" />
+                </Link>
               </div>
+
+              {/* Decorative Background Glows */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full -mr-32 -mt-32 blur-[100px] transition-opacity group-hover/summary:opacity-20" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-400/5 rounded-full -ml-24 -mb-24 blur-[80px]" />
             </div>
           </div>
 

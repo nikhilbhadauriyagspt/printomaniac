@@ -7,12 +7,12 @@ export default function CookiePolicy() {
     <PolicyLayout
       title="Cookie Policy"
       subtitle="This Cookie Policy explains how we use cookies and similar technologies."
-      lastUpdated="March 21, 2026"
+      lastUpdated="March 24, 2026"
     >
       <p className="lead">
-        This Cookie Policy explains how DominicPrinters
+        This Cookie Policy explains how Axel Printing
  
-   ("Company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://DominicPrinters.shop/">https://DominicPrinters.shop/</a>
+   ("Company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://Axel Printing.shop/">https://Axel Printing.shop/</a>
       </p>
       <p>
         This Cookie Policy should be read together with our <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-and-conditions">Terms and Conditions</Link>.
@@ -140,8 +140,8 @@ export default function CookiePolicy() {
         We do not sell personal information. If cookies are considered â€œsharingâ€ under certain US state privacy laws (such as targeted advertising), you may exercise your rights by:
       </p>
       <ul>
-        <li>Emailing: <a href="mailto:info@dominicprinters.shop">info@dominicprinters.shop</a></li>
-        <li>Visiting: <Link to="/contact">https://DominicPrinters.shop/contact</Link></li>
+        <li>Emailing: <a href="mailto:info@axelprinting.shop">info@axelprinting.shop</a></li>
+        <li>Visiting: <Link to="/contact">https://Axel Printing.shop/contact</Link></li>
       </ul>
 
       <h2>9. CHILDRENâ€™S PRIVACY</h2>
@@ -157,11 +157,11 @@ export default function CookiePolicy() {
       <p>If you have any questions regarding this Cookie Policy, please contact:</p>
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase tracking-tighter">
-          <p className="text-slate-900 font-black">DominicPrinters</p>
+          <p className="text-slate-900 font-black">Axel Printing</p>
           <p>1330 Keosauqua Way, Des Moines, IA 50309, United States</p>
           
           
-          <p className="pt-4 text-blue-600 font-black lowercase">info@dominicprinters.shop</p>
+          <p className="pt-4 text-blue-600 font-black lowercase">info@axelprinting.shop</p>
         </address>
       </div>
     </PolicyLayout>

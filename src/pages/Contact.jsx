@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '@/components/SEO';
-import { Mail, MapPin, CheckCircle2, Loader2, ArrowRight, ChevronDown, Sparkles, MessageCircle, Send, Globe } from 'lucide-react';
+import { Mail, CheckCircle2, Loader2, ArrowRight, ChevronDown, Send, Globe, Phone } from 'lucide-react';
 import API_BASE_URL from '../config';
-import { cn } from '../lib/utils';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -42,182 +41,156 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen font-jakarta text-[#450a0a] overflow-x-hidden">
+    <div className="bg-white min-h-screen font-jakarta text-slate-900 overflow-x-hidden ">
       <SEO 
-        title="Contact Our Atelier | DominicPrinters" 
-        description="Connect with DominicPrinters. Our dedicated team is here to help you."
+        title="Contact Us | Axel Printing" 
+        description="Connect with Axel Printing. Our friendly team is here to help you."
       />
-
-      {/* --- ARCHITECTURAL BACKGROUND --- */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5 }}
-          className="absolute top-0 right-0 w-1/3 h-1/2 bg-red-900/[0.02] border-l border-b border-red-900/[0.05] rounded-bl-[10rem]"
-        />
-      </div>
       
       {/* --- HERO HEADER --- */}
-      <section className="relative pt-28 pb-12 px-6 lg:px-16 text-center">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#450a0a] tracking-tight leading-[0.9]"
-        >
-          Contact <span className="font-black italic text-red-900 whitespace-nowrap">Us</span>
-        </motion.h1>
+      <section className="relative pt-12 pb-16 px-4 md:px-6 lg:px-10 border-b border-slate-50">
+        <div className="max-w-[1200px] mx-auto text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+            <span className="text-[10px] font-bold text-blue-600">Get in touch</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight">
+            How can we <span className="text-blue-600">help you?</span>
+          </h1>
+          <p className="text-base text-slate-500 font-medium max-w-lg mx-auto">
+            Our team is here to listen and help you find exactly what you're looking for. Reach out to us for any questions or support.
+          </p>
+        </div>
       </section>
 
       {/* --- MAIN CONTACT CONTENT --- */}
-      <section className="py-12 md:py-20 px-6 lg:px-16 relative z-10">
-        <div className="max-w-[1440px] mx-auto space-y-20">
+      <section className="py-16 md:py-24 px-4 md:px-6 lg:px-10">
+        <div className="max-w-[1200px] mx-auto">
           
-          {/* --- COMPACT INFO PILLS ROW (REDUCED) --- */}
-          <div className="flex flex-col md:flex-row justify-center gap-6">
-            {[
-              { icon: <Mail />, title: "Send an Email", value: "info@dominicprinters.shop" },
-              { icon: <Globe />, title: "Visit Atelier", value: "1330 Keosauqua Way, Des Moines, IA 50309, United States" }
-            ].map((card, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group bg-white p-6 rounded-[2.5rem] border border-red-900/5 shadow-sm hover:shadow-xl hover:border-[#450a0a]/10 transition-all duration-500 flex items-center gap-6 min-w-[320px]"
-              >
-                <div className="h-14 w-14 rounded-2xl bg-[#FAF9F6] flex items-center justify-center text-[#450a0a] group-hover:bg-[#450a0a] group-hover:text-white transition-all duration-500 shadow-inner">
-                  {React.cloneElement(card.icon, { size: 20, strokeWidth: 1.5 })}
-                </div>
-                <div className="space-y-0.5">
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-red-900/20">{card.title}</p>
-                  <p className="text-[15px] font-bold text-[#450a0a]">{card.value}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             
-            {/* LEFT: SIMPLIFIED CONTENT */}
-            <div className="lg:col-span-4 space-y-10">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="h-px w-10 bg-red-900/20" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#450a0a]">Direct Assistance</span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-[#450a0a] tracking-tight leading-tight">
-                  How can we <br /> <span className="italic font-black text-red-900 text-5xl">help you?</span>
-                </h2>
-                <p className="text-lg text-[#7A7A75] font-light leading-relaxed">
-                  Our team is here to listen and help you find exactly what you're looking for. Reach out to us for any questions or support.
+            {/* LEFT: INFO PILLS */}
+            <div className="lg:col-span-4 space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-2xl font-black text-slate-900">Direct contact</h2>
+                <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                  Prefer to reach out directly? Use the information below to get in touch with our team.
                 </p>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  { icon: <Mail />, title: "Email us", value: "info@axelprinting.shop" },
+                  { icon: <Globe />, title: "Visit us", value: "2404 Irving Blvd, Dallas, TX 75207, United States" }
+                ].map((card, i) => (
+                  <div 
+                    key={i}
+                    className="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100"
+                  >
+                    <div className="h-10 w-10 shrink-0 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                      {React.cloneElement(card.icon, { size: 18 })}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{card.title}</p>
+                      <p className="text-sm font-bold text-slate-900">{card.value}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* RIGHT: CONTACT FORM CANVAS */}
+            {/* RIGHT: CONTACT FORM */}
             <div className="lg:col-span-8">
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white p-8 md:p-12 lg:p-16 rounded-[4rem] border border-red-900/5 shadow-[0_30px_80px_-20px_rgba(69,10,10,0.08)]"
-              >
+              <div className="bg-white p-6 md:p-10 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40">
                 <AnimatePresence mode="wait">
                   {status === 'success' ? (
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-12"
+                      className="text-center py-16"
                     >
-                      <div className="h-24 w-24 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl border border-red-100">
-                        <CheckCircle2 size={40} strokeWidth={1} />
+                      <div className="h-20 w-20 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 size={32} />
                       </div>
-                      <h2 className="text-4xl font-bold text-[#450a0a] mb-4">Message Received.</h2>
-                      <p className="text-[#7A7A75] mb-10 max-w-sm mx-auto font-light leading-relaxed">Thank you for reaching out. Our team will be in touch with you shortly.</p>
+                      <h2 className="text-2xl font-black text-slate-900 mb-3">Message received</h2>
+                      <p className="text-slate-500 mb-8 max-w-sm mx-auto font-medium">Thank you for reaching out. Our team will get back to you shortly.</p>
                       <button 
                         onClick={() => setStatus(null)} 
-                        className="text-[11px] font-black uppercase tracking-[0.3em] text-[#450a0a] border-b-2 border-red-600 pb-1 hover:text-red-600 transition-all"
+                        className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors"
                       >
-                        Send Another Inquiry
+                        Send another message
                       </button>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-12">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div className="space-y-4">
-                          <label className="text-[10px] font-black text-[#450a0a]/40 uppercase tracking-[0.2em] ml-1">Identity</label>
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Your Name</label>
                           <input 
-                            required type="text" placeholder="YOUR FULL NAME" value={formData.name}
+                            required type="text" placeholder="John Doe" value={formData.name}
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
-                            className="w-full h-14 bg-[#FAF9F6] border-b border-red-900/5 focus:border-[#450a0a] outline-none text-[13px] font-bold transition-all placeholder:text-[#450a0a]/10"
+                            className="w-full h-12 px-4 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 outline-none text-sm font-medium transition-all"
                           />
                         </div>
-                        <div className="space-y-4">
-                          <label className="text-[10px] font-black text-[#450a0a]/40 uppercase tracking-[0.2em] ml-1">Contact Email</label>
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Email Address</label>
                           <input 
-                            required type="email" placeholder="YOUR EMAIL ADDRESS" value={formData.email}
+                            required type="email" placeholder="john@example.com" value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
-                            className="w-full h-14 bg-[#FAF9F6] border-b border-red-900/5 focus:border-[#450a0a] outline-none text-[13px] font-bold transition-all placeholder:text-[#450a0a]/10"
+                            className="w-full h-12 px-4 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 outline-none text-sm font-medium transition-all"
                           />
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div className="space-y-4">
-                          <label className="text-[10px] font-black text-[#450a0a]/40 uppercase tracking-[0.2em] ml-1">Phone (Optional)</label>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Phone Number (Optional)</label>
                           <input 
-                            type="tel" placeholder="YOUR MOBILE NUMBER" value={formData.phone}
+                            type="tel" placeholder="+1 (555) 000-0000" value={formData.phone}
                             onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                            className="w-full h-14 bg-[#FAF9F6] border-b border-red-900/5 focus:border-[#450a0a] outline-none text-[13px] font-bold transition-all placeholder:text-[#450a0a]/10"
+                            className="w-full h-12 px-4 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 outline-none text-sm font-medium transition-all"
                           />
                         </div>
-                        <div className="space-y-4">
-                          <label className="text-[10px] font-black text-[#450a0a]/40 uppercase tracking-[0.2em] ml-1">Inquiry Motif</label>
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Subject</label>
                           <div className="relative">
                             <select 
                               value={formData.subject}
                               onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                              className="w-full h-14 bg-[#FAF9F6] border-b border-red-900/5 focus:border-[#450a0a] outline-none text-[13px] font-bold transition-all appearance-none cursor-pointer pr-12 text-[#450a0a]"
+                              className="w-full h-12 px-4 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 outline-none text-sm font-medium transition-all appearance-none cursor-pointer"
                             >
-                              <option>General Inquiry</option>
+                              <option>General Question</option>
                               <option>Product Support</option>
                               <option>Order Help</option>
                               <option>Other</option>
                             </select>
-                            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-red-900/20 pointer-events-none" size={16} />
+                            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
                           </div>
                         </div>
                       </div>
 
-                      <div className="space-y-4">
-                        <label className="text-[10px] font-black text-[#450a0a]/40 uppercase tracking-[0.2em] ml-1">Message Detail</label>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-1">Your Message</label>
                         <textarea 
-                          required rows="4" placeholder="HOW CAN WE ASSIST YOU TODAY?" value={formData.message}
+                          required rows="4" placeholder="How can we help you today?" value={formData.message}
                           onChange={(e) => setFormData({...formData, message: e.target.value})}
-                          className="w-full py-6 bg-[#FAF9F6] border-b border-red-900/5 focus:border-[#450a0a] outline-none text-[13px] font-bold transition-all resize-none placeholder:text-[#450a0a]/10 min-h-[120px]"
+                          className="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl focus:border-blue-600 outline-none text-sm font-medium transition-all resize-none min-h-[120px]"
                         ></textarea>
                       </div>
 
-                      <div className="pt-6">
+                      <div className="pt-2">
                         <button 
                           disabled={loading}
-                          className="group relative inline-flex items-center gap-10 bg-[#450a0a] text-white h-16 px-12 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] shadow-xl shadow-red-900/20 active:scale-95 disabled:opacity-50"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 text-white h-12 px-8 rounded-xl font-bold text-[11px] uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95 disabled:opacity-50"
                         >
-                          <span className="relative z-10 text-[12px] font-bold uppercase tracking-[0.3em]">
-                            {loading ? "Transmitting..." : "Send Inquiry"}
-                          </span>
-                          {!loading && <Send size={18} className="relative z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-1" />}
-                          <div className="absolute inset-0 bg-gradient-to-r from-red-900 to-[#450a0a] opacity-0 group-hover:opacity-100 transition-opacity" />
+                          {loading ? <Loader2 size={16} className="animate-spin" /> : "Send Message"}
+                          {!loading && <Send size={16} />}
                         </button>
                       </div>
-                      {status === 'error' && <p className="text-red-600 text-[10px] font-black uppercase tracking-widest mt-6">Transmission failed. Please verify detail.</p>}
+                      {status === 'error' && <p className="text-red-600 text-xs font-bold mt-4">Failed to send message. Please try again.</p>}
                     </form>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             </div>
 
           </div>

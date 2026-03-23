@@ -83,76 +83,61 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-white font-snpro overflow-x-hidden text-slate-900">
+    <div className="bg-white font-jakarta overflow-x-hidden text-slate-900">
       <SEO 
-        title="DominicPrinters | Quality Printers & Hardware"
+        title="Axel Printing | Quality Printers & Hardware"
         description="Your trusted source for high-quality printers and printing hardware. Delivering excellence across the USA."
       />
 
-      
       <Hero />
-
-
-      <Features />      
-     
+      <Features />
 
       <ShopByCategory categories={data.categories} />
       <TripleBanners />
       <BestSellers products={data.all} />
+      <Collections />
+      <ProductGrid products={data.mixedArrivals.slice(0, 18)} />
       
-      
-      <ProductGrid products={data.mixedArrivals.slice(0, 30)} />
       <CategorySlider 
         title="Office Printers"  
         products={data.printers} 
       />
        
-     {/* --- COMPACT CONTACT CTA SECTION --- */}
-<section className="py-12 bg-white font-jakarta">
-  <div className="max-w-[1200px] mx-auto px-6">
-    <div className="relative rounded-[2.5rem] p-10 md:p-14 text-center overflow-hidden bg-[#FAF9F6] border border-red-900/5 shadow-sm group">
-      
-      <div className="max-w-xl mx-auto space-y-6 relative z-10">
-        <div className="space-y-3">
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-3"
-          >
-            <span className="text-[10px] font-extrabold tracking-[0.4em] uppercase text-[#450a0a]/40">Get in Touch</span>
-          </motion.div>
-          
-          <h2 className="text-3xl md:text-4xl font-bold text-[#450a0a] leading-tight tracking-tight">
-            How can we <span className="italic font-medium text-red-900">help you?</span>
-          </h2>
-          <p className="text-[#7A7A75] text-base font-light max-w-sm mx-auto leading-relaxed">
-            Whether you have a simple question or need detailed guidance, our team is always here for you.
-          </p>
-        </div>
+     {/* --- COMPACT MINIMAL CONTACT CTA --- */}
+      <section className="py-16 bg-white font-jakarta">
+        <div className="max-w-[1000px] mx-auto px-6">
+          <div className="relative rounded-2xl p-8 md:p-12 text-center bg-slate-50 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
+            
+            <div className="text-left space-y-2 max-w-md">
+              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-blue-600">
+                Support Excellence
+              </span>
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
+                Need expert guidance?
+              </h2>
+              <p className="text-slate-500 text-sm font-medium leading-relaxed">
+                Our friendly team is always here to help you with any questions or advice you need.
+              </p>
+            </div>
 
-        <div className="flex flex-wrap justify-center gap-4 pt-2">
-          <Link
-            to="/contact"
-            className="bg-[#450a0a] text-white px-10 h-14 flex items-center justify-center rounded-2xl font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-500 hover:scale-[1.02] shadow-xl shadow-red-900/10"
-          >
-            Contact Us
-          </Link>
-          <Link
-            to="/faq"
-            className="bg-white border border-gray-100 text-[#450a0a] px-10 h-14 flex items-center justify-center rounded-2xl font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-500 hover:bg-[#FAF9F6] shadow-sm"
-          >
-            View FAQ
-          </Link>
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+              <Link
+                to="/contact"
+                className="bg-blue-600 text-white px-8 h-12 flex items-center justify-center rounded-lg font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:bg-blue-700 shadow-md shadow-blue-600/20 whitespace-nowrap"
+              >
+                Contact Us
+              </Link>
+              <Link
+                to="/faq"
+                className="bg-white border border-slate-200 text-slate-700 px-8 h-12 flex items-center justify-center rounded-lg font-bold text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:bg-slate-50 hover:text-slate-900 whitespace-nowrap"
+              >
+                View FAQ
+              </Link>
+            </div>
+            
+          </div>
         </div>
-      </div>
-      
-      {/* Subtle Background Accents */}
-      <div className="absolute top-0 right-0 w-48 h-48 bg-white rounded-full -mr-24 -mt-24 blur-[80px] opacity-50" />
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-red-900/5 rounded-full -ml-16 -mb-16 blur-[60px] opacity-40" />
-    </div>
-  </div>
-</section>
+      </section>
     </div>
   );
 }

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dominicprinters.shop/sitemap.xml
+Sitemap: https://axelprinting.shop/sitemap.xml
