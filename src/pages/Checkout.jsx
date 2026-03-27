@@ -159,7 +159,7 @@ export default function Checkout() {
             <h1 className="text-4xl font-bold tracking-tight leading-none">Order confirmed!</h1>
             <p className="text-slate-500 font-medium leading-relaxed">
                 Thank you for your purchase. Your order ID is <span className="font-bold text-slate-900">#{orderId}</span>.
-                We've sent a confirmation email to <span className="font-bold text-slate-900">{formData.email}</span>.
+                We've sent a confirmation email to <a href={`mailto:${formData.email}`} className="font-bold text-slate-900 hover:text-cyan-600 transition-colors underline decoration-cyan-500/30 underline-offset-4">{formData.email}</a>.
             </p>
           </div>
           <div className="pt-4 flex flex-col gap-4">

@@ -105,7 +105,7 @@ export default function NewsletterManager() {
                       <div className="h-10 w-10 rounded-xl bg-gray-50 flex items-center justify-center text-slate-400 group-hover:text-blue-600 transition-colors">
                         <Mail size={18} />
                       </div>
-                      <span className="text-sm font-bold text-slate-900 lowercase">{item.email}</span>
+                      <a href={`mailto:${item.email}`} className="text-sm font-bold text-slate-900 lowercase hover:text-blue-600 transition-colors">{item.email}</a>
                     </div>
                   </td>
                   <td className="px-8 py-6">

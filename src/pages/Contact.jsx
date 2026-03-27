@@ -85,7 +85,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-slate-400 mb-1">Email us</p>
-                      <p className="text-sm font-bold text-slate-900 break-all">info@myprinterstore.shop</p>
+                      <a href="mailto:info@myprinterstore.shop" className="text-sm font-bold text-slate-900 break-all hover:text-cyan-600 transition-colors">info@myprinterstore.shop</a>
                     </div>
                   </div>
 

@@ -119,7 +119,7 @@ export default function UserManager() {
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center gap-2 text-slate-600 font-medium">
                         <Mail size={14} className="text-slate-400" />
-                        {u.email}
+                        <a href={`mailto:${u.email}`} className="hover:text-blue-600 transition-colors">{u.email}</a>
                       </div>
                       {u.phone && (
                         <div className="flex items-center gap-2 text-slate-600 font-medium">

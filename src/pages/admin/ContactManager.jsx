@@ -109,7 +109,7 @@ export default function ContactManager() {
                   <td className="px-8 py-6">
                     <div className="flex flex-col">
                       <span className="text-sm font-bold text-slate-900 capitalize">{contact.name}</span>
-                      <span className="text-[10px] font-bold text-slate-400 lowercase mt-1">{contact.email}</span>
+                      <a href={`mailto:${contact.email}`} className="text-[10px] font-bold text-slate-400 lowercase mt-1 hover:text-blue-600 transition-colors">{contact.email}</a>
                     </div>
                   </td>
                   <td className="px-8 py-6">
@@ -178,7 +178,7 @@ export default function ContactManager() {
                 <div className="space-y-1">
                   <p className="text-[9px] font-bold text-slate-400 capitalize tracking-widest">From</p>
                   <p className="text-sm font-bold text-slate-900 capitalize">{selectedContact.name}</p>
-                  <p className="text-xs font-bold text-slate-500 lowercase">{selectedContact.email}</p>
+                  <a href={`mailto:${selectedContact.email}`} className="text-xs font-bold text-slate-500 lowercase hover:text-blue-600 transition-colors">{selectedContact.email}</a>
                 </div>
                 <div className="space-y-1 text-right">
                   <p className="text-[9px] font-bold text-slate-400 capitalize tracking-widest">Subject</p>

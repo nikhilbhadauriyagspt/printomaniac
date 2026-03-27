@@ -141,7 +141,7 @@ export default function OrderManager() {
                   <td className="px-8 py-6">
                     <div className="flex flex-col">
                       <span className="text-sm font-bold text-slate-900 capitalize">{order.first_name} {order.last_name}</span>
-                      <span className="text-[10px] font-bold text-slate-400 capitalize mt-1">{order.guest_email}</span>
+                      <a href={`mailto:${order.guest_email}`} className="text-[10px] font-bold text-slate-400 capitalize mt-1 hover:text-blue-600 transition-colors">{order.guest_email}</a>
                     </div>
                   </td>
                   <td className="px-8 py-6">
@@ -223,7 +223,7 @@ export default function OrderManager() {
                     </div>
                     <div className="bg-gray-50 rounded-2xl p-6">
                       <p className="text-sm font-bold text-slate-900 capitalize">{selectedOrder.first_name} {selectedOrder.last_name}</p>
-                      <div className="flex items-center gap-2 text-xs font-bold text-slate-500 mt-2 lowercase"><Mail size={12} /> {selectedOrder.guest_email}</div>
+                      <div className="flex items-center gap-2 text-xs font-bold text-slate-500 mt-2 lowercase"><Mail size={12} /> <a href={`mailto:${selectedOrder.guest_email}`} className="hover:text-blue-600 transition-colors">{selectedOrder.guest_email}</a></div>
                       <div className="flex items-center gap-2 text-xs font-bold text-slate-500 mt-1 capitalize"><Phone size={12} /> {selectedOrder.phone}</div>
                     </div>
                   </div>

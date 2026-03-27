@@ -146,7 +146,7 @@ export default function Profile() {
           <div className="flex items-center gap-4">
              <div className="text-right hidden sm:block">
                 <p className="text-xs font-bold text-slate-900">{user.name}</p>
-                <p className="text-[10px] font-medium text-slate-400">{user.email}</p>
+                <a href={`mailto:${user.email}`} className="text-[10px] font-medium text-slate-400 hover:text-cyan-600 transition-colors">{user.email}</a>
              </div>
              <button onClick={handleLogout} className="h-10 px-5 rounded-lg border border-gray-200 text-xs font-bold hover:bg-red-50 hover:text-red-600 hover:border-red-100 transition-all flex items-center gap-2">
                 <LogOut size={14} /> Sign out

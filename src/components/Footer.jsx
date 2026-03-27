@@ -108,7 +108,7 @@ export default function Footer() {
                 <div className="h-10 w-10 rounded-xl bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-500">
                    <Mail size={16} />
                 </div>
-                <p className="text-[13px] font-bold text-slate-500 group-hover:text-slate-900 transition-colors">info@myprinterstore.shop</p>
+                <a href="mailto:info@myprinterstore.shop" className="text-[13px] font-bold text-slate-500 hover:text-cyan-600 transition-all duration-300">info@myprinterstore.shop</a>
               </div>
             </div>
           </div>

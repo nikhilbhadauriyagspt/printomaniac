@@ -347,7 +347,7 @@ export default function Header() {
 
               <div className="hidden lg:flex items-center gap-2 ml-auto pr-8">
                 <Mail size={16} className="text-cyan-500" />
-                <span className="text-[13px] font-bold text-slate-800">info@myprinterstore.shop</span>
+                <a href="mailto:info@myprinterstore.shop" className="text-[13px] font-bold text-slate-800 hover:text-cyan-600 transition-colors">info@myprinterstore.shop</a>
               </div>
           </div>
         )}

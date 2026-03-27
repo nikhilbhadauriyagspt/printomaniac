@@ -45,7 +45,7 @@ export default function ShippingPolicy() {
       <p>If you have any further questions or comments, you may contact us by:</p>
       <div className="bg-gray-50 p-8 rounded-xl border border-gray-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-3">
-          <p className="flex items-center gap-3 text-cyan-600 font-bold tracking-tight">Email: info@myprinterstore.shop</p>
+          <p className="flex items-center gap-3 text-cyan-600 font-bold tracking-tight">Email: <a href="mailto:info@myprinterstore.shop" className="hover:underline">info@myprinterstore.shop</a></p>
           <p className="flex items-center gap-3">
             <span className="text-slate-400 font-bold text-[10px] tracking-widest uppercase">Online form:</span>
             <Link to="/contact" className="text-cyan-600 font-bold ml-2 underline">Contact us</Link>

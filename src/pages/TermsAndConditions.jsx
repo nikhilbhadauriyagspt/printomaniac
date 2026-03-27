@@ -209,7 +209,7 @@ export default function TermsAndConditions() {
           <p className="text-slate-900 font-black">My Printer Store </p>
           <p>1401 N Loop W, Houston, TX 77008, USA</p>
           
-          <p className="pt-4 text-blue-600 font-black lowercase">Email: info@dominicprinters.shop</p>
+          <p className="pt-4 text-blue-600 font-black lowercase">Email: <a href="mailto:info@dominicprinters.shop" className="hover:underline">info@dominicprinters.shop</a></p>
         </address>
       </div>
     </PolicyLayout>

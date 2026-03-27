@@ -167,25 +167,14 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="p-8 bg-slate-50 rounded-2xl border border-slate-100">
-              <div className="w-12 h-12 bg-white text-cyan-600 flex items-center justify-center mx-auto mb-4 rounded-xl shadow-sm"><Mail size={24} /></div>
-              <h4 className="font-bold text-slate-900 mb-1">Email us</h4>
-              <p className="text-sm text-slate-500">info@myprinterstore.shop</p>
-            </div>
-            <div className="p-8 bg-slate-50 rounded-2xl border border-slate-100">
-              <div className="w-12 h-12 bg-white text-cyan-600 flex items-center justify-center mx-auto mb-4 rounded-xl shadow-sm"><MessageCircle size={24} /></div>
-              <h4 className="font-bold text-slate-900 mb-1">Chat support</h4>
-              <p className="text-sm text-slate-500">Fast answers for your questions</p>
-            </div>
-          </div>
+        
 
           <div className="pt-6">
             <Link 
-              to="/shop" 
+              to="/contact" 
               className="inline-flex items-center gap-3 bg-slate-900 text-white px-10 py-4 rounded-xl font-bold text-base hover:bg-cyan-600 transition-all shadow-lg active:scale-95"
             >
-              Browse our printers <ArrowRight size={20} />
+              Contact Us <ArrowRight size={20} />
             </Link>
           </div>
         </div>

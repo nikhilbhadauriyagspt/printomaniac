@@ -1,8 +1,10 @@
 import React from 'react';
 import PolicyLayout from '../layouts/PolicyLayout';
-import { motion } from 'framer-motion';
 
 export default function PrivacyPolicy() {
+  const email = "info@myprinterstore.shop";
+  const emailLink = <a href={`mailto:${email}`} className="hover:underline text-cyan-600">{email}</a>;
+
   return (
     <PolicyLayout
       title="Privacy Policy"
@@ -18,7 +20,7 @@ export default function PrivacyPolicy() {
         <li>Engage with us in other related ways, including any marketing or events</li>
       </ul>
       <p>
-        Questions or concerns? Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <a href="mailto:info@myprinterstore.shop">info@myprinterstore.shop</a>.
+        Questions or concerns? Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at {emailLink}.
       </p>
 
       <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 my-12 not-prose">
@@ -132,7 +134,7 @@ export default function PrivacyPolicy() {
 
       <h2 className="text-xl font-black text-slate-900">8. Do we collect information from minors?</h2>
       <p><strong>In Short:</strong> We do not knowingly collect data from or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction.</p>
-      <p>We do not knowingly collect, solicit data from, or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or the equivalent age as specified by law in your jurisdiction or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age or the equivalent age as specified by law in your jurisdiction has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18 or the equivalent age as specified by law in your jurisdiction, please contact us at <a href="mailto:info@myprinterstore.shop">info@myprinterstore.shop</a>.</p>
+      <p>We do not knowingly collect, solicit data from, or market to children under 18 years of age or the equivalent age as specified by law in your jurisdiction, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or the equivalent age as specified by law in your jurisdiction or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age or the equivalent age as specified by law in your jurisdiction has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18 or the equivalent age as specified by law in your jurisdiction, please contact us at {emailLink}.</p>
 
       <h2 className="text-xl font-black text-slate-900">9. What are your privacy rights?</h2>
       <p><strong>In Short:</strong> Depending on your state of residence in the US or in some regions, such as Canada, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time, depending on your country, province, or state of residence.</p>
@@ -147,7 +149,7 @@ export default function PrivacyPolicy() {
       </ul>
       <p>Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, we may retain some information in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our legal terms and/or comply with applicable legal requirements.</p>
       <p><strong>Cookies and similar technologies:</strong> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services. For further information, please see our Cookie Notice: <a href="https://myprinterstore.shop/cookie-policy">https://myprinterstore.shop/cookie-policy</a>.</p>
-      <p>If you have questions or comments about your privacy rights, you may email us at <a href="mailto:info@myprinterstore.shop">info@myprinterstore.shop</a>.</p>
+      <p>If you have questions or comments about your privacy rights, you may email us at {emailLink}.</p>
 
       <h2 className="text-xl font-black text-slate-900">10. Controls for do-not-track features</h2>
       <p>Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this Privacy Notice.</p>
@@ -260,38 +262,28 @@ export default function PrivacyPolicy() {
       <p>Depending upon the state where you live, you may also have the following rights:</p>
       <ul>
         <li>Right to access the categories of personal data being processed (as permitted by applicable law, including the privacy law in Minnesota)</li>
-        <li>Right to obtain a list of the categories of third parties to which we have disclosed personal data (as permitted by applicable law, including the privacy law in California, Delaware, and Maryland)</li>
-        <li>Right to obtain a list of specific third parties to which we have disclosed personal data (as permitted by applicable law, including the privacy law in Minnesota and Oregon)</li>
-        <li>Right to obtain a list of third parties to which we have sold personal data (as permitted by applicable law, including the privacy law in Connecticut)</li>
-        <li>Right to review, understand, question, and depending on where you live, correct how personal data has been profiled (as permitted by applicable law, including the privacy law in Connecticut and Minnesota)</li>
-        <li>Right to limit use and disclosure of sensitive personal data (as permitted by applicable law, including the privacy law in California)</li>
-        <li>Right to opt out of the collection of sensitive data and personal data collected through the operation of a voice or facial recognition feature (as permitted by applicable law, including the privacy law in Florida)</li>
+        <li>Right to know know the categories of personal data that we have sold or shared (as permitted by applicable law, including the privacy law in Minnesota)</li>
+        <li>Right to opt out of the processing of your personal data for profiling in furtherance of decisions that produce legal or similarly significant effects (as permitted by applicable law, including the privacy law in Minnesota)</li>
       </ul>
-      <h3>How to Exercise Your Rights</h3>
-             <p>To exercise these rights, you can contact us by submitting a data subject access request, by emailing us at info@myprinterstore.shop, by visiting <a href="https://myprinterstore.shop/contact">https://myprinterstore.shop/contact</a>, or by referring to the contact details at the bottom of this document.</p>      <p>Under certain US state data protection laws, you can designate an authorized agent to make a request on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with applicable laws.</p>
-      <h3>Request Verification</h3>
-      <p>Upon receiving your request, we will need to verify your identity to determine you are the same person about whom we have the information in our system. We will only use personal information provided in your request to verify your identity or authority to make the request. However, if we cannot verify your identity from the information already maintained by us, we may request that you provide additional information for the purposes of verifying your identity and for security or fraud-prevention purposes.</p>
-      <p>If you submit the request through an authorized agent, we may need to collect additional information to verify your identity before processing your request and the agent will need to provide a written and signed permission from you to submit such request on your behalf.</p>
+      <p>To exercise any of these rights, please contact us by {emailLink} or by visiting <a href="https://myprinterstore.shop/contact">https://myprinterstore.shop/contact</a>.</p>
       <h3>Appeals</h3>
-      <p>Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at <a href="mailto:info@myprinterstore.shop">info@myprinterstore.shop</a>. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.</p>
-      <h3>California "Shine The Light" Law</h3>
-      <p>California Civil Code Section 1798.83, also known as the "Shine The Light" law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us by using the contact details provided in the section "HOW CAN YOU CONTACT US ABOUT THIS NOTICE?"</p>
+      <p>If we decline to take action regarding your request, you may appeal our decision by emailing us at {emailLink}. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.</p>
 
       <h2 className="text-xl font-black text-slate-900">12. Do we make updates to this notice?</h2>
       <p><strong>In Short:</strong> Yes, we will update this notice as necessary to stay compliant with relevant laws.</p>
       <p>We may update this Privacy Notice from time to time. The updated version will be indicated by an updated "Revised" date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information.</p>
 
       <h2 className="text-xl font-black text-slate-900">13. How can you contact us about this notice?</h2>
-      <p>If you have questions or comments about this notice, you may email us at <a href="mailto:info@myprinterstore.shop">info@myprinterstore.shop</a> or contact us by post at:</p>
+      <p>If you have questions or comments about this notice, you may email us at {emailLink} or contact us by post at:</p>
       <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed">
-                     My Printer Store <br/>
-                    1401 N Loop W, Houston, TX 77008, USA
+          My Printer Store <br/>
+          1401 N Loop W, Houston, TX 77008, USA
         </address>
       </div>
 
       <h2 className="text-xl font-black text-slate-900">14. How can you review, update, or delete the data we collect from you?</h2>
-      <p>Based on the applicable laws of your country or state of residence in the US, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. To request to review, update, or delete your personal information, please fill out and submit a data subject access request.</p>
+      <p>Based on the applicable laws of your country or state of residence in the US, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law. To request to review, update, or delete your personal information, please contact us at {emailLink}.</p>
     </PolicyLayout>
   );
 }
