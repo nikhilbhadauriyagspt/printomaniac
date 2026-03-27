@@ -1,6 +1,6 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import banner10 from "@/assets/bannerr/banner10.jpg";
+import banner10 from "@/assets/bannerr/newban1.jpg";
 
 export default function Collections() {
   return (
@@ -10,27 +10,25 @@ export default function Collections() {
         <div className="relative h-auto md:h-[400px] overflow-hidden flex flex-col md:flex-row border border-gray-200">
           
           {/* Left Side: Content with solid background */}
-          <div className="w-full md:w-[45%] bg-[#0A0A0B] p-8 md:p-16 flex flex-col justify-center items-start space-y-5 z-10">
+          <div className="w-full md:w-[45%] bg-[#0a0a0b] p-8 md:p-16 flex flex-col justify-center items-start space-y-5 z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">
-                <Sparkles size={12} className="text-cyan-500" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-500 text-center">Elite Series 2026</span>
+                
+                <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-500 text-center">best Series of 2026</span>
               </div>
 
-              <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-white ">
-                Quality <br />
-                <span className="text-cyan-500">Printers</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold leading-tight text-white ">
+                High Performance <span className="text-cyan-700">Printers</span>
               </h2>
 
               <p className="text-gray-400 text-sm md:text-base font-medium leading-relaxed max-w-sm">
-                Unlock high-quality output with our flagship collection. Designed for sharp documents and everyday reliability.
-              </p>
+Experience top-quality output with our advanced range, perfect for crisp documents and daily performance              </p>
 
               <div className="pt-2">
                 <Link
                   to="/shop"
                   className="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-3 rounded font-bold text-xs uppercase tracking-widest hover:bg-cyan-500 hover:text-white transition-all active:scale-95"
                 >
-                  Shop Now <ArrowRight size={16} />
+                  Explore Now <ArrowRight size={16} />
                 </Link>
               </div>
           </div>

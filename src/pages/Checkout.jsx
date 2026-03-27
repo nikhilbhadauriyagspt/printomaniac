@@ -150,7 +150,7 @@ export default function Checkout() {
   if (step === 3) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center pt-20 px-6 font-jakarta text-slate-900">
-        <SEO title="Order Confirmed | Larry Printing Solutions" />
+        <SEO title="Order Confirmed | My Printer Store" />
         <div className="max-w-[500px] w-full text-center space-y-10">
           <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-24 w-24 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto border border-green-100 shadow-xl">
             <CheckCircle2 size={48} />
@@ -177,7 +177,7 @@ export default function Checkout() {
 
   return (
     <div className="min-h-screen bg-white font-jakarta text-slate-900 overflow-x-hidden pt-32 pb-24 px-4 md:px-10">
-      <SEO title="Secure Checkout | Larry Printing Solutions" />
+      <SEO title="Secure Checkout | My Printer Store" />
       
       <div className="w-full px-0 md:px-4">
         

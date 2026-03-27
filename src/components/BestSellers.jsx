@@ -1,14 +1,18 @@
-import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
+import React from 'react';
+import { ChevronLeft, ChevronRight, Heart, ShoppingBag, Star, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { motion } from "framer-motion";
 import { cn } from "../lib/utils";
+import { ProductCardSkeleton } from './ui/skeleton';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-export default function BestSellers({ products = [] }) {
+export default function BestSellers({ products = [], loading = false }) {
   const { addToCart, toggleWishlist, isInWishlist, openCartDrawer } = useCart();
 
   const handleAddToCart = (e, product) => {
@@ -27,91 +31,132 @@ export default function BestSellers({ products = [] }) {
   };
 
   return (
-    <section className="bg-white py-12 w-full border-b border-gray-100">
-      <div className="w-full px-4 md:px-10">
+    <section className="bg-slate-50 py-16 md:py-24 w-full border-b border-slate-100 overflow-hidden">
+      <div className=" mx-auto px-4 md:px-8">
         
-        {/* --- HEADER --- */}
-        <div className="flex items-center justify-between mb-10">
-          <div>
-            <h2 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight uppercase">
-              Market <span className="text-cyan-600">Favourites</span>
+        {/* --- SECTION HEADER --- */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-10 bg-cyan-500" />
+              <span className="text-cyan-600 text-xs md:text-sm font-black uppercase tracking-[0.3em]">
+                Customer Choice
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none">
+              Market <span className="text-slate-400">Favourites</span>
             </h2>
-            <div className="h-1 w-12 bg-cyan-500 mt-1" />
           </div>
           
-          <div className="flex gap-2">
-            <button className="bs-prev h-10 w-10 flex items-center justify-center rounded-full border border-gray-200 hover:bg-cyan-500 hover:text-white transition-all disabled:opacity-20 shadow-sm group">
-              <ChevronLeft size={20} />
-            </button>
-            <button className="bs-next h-10 w-10 flex items-center justify-center rounded-full border border-gray-200 hover:bg-cyan-500 hover:text-white transition-all disabled:opacity-20 shadow-sm group">
-              <ChevronRight size={20} />
-            </button>
+          <div className="flex items-center gap-6">
+            <Link to="/shop" className="hidden md:flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-cyan-600 transition-colors group">
+              Browse All <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <div className="flex gap-2">
+              <button className="bs-prev h-12 w-12 flex items-center justify-center rounded-full border border-slate-200 bg-white hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-20 shadow-sm group">
+                <ChevronLeft size={22} strokeWidth={1.5} />
+              </button>
+              <button className="bs-next h-12 w-12 flex items-center justify-center rounded-full border border-slate-200 bg-white hover:bg-slate-900 hover:text-white transition-all duration-300 disabled:opacity-20 shadow-sm group">
+                <ChevronRight size={22} strokeWidth={1.5} />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* --- CAROUSEL --- */}
+        {/* --- PREMIUM PRODUCT CAROUSEL --- */}
         <div className="relative">
           <Swiper
-            modules={[Navigation, Autoplay]}
-            spaceBetween={16}
+            modules={[Navigation, Autoplay, Pagination]}
+            spaceBetween={24}
             slidesPerView={1.2}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            autoplay={{ delay: 6000, disableOnInteraction: false }}
             navigation={{ prevEl: '.bs-prev', nextEl: '.bs-next' }}
             breakpoints={{
               480: { slidesPerView: 2 },
               768: { slidesPerView: 3 },
               1024: { slidesPerView: 4 },
               1280: { slidesPerView: 5 },
-              1536: { slidesPerView: 6 },
+              1600: { slidesPerView: 6 },
             }}
+            className="!overflow-visible pb-12"
           >
-            {products.slice(0, 15).map((p) => (
-              <SwiperSlide key={p.id}>
-                <div className="bg-white border border-gray-100 rounded-xl p-4 flex flex-col h-full hover:border-cyan-500 transition-all duration-300 group">
-                  {/* Image Section */}
-                  <div className="relative aspect-square w-full mb-4 flex items-center justify-center overflow-hidden bg-gray-50 rounded-lg">
-                    <Link to={`/product/${p.slug}`} className="absolute inset-0 z-10" />
-                    <img 
-                      src={getImagePath(p.images)} 
-                      alt={p.name} 
-                      className="max-h-[85%] max-w-[85%] object-contain transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => { e.target.src = "https://via.placeholder.com/400x400?text=" + p.name; }}
-                    />
-                    
-                    {/* Minimal Wishlist Button */}
-                    <button 
-                      onClick={(e) => { e.preventDefault(); toggleWishlist(p); }}
-                      className={cn(
-                        "absolute top-2 right-2 z-20 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-sm transition-colors hover:bg-white",
-                        isInWishlist(p.id) ? "text-red-500" : "text-gray-400 hover:text-cyan-600"
-                      )}
-                    >
-                      <Heart size={16} fill={isInWishlist(p.id) ? "currentColor" : "none"} />
-                    </button>
-                  </div>
-
-                  {/* Details Section */}
-                  <div className="flex-1 flex flex-col">
-                    <Link to={`/product/${p.slug}`}>
-                      <h3 className="text-[12px] font-bold text-slate-800 group-hover:text-cyan-600 transition-colors uppercase tracking-tight line-clamp-2 mb-2">
-                        {p.name}
-                      </h3>
-                    </Link>
-                    
-                    <div className="mt-auto pt-3 border-t border-gray-50 flex flex-col gap-3">
-                      <span className="text-lg font-black text-slate-900">${p.price}</span>
+            {loading ? (
+              Array.from({ length: 8 }).map((_, index) => (
+                <SwiperSlide key={`skeleton-${index}`}>
+                   <div className="bg-white border border-slate-100 rounded-2xl p-5 h-full">
+                      <ProductCardSkeleton />
+                   </div>
+                </SwiperSlide>
+              ))
+            ) : (
+              products.slice(0, 15).map((p, index) => (
+                <SwiperSlide key={p.id}>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                    className="bg-white border border-slate-100 rounded-2xl p-5 flex flex-col h-full hover:shadow-2xl hover:shadow-slate-200/60 transition-all duration-500 group relative"
+                  >
+                    {/* Image Section */}
+                    <div className="relative aspect-square w-full mb-6 flex items-center justify-center overflow-hidden rounded-xl">
+                      <Link to={`/product/${p.slug}`} className="absolute inset-0 z-10" />
+                      <img 
+                        src={getImagePath(p.images)} 
+                        alt={p.name} 
+                        className="max-h-[80%] max-w-[80%] object-contain transition-transform duration-700 ease-out group-hover:scale-110"
+                        onError={(e) => { e.target.src = "https://via.placeholder.com/400x400?text=" + p.name; }}
+                      />
                       
+                      {/* Floating Wishlist Button */}
                       <button 
-                        onClick={(e) => handleAddToCart(e, p)}
-                        className="w-full py-2 bg-cyan-500 text-slate-900 text-[10px] font-bold uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all rounded shadow-sm"
+                        onClick={(e) => { e.preventDefault(); toggleWishlist(p); }}
+                        className={cn(
+                          "absolute top-3 right-3 z-20 h-10 w-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-all duration-300 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 hover:scale-110",
+                          isInWishlist(p.id) ? "text-red-500" : "text-slate-400 hover:text-cyan-600"
+                        )}
                       >
-                        Add to Cart
+                        <Heart size={18} fill={isInWishlist(p.id) ? "currentColor" : "none"} />
                       </button>
+
+                      {/* Quick Add Overlay */}
+                      <div className="absolute inset-x-0 bottom-0 p-4 z-20 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                          <button 
+                            onClick={(e) => handleAddToCart(e, p)}
+                            className="w-full h-11 bg-slate-900 text-white flex items-center justify-center gap-2 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-cyan-600 transition-colors shadow-xl"
+                          >
+                            <ShoppingBag size={16} /> Add to Cart
+                          </button>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
+
+                    {/* Details Section */}
+                    <div className="flex-1 flex flex-col">
+                    
+                      <Link to={`/product/${p.slug}`}>
+                        <h3 className="text-[13px] font-black text-slate-800 group-hover:text-cyan-600 transition-colors uppercase tracking-wider line-clamp-2 mb-3 leading-snug">
+                          {p.name}
+                        </h3>
+                      </Link>
+                      
+                      <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-50">
+                        <div className="flex flex-col">
+                           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Price</span>
+                           <span className="text-xl font-black text-slate-900 tracking-tight">${p.price}</span>
+                        </div>
+                        
+                        <div className="h-8 w-8 bg-slate-50 rounded-lg flex items-center justify-center text-slate-400 group-hover:bg-cyan-50 group-hover:text-cyan-600 transition-all">
+                           <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                        </div>
+                      </div>
+                    </div>
+
+                
+                    
+                  </motion.div>
+                </SwiperSlide>
+              ))
+            )}
           </Swiper>
         </div>
 

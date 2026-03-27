@@ -26,12 +26,12 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="w-full bg-white py-12 border-b border-gray-100">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-10">
+    <section className="w-full bg-white   border-b border-gray-100  ">
+      <div className=" mx-auto ">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((item, index) => (
-            <div key={index} className="flex items-center gap-4 py-4 sm:py-0 justify-center group">
-              <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+            <div key={index} className="flex items-center gap-4  justify-center group">
+              <div className="  transition-transform duration-300">
                 {item.icon}
               </div>
               <div>

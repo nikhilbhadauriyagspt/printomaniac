@@ -130,7 +130,7 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-white pt-32 pb-24 font-jakarta text-slate-900 overflow-x-hidden">
-      <SEO title="My Account | Larry Printing Solutions" />
+      <SEO title="My Account | My Printer Store" />
       
       <div className="w-full px-4 md:px-10">
         

@@ -85,63 +85,72 @@ export default function Home() {
   return (
     <div className="bg-white font-jakarta overflow-x-hidden text-slate-900">
       <SEO 
-        title="Larry Printing Solutions | Quality Printers & Printer"
+        title="My Printer Store | Quality Printers & Printer"
         description="Your trusted source for high-quality printers and printing printer. Delivering excellence across the USA."
       />
 
       <Hero />
-      <TopShowcase products={data.all} />
 
-      <ShopByCategory categories={data.categories} />
-      <TripleBanners />
-      <BestSellers products={data.all} />
-      <Collections />
-      <ProductGrid products={data.mixedArrivals.slice(0, 18)} />
-      
-      <CategorySlider 
-        title="Office Printers"  
-        products={data.printers} 
-      />
-       
-     {/* --- CLEAN CONTACT CTA --- */}
-      <section className="py-16 bg-white border-t border-gray-100">
-        <div className="w-full px-4 md:px-10">
-          <div className="relative rounded-xl p-8 md:p-12 bg-cyan-900 text-white flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden shadow-xl">
-            
-            <div className="text-left space-y-3 max-w-xl relative z-10">
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-cyan-400">
-                Support Excellence
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold ">
-                Need expert  guidance?
-              </h2>
-              <p className="text-gray-400 text-sm md:text-base font-medium leading-relaxed">
-                Our friendly team is always here to help you find the perfect printing solution for your needs.
-              </p>
+      {/* --- PREMIUM FEATURES SECTION --- */}
+      <section className="py-12 bg-white border-b border-slate-100">
+        <div className=" mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="flex items-center gap-5 group p-4 hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
+              <div className="h-14 w-14 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                <Globe size={28} strokeWidth={1.5} />
+              </div>
+              <div>
+                <h4 className="text-[15px] font-black text-slate-900 uppercase tracking-wider mb-1">Global Shipping</h4>
+                <p className="text-[13px] text-slate-500 font-medium leading-relaxed">Fast & reliable delivery to your doorstep worldwide.</p>
+              </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto relative z-10">
-              <Link
-                to="/contact"
-                className="bg-cyan-500 text-slate-900 px-10 h-12 flex items-center justify-center rounded font-bold text-xs uppercase tracking-widest transition-all hover:bg-white hover:text-slate-900 shadow-lg shadow-cyan-500/10 whitespace-nowrap"
-              >
-                Contact Us
-              </Link>
-              <Link
-                to="/faq"
-                className="bg-transparent border border-white/20 text-white px-10 h-12 flex items-center justify-center rounded font-bold text-xs uppercase tracking-widest transition-all hover:bg-white hover:text-slate-900 whitespace-nowrap"
-              >
-                View FAQ
-              </Link>
+            <div className="flex items-center gap-5 group p-4 hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
+              <div className="h-14 w-14 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                <Shield size={28} strokeWidth={1.5} />
+              </div>
+              <div>
+                <h4 className="text-[15px] font-black text-slate-900 uppercase tracking-wider mb-1">Secure Checkout</h4>
+                <p className="text-[13px] text-slate-500 font-medium leading-relaxed">100% protected payments with industry-standard.</p>
+              </div>
             </div>
 
-            {/* Subtle background decoration */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[80px]" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-[80px]" />
-            
+            <div className="flex items-center gap-5 group p-4 hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
+              <div className="h-14 w-14 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                <Layers size={28} strokeWidth={1.5} />
+              </div>
+              <div>
+                <h4 className="text-[15px] font-black text-slate-900 uppercase tracking-wider mb-1">Elite Inventory</h4>
+                <p className="text-[13px] text-slate-500 font-medium leading-relaxed">A curated collection of high-performance printing .</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-5 group p-4 hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
+              <div className="h-14 w-14 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                <RefreshCw size={28} strokeWidth={1.5} />
+              </div>
+              <div>
+                <h4 className="text-[15px] font-black text-slate-900 uppercase tracking-wider mb-1">Easy Returns</h4>
+                <p className="text-[13px] text-slate-500 font-medium leading-relaxed">Hassle-free 30-day return policy for your peace of mind.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+
+      <ShopByCategory categories={data.categories} loading={data.loading} />
+      <BestSellers products={data.all} loading={data.loading} />
+      <TripleBanners />
+      
+     
+      <ProductGrid products={data.mixedArrivals.slice(0, 18)} loading={data.loading} />
+       <Collections />
+      <CategorySlider 
+        title="Office Printers"  
+        products={data.printers} 
+        loading={data.loading}
+      />
+       
+  </div>
   );
 }

@@ -61,18 +61,15 @@ export default function UserLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white font-jakarta px-4 py-12 pt-32">
-      <SEO title="Sign in | Larry Printing Solutions" />
+    <div className="min-h-screen flex items-center justify-center bg-white font-jakarta px-4 py-12 ">
+      <SEO title="Sign in | My Printer Store" />
 
       <div className="w-full max-w-[450px] bg-white rounded-3xl border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] overflow-hidden">
-        {/* Top Accent Bar */}
-        <div className="h-2 bg-gradient-to-r from-slate-900 to-cyan-500"></div>
+        
        
         <div className="p-8 md:p-12">
             <div className="text-center mb-10">
-                <Link to="/" className="inline-block mb-6">
-                    <img src="/logo/logo.png" alt="Larry Printing Solutions" className="h-10 object-contain" />
-                </Link>
+               
                 <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Welcome back</h1>
                 <p className="text-gray-500 mt-2 text-sm">Enter your credentials to access your account</p>
             </div>
@@ -149,10 +146,7 @@ export default function UserLogin() {
                     <Link to="/signup" className="text-cyan-600 font-bold hover:underline">Create account</Link>
                 </p>
                
-                <div className="flex items-center gap-2 text-[10px] font-bold text-gray-400 tracking-widest uppercase">
-                    <ShieldCheck size={14} className="text-emerald-500" />
-                    Secure & encrypted connection
-                </div>
+               
             </div>
         </div>
       </div>

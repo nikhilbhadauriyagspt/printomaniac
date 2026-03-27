@@ -109,7 +109,7 @@ export default function ProductDetail() {
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24 font-jakarta text-slate-900 overflow-x-hidden">
-      <SEO title={`${product.name} | Larry Printing Solutions`} description={product.description?.substring(0, 160)} />
+      <SEO title={`${product.name} | My Printer Store`} description={product.description?.substring(0, 160)} />
       
       <div className="max-w-[1400px] mx-auto px-4 md:px-10">
         

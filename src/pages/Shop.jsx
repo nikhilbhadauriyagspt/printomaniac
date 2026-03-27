@@ -98,203 +98,266 @@ export default function Shop() {
   };
 
   return (
-    <div className="bg-white min-h-screen font-jakarta text-slate-900 overflow-x-hidden ">
+    <div className="bg-white min-h-screen font-jakarta text-slate-900 overflow-x-hidden">
       <SEO 
-        title="Shop Collections | Larry Printing Solutions" 
+        title="Shop Collections | My Printer Store" 
         description="Browse our curated selection of high-performance printers and professional printer."
       />
 
-      {/* --- SIMPLE HEADER --- */}
-      <section className="py-10 px-4 md:px-10 border-b border-gray-100 bg-gray-50">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight uppercase">
-              All <span className="text-cyan-600">Products</span>
+      {/* --- PREMIUM PAGE HEADER --- */}
+      <section className="pt-20 pb-12 px-4 md:px-10 lg:px-16 border-b border-slate-100 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[40%] h-full bg-slate-50 -skew-x-12 translate-x-1/2 -z-10" />
+        
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 relative z-10">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-12 bg-cyan-500" />
+              <span className="text-cyan-600 text-[11px] font-black uppercase tracking-[0.4em]">Professional Inventory</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-none ">
+              Elite <span className="text-slate-400">Collections</span>
             </h1>
-            <div className="h-1 w-12 bg-cyan-500 mt-1" />
-            <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mt-3">Showing {products.length} printing solutions</p>
+            <p className="text-slate-500 text-sm font-bold  tracking-widest max-w-xl">
+              Precision-engineered printing solutions curated for enterprise and professional environments.
+            </p>
           </div>
           
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar max-w-full">
-            <button 
-              onClick={() => updateFilter('category', '')}
-              className={cn(
-                "px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-all border",
-                !category ? "bg-slate-900 text-white border-slate-900" : "bg-white text-gray-500 border-gray-200 hover:border-cyan-500"
-              )}
-            >
-              All Categories
-            </button>
-            {categories.map(cat => (
-              <button 
-                key={cat.id} 
-                onClick={() => updateFilter('category', cat.slug)}
-                className={cn(
-                  "px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-all border",
-                  category === cat.slug ? "bg-cyan-500 text-slate-900 border-cyan-500 font-black" : "bg-white text-gray-500 border-gray-200 hover:border-cyan-500"
-                )}
-              >
-                {cat.name}
-              </button>
-            ))}
+          <div className="flex flex-col gap-4">
+             <div className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-2">
+                <Package size={14} /> {products.length} Solutions available
+             </div>
+             <div className="flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar max-w-full">
+                <button 
+                  onClick={() => updateFilter('category', '')}
+                  className={cn(
+                    "h-12 px-8 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all border",
+                    !category ? "bg-slate-900 text-white border-slate-900 " : "bg-white text-slate-400 border-slate-100 hover:border-cyan-500 hover:text-cyan-600"
+                  )}
+                >
+                  All Gear
+                </button>
+                {categories.map(cat => (
+                  <button 
+                    key={cat.id} 
+                    onClick={() => updateFilter('category', cat.slug)}
+                    className={cn(
+                      "h-12 px-8 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all ",
+                      category === cat.slug ? "bg-cyan-500 text-slate-900" : "bg-white text-slate-400 border-slate-100 hover:border-cyan-500 hover:text-cyan-600"
+                    )}
+                  >
+                    {cat.name}
+                  </button>
+                ))}
+             </div>
           </div>
         </div>
       </section>
 
-      {/* --- TOOLBAR --- */}
-      <div className="sticky top-20 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 px-4 md:px-10 py-4 shadow-sm">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+      {/* --- NAVIGATION & SEARCH TOOLBAR --- */}
+      <div className="sticky top-[72px] md:top-[88px] z-40 bg-white/90 backdrop-blur-xl border-b border-slate-100 px-4 md:px-10 lg:px-16 py-4 shadow-sm shadow-slate-100/50">
+        <div className="flex flex-wrap items-center justify-between gap-6">
           
-          {/* Search */}
-          <div className="flex-1 min-w-[200px]">
-            <div className="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 w-full focus-within:border-cyan-500 transition-all">
-              <Search size={16} className="text-gray-400" />
+          {/* Elite Search Box */}
+          <div className="flex-1 min-w-[280px]">
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-300 group-focus-within:text-cyan-500 transition-colors">
+                <Search size={18} strokeWidth={2.5} />
+              </div>
               <input 
                 type="text" 
-                placeholder="Search by model or type..."
+                placeholder="SEARCH PREMIUM MODELS..."
                 value={search}
                 onChange={(e) => updateFilter('search', e.target.value)}
-                className="bg-transparent text-[12px] font-semibold outline-none w-full placeholder:text-gray-400"
+                className="w-full h-12 pl-14 pr-6 bg-slate-50 border border-slate-100 rounded-xl text-[11px] font-black uppercase tracking-widest outline-none focus:bg-white focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/5 transition-all placeholder:text-slate-300"
               />
             </div>
           </div>
 
-          {/* Sort & Filter */}
+          {/* Controls Cluster */}
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden h-10 px-4 flex items-center justify-center gap-2 rounded-lg bg-gray-50 text-slate-700 border border-gray-200"
+              className="lg:hidden h-12 px-6 flex items-center justify-center gap-3 rounded-xl bg-slate-50 text-slate-900 border border-slate-100 font-black text-[11px] uppercase tracking-widest hover:bg-white transition-all"
             >
-              <SlidersHorizontal size={16} />
-              <span className="text-[11px] font-bold uppercase tracking-tight">Filters</span>
+              <SlidersHorizontal size={16} /> Filters
             </button>
 
-            <div className="relative group flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 hover:border-cyan-500 transition-all cursor-pointer">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Sort:</span>
+            <div className="relative flex items-center bg-slate-50 border border-slate-100 rounded-xl h-12 px-5 hover:bg-white hover:border-cyan-500/50 transition-all">
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 mr-3 border-r border-slate-200 pr-3">Sort</span>
               <select 
                 value={sort} 
                 onChange={(e) => updateFilter('sort', e.target.value)}
-                className="bg-transparent text-[11px] font-bold uppercase tracking-tight cursor-pointer outline-none appearance-none"
+                className="bg-transparent text-[11px] font-black uppercase tracking-widest cursor-pointer outline-none appearance-none pr-8"
               >
-                <option value="newest">Latest Arrivals</option>
-                <option value="price_low">Price: Low to High</option>
-                <option value="price_high">Price: High to Low</option>
-                <option value="name_asc">Name: A-Z</option>
+                <option value="newest">Latest arrivals</option>
+                <option value="price_low">Price: low to high</option>
+                <option value="price_high">Price: high to low</option>
+                <option value="name_asc">Alphabetical</option>
               </select>
-              <ChevronDown size={14} className="text-gray-400" />
+              <div className="absolute right-4 pointer-events-none text-slate-400">
+                <ChevronDown size={14} />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* --- GRID --- */}
-      <section className="px-4 md:px-10 py-12">
+      {/* --- PRODUCT GRID SYSTEM --- */}
+      <section className="px-4 md:px-10 lg:px-16 py-16">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-40">
-            <Loader2 className="animate-spin h-10 w-10 text-cyan-600 mb-4" strokeWidth={1.5} />
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">Syncing collection...</p>
+            <div className="relative h-20 w-20 flex items-center justify-center">
+               <Loader2 className="animate-spin h-full w-full text-cyan-500" strokeWidth={1} />
+               <div className="absolute inset-0 flex items-center justify-center">
+                  <Package size={24} className="text-slate-200" />
+               </div>
+            </div>
+            <p className="mt-6 text-[11px] font-black uppercase tracking-[0.4em] text-slate-400 animate-pulse">Syncing Inventory</p>
           </div>
         ) : products.length === 0 ? (
-          <div className="text-center py-32 bg-gray-50 rounded-2xl border border-gray-100">
-            <Package size={48} strokeWidth={1} className="mx-auto text-gray-300 mb-4" />
-            <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900">No matches found</h2>
+          <div className="text-center py-40 bg-slate-50 rounded-3xl border border-slate-100 max-w-4xl mx-auto">
+            <div className="h-20 w-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-slate-200/50">
+               <Package size={32} strokeWidth={1.5} className="text-slate-300" />
+            </div>
+            <h2 className="text-xl font-black uppercase tracking-[0.2em] text-slate-900 mb-4">No matching Printer</h2>
+            <p className="text-slate-500 text-sm font-medium mb-10">Adjust your search parameters to find the perfect solution.</p>
             <button 
               onClick={() => navigate('/shop')} 
-              className="mt-6 bg-cyan-500 text-slate-900 px-10 py-3 rounded font-bold text-xs uppercase tracking-widest transition-all hover:bg-slate-900 hover:text-white"
+              className="bg-slate-900 text-white px-12 py-4 rounded-xl font-black text-[11px] uppercase tracking-[0.3em] transition-all hover:bg-cyan-500 shadow-2xl shadow-slate-900/10 active:scale-95"
             >
-              Reset All
+              Reset Protocol
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 md:gap-6">
-            {products.map((p) => (
-              <div 
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 md:gap-8 lg:gap-10">
+            {products.map((p, index) => (
+              <motion.div 
                 key={p.id}
-                className="bg-white border border-gray-100 rounded-xl p-4 flex flex-col h-full hover:border-cyan-500 transition-all duration-300 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: (index % 6) * 0.05 }}
+                viewport={{ once: true }}
+                className="group flex flex-col h-full relative"
               >
-                {/* Image Section */}
-                <div className="relative aspect-square w-full mb-4 flex items-center justify-center overflow-hidden bg-gray-50 rounded-lg">
+                {/* Elite Product Card */}
+                <div className="relative aspect-square w-full mb-6 flex items-center justify-center overflow-hidden rounded-3xl bg-white border border-slate-100 group-hover:border-cyan-500/30 group-hover:shadow-2xl group-hover:shadow-slate-200/60 transition-all duration-500">
                   <Link to={`/product/${p.slug}`} className="absolute inset-0 z-10" />
+                  
                   <img 
                     src={getImagePath(p.images)} 
                     alt={p.name} 
-                    className="max-h-[85%] max-w-[85%] object-contain transition-transform duration-500 group-hover:scale-105"
+                    className="max-h-[75%] max-w-[75%] object-contain transition-transform duration-700 ease-out group-hover:scale-110"
                     onError={(e) => { e.target.src = "https://via.placeholder.com/400x400?text=" + p.name; }}
                   />
+                  
+                  {/* Floating Action: Wishlist */}
                   <button 
                     onClick={(e) => { e.preventDefault(); toggleWishlist(p); }}
                     className={cn(
-                      "absolute top-2 right-2 z-20 p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-sm transition-colors hover:bg-white",
-                      isInWishlist(p.id) ? "text-red-500" : "text-gray-400 hover:text-cyan-600"
+                      "absolute top-4 right-4 z-20 h-10 w-10 rounded-2xl bg-white shadow-xl flex items-center justify-center transition-all duration-300 translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 hover:scale-110",
+                      isInWishlist(p.id) ? "text-red-500" : "text-slate-300 hover:text-cyan-600"
                     )}
                   >
-                    <Heart size={16} fill={isInWishlist(p.id) ? "currentColor" : "none"} />
+                    <Heart size={18} fill={isInWishlist(p.id) ? "currentColor" : "none"} />
+                  </button>
+
+                  {/* High-Impact Quick Add */}
+                  <button 
+                    onClick={(e) => handleAddToCart(e, p)}
+                    className="absolute inset-x-0 bottom-0 z-20 h-14 bg-slate-900/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 translate-y-full group-hover:translate-y-0 transition-transform duration-500 hover:bg-cyan-600"
+                  >
+                    <ShoppingBag size={16} /> Quick Add
                   </button>
                 </div>
 
-                {/* Details Section */}
-                <div className="flex-1 flex flex-col">
+                {/* Details Typography */}
+                <div className="flex-1 flex flex-col px-2">
+                 
                   <Link to={`/product/${p.slug}`}>
-                    <h3 className="text-[12px] font-bold text-slate-800 group-hover:text-cyan-600 transition-colors uppercase tracking-tight line-clamp-2 mb-2">
+                    <h3 className="text-[13px] font-black text-slate-800 group-hover:text-cyan-600 transition-colors uppercase tracking-wider line-clamp-2 mb-4 leading-tight">
                       {p.name}
                     </h3>
                   </Link>
                   
-                  <div className="mt-auto pt-3 border-t border-gray-50 flex flex-col gap-3">
-                    <span className="text-lg font-black text-slate-900">${p.price}</span>
+                  <div className="mt-auto flex items-center justify-between">
+                    <div className="flex flex-col">
+                       <span className="text-[14px] font-black text-slate-900 tracking-tight">${p.price}</span>
+                       <span className="text-[9px] font-bold text-slate-300 line-through tracking-widest">${(parseFloat(p.price) * 1.2).toFixed(2)}</span>
+                    </div>
                     
-                    <button 
-                      onClick={(e) => handleAddToCart(e, p)}
-                      className="w-full py-2 bg-cyan-500 text-slate-900 text-[10px] font-bold uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all rounded shadow-sm"
-                    >
-                      Add to Cart
-                    </button>
+                    <div className="h-10 w-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-cyan-50 group-hover:text-cyan-600 transition-all">
+                       <ArrowRight size={18} />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}
       </section>
 
-      {/* MOBILE FILTER DRAWER */}
+      {/* --- ELITE MOBILE FILTER DRAWER --- */}
       <AnimatePresence>
         {isMobileFilterOpen && (
           <>
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setIsMobileFilterOpen(false)}
-              className="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-md lg:hidden"
             />
             <motion.div 
               initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }}
-              className="fixed top-0 left-0 bottom-0 w-[300px] bg-white z-[110] lg:hidden flex flex-col p-6 shadow-2xl overflow-hidden"
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 left-0 bottom-0 w-[85%] max-w-[340px] bg-white z-[110] lg:hidden flex flex-col shadow-2xl overflow-hidden"
             >
-              <div className="flex justify-between items-center mb-10 pb-4 border-b border-gray-100">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900">Filters</h3>
-                <button onClick={() => setIsMobileFilterOpen(false)} className="h-8 w-8 rounded-full bg-gray-50 text-slate-900 flex items-center justify-center"><X size={18} /></button>
+              <div className="bg-slate-900 text-white p-8 pb-10 relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl -mr-16 -mt-16" />
+                <div className="flex justify-between items-center relative z-10">
+                  <h3 className="text-[11px] font-black uppercase tracking-[0.3em]">Printer Filters</h3>
+                  <button onClick={() => setIsMobileFilterOpen(false)} className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><X size={20} /></button>
+                </div>
               </div>
-              <div className="flex-1 overflow-y-auto">
-                <div className="space-y-4">
-                  <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-400">Categories</h4>
-                  <div className="flex flex-col gap-2">
-                    <button 
-                      onClick={() => { updateFilter('category', ''); setIsMobileFilterOpen(false); }}
-                      className={cn("w-full text-left px-4 py-3 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all", !category ? "bg-slate-900 text-white" : "bg-gray-50 text-slate-600")}
-                    >
-                      All Categories
-                    </button>
-                    {categories.map(cat => (
+
+              <div className="flex-1 overflow-y-auto p-6 pt-10">
+                <div className="space-y-8">
+                  <div>
+                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 flex items-center gap-2">
+                       <div className="h-px w-4 bg-slate-200" /> Technology Groups
+                    </h4>
+                    <div className="grid gap-3">
                       <button 
-                        key={cat.id} 
-                        onClick={() => { updateFilter('category', cat.slug); setIsMobileFilterOpen(false); }}
-                        className={cn("w-full text-left px-4 py-3 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all", category === cat.slug ? "bg-cyan-500 text-slate-900" : "bg-gray-50 text-slate-600")}
+                        onClick={() => { updateFilter('category', ''); setIsMobileFilterOpen(false); }}
+                        className={cn(
+                          "w-full text-left px-6 py-4 text-[11px] font-black uppercase tracking-widest rounded-xl transition-all border", 
+                          !category ? "bg-slate-900 text-white border-slate-900 shadow-lg shadow-slate-200" : "bg-slate-50 text-slate-600 border-transparent hover:bg-white hover:border-slate-200"
+                        )}
                       >
-                        {cat.name}
+                        All Printer
                       </button>
-                    ))}
+                      {categories.map(cat => (
+                        <button 
+                          key={cat.id} 
+                          onClick={() => { updateFilter('category', cat.slug); setIsMobileFilterOpen(false); }}
+                          className={cn(
+                            "w-full text-left px-6 py-4 text-[11px] font-black uppercase tracking-widest rounded-xl transition-all border", 
+                            category === cat.slug ? "bg-cyan-500 text-slate-900 border-cyan-500 shadow-lg shadow-cyan-100" : "bg-slate-50 text-slate-600 border-transparent hover:bg-white hover:border-slate-200"
+                          )}
+                        >
+                          {cat.name}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
+              </div>
+              
+              <div className="p-6 border-t border-slate-100">
+                  <button 
+                    onClick={() => { navigate('/shop'); setIsMobileFilterOpen(false); }}
+                    className="w-full h-14 bg-slate-100 text-slate-900 rounded-xl text-[11px] font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all"
+                  >
+                    Clear All Filters
+                  </button>
               </div>
             </motion.div>
           </>
@@ -303,3 +366,4 @@ export default function Shop() {
     </div>
   );
 }
+

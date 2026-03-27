@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export default function SEO({ title, description, keywords, schemaType = "Website" }) {
   useEffect(() => {
     // Update Title
-    const baseTitle = "Larry Printing Solutions";
+    const baseTitle = "My Printer Store";
     const fullTitle = title ? `${title} | ${baseTitle}` : baseTitle;
     document.title = fullTitle;
 
@@ -44,9 +44,9 @@ export default function SEO({ title, description, keywords, schemaType = "Websit
     const schemaData = {
       "@context": "https://schema.org",
       "@type": schemaType === "Product" ? "Product" : "Organization",
-      "name": "Larry Printing Solutions",
-      "url": "https://larryprintingsolutions.shop",
-      "logo": "https://larryprintingsolutions.shop/logo/logo.png",
+      "name": "My Printer Store",
+      "url": "https://myprinterstore.shop",
+      "logo": "https://myprinterstore.shop/logo/logo.png",
       "description": finalDesc,
       "address": {
         "@type": "PostalAddress",
