@@ -14,7 +14,7 @@ const TripleBanners = () => {
                 <img
                   src={banner1}
                   alt="Promotion Banner"
-                  className="w-full h-auto"
+                  className="align-middle w-full h-auto object-cover "
                 />
               </Link>
             </div>

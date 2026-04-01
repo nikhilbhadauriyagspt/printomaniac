@@ -58,7 +58,7 @@ export default function UserSignup() {
  
   return (
     <div className="bg-white min-h-screen font-jakarta text-slate-900 overflow-x-hidden">
-      <SEO title="Create Your Account |Inktrix Printers" />
+      <SEO title="Create Your Account |Printer Club" />
 
       {/* --- PAGE HEADER --- */}
       <section className="pt-14 pb-12 bg-white border-b border-slate-50">

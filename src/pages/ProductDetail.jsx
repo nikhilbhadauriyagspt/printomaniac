@@ -109,7 +109,7 @@ export default function ProductDetail() {
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24 font-jakarta text-slate-900 overflow-x-hidden">
-      <SEO title={`${product.name} |Inktrix Printers`} description={product.description?.substring(0, 160)} />
+      <SEO title={`${product.name} |Printer Club`} description={product.description?.substring(0, 160)} />
       
       <div className="max-w-[1400px] mx-auto px-4 md:px-10">
         
@@ -157,7 +157,7 @@ export default function ProductDetail() {
                     key={idx} onClick={() => setActiveImage(idx)}
                     className={cn(
                       "h-20 w-20 md:h-24 md:w-24 shrink-0 border-2 transition-all duration-300 flex items-center justify-center p-3 bg-white rounded-xl overflow-hidden shadow-sm",
-                      activeImage === idx ? "border-cyan-600 shadow-md" : "border-gray-100 hover:border-gray-200"
+                      activeImage === idx ? "border-blue-600 shadow-md" : "border-gray-100 hover:border-gray-200"
                     )}
                   >
                     <img src={img} alt="" className="max-h-full max-w-full object-contain mix-blend-multiply" />

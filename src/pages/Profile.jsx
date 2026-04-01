@@ -130,7 +130,7 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-white pt-32 pb-24 font-jakarta text-slate-900 overflow-x-hidden">
-      <SEO title="My Account |Inktrix Printers" />
+      <SEO title="My Account |Printer Club" />
       
       <div className="w-full px-4 md:px-10">
         
@@ -138,7 +138,7 @@ export default function Profile() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-100 pb-10 mb-12">
           <div className="space-y-2 text-left">
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-none">
-              Account <span className="text-cyan-600">settings</span>
+              Account <span className="text-blue-600">settings</span>
             </h1>
             <p className="text-slate-500 font-medium text-sm md:text-base">Managing your details and order history</p>
           </div>
@@ -146,7 +146,7 @@ export default function Profile() {
           <div className="flex items-center gap-4">
              <div className="text-right hidden sm:block">
                 <p className="text-xs font-bold text-slate-900">{user.name}</p>
-                <a href={`mailto:${user.email}`} className="text-[10px] font-medium text-slate-400 hover:text-cyan-600 transition-colors">{user.email}</a>
+                <a href={`mailto:${user.email}`} className="text-[10px] font-medium text-slate-400 hover:text-blue-600 transition-colors">{user.email}</a>
              </div>
              <button onClick={handleLogout} className="h-10 px-5 rounded-lg border border-gray-200 text-xs font-bold hover:bg-red-50 hover:text-red-600 hover:border-red-100 transition-all flex items-center gap-2">
                 <LogOut size={14} /> Sign out
@@ -170,8 +170,8 @@ export default function Profile() {
                   className={cn(
                     "w-full flex items-center justify-between px-6 py-4 rounded-xl text-sm font-bold transition-all border",
                     activeTab === tab.id 
-                    ? "bg-cyan-500 text-slate-900 border-cyan-500 shadow-lg shadow-cyan-500/10" 
-                    : "bg-white text-slate-500 border-gray-100 hover:border-cyan-500 hover:text-cyan-600"
+                    ? "bg-blue-500 text-slate-900 border-blue-500 shadow-lg shadow-blue-500/10" 
+                    : "bg-white text-slate-500 border-gray-100 hover:border-blue-500 hover:text-blue-600"
                   )}
                 >
                   <div className="flex items-center gap-4">
@@ -184,7 +184,7 @@ export default function Profile() {
             </div>
 
             <div className="p-8 rounded-2xl bg-slate-900 text-white space-y-4 shadow-xl">
-               <ShieldCheck className="text-cyan-400" size={24} />
+               <ShieldCheck className="text-blue-400" size={24} />
                <h4 className="text-lg font-bold leading-tight">Data protection</h4>
                <p className="text-xs text-gray-400 leading-relaxed">Your personal information is encrypted and stored securely. We never share your data with third parties.</p>
             </div>
@@ -212,7 +212,7 @@ export default function Profile() {
                         <input 
                           required value={profileForm.name}
                           onChange={(e) => setProfileForm({...profileForm, name: e.target.value})}
-                          className="w-full h-12 px-5 bg-gray-50 border border-gray-100 rounded-xl focus:border-cyan-600 focus:bg-white outline-none text-sm font-medium transition-all"
+                          className="w-full h-12 px-5 bg-gray-50 border border-gray-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none text-sm font-medium transition-all"
                         />
                       </div>
                       <div className="space-y-2">
@@ -220,7 +220,7 @@ export default function Profile() {
                         <input 
                           value={profileForm.phone}
                           onChange={(e) => setProfileForm({...profileForm, phone: e.target.value})}
-                          className="w-full h-12 px-5 bg-gray-50 border border-gray-100 rounded-xl focus:border-cyan-600 focus:bg-white outline-none text-sm font-medium transition-all"
+                          className="w-full h-12 px-5 bg-gray-50 border border-gray-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none text-sm font-medium transition-all"
                         />
                       </div>
                     </div>
@@ -229,12 +229,12 @@ export default function Profile() {
                       <textarea 
                         rows="3" value={profileForm.address}
                         onChange={(e) => setProfileForm({...profileForm, address: e.target.value})}
-                        className="w-full p-5 bg-gray-50 border border-gray-100 rounded-xl focus:border-cyan-600 focus:bg-white outline-none text-sm font-medium transition-all resize-none"
+                        className="w-full p-5 bg-gray-50 border border-gray-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none text-sm font-medium transition-all resize-none"
                       ></textarea>
                     </div>
                     <button 
                       disabled={isUpdating}
-                      className="h-12 px-10 bg-slate-900 text-white rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-cyan-600 transition-all active:scale-95 disabled:opacity-50"
+                      className="h-12 px-10 bg-slate-900 text-white rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-blue-600 transition-all active:scale-95 disabled:opacity-50"
                     >
                       {isUpdating ? "Saving..." : "Update profile"}
                     </button>
@@ -249,26 +249,26 @@ export default function Profile() {
                 >
                   <div className="flex items-center justify-between mb-2 px-2">
                      <h2 className="text-2xl font-bold tracking-tight">Recent orders</h2>
-                     <Link to="/orders" className="text-xs font-bold text-cyan-600 hover:underline">View all history</Link>
+                     <Link to="/orders" className="text-xs font-bold text-blue-600 hover:underline">View all history</Link>
                   </div>
 
                   {loading ? (
                     <div className="py-20 flex flex-col items-center">
-                       <Loader2 className="animate-spin text-cyan-600 mb-4" />
+                       <Loader2 className="animate-spin text-blue-600 mb-4" />
                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Loading orders</p>
                     </div>
                   ) : orders.length === 0 ? (
                     <div className="bg-gray-50 border border-gray-100 rounded-2xl py-20 text-center">
                       <ShoppingCart size={48} strokeWidth={1} className="text-slate-200 mx-auto mb-6" />
                       <p className="text-sm font-bold text-slate-400">No orders found</p>
-                      <Link to="/shop" className="mt-6 inline-flex items-center gap-2 text-cyan-600 font-bold text-xs uppercase tracking-widest hover:underline">
+                      <Link to="/shop" className="mt-6 inline-flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-widest hover:underline">
                          Start shopping <ArrowRight size={14} />
                       </Link>
                     </div>
                   ) : (
                     <div className="space-y-4">
                       {orders.slice(0, 5).map((order) => (
-                        <div key={order.id} className="bg-white rounded-xl border border-gray-100 p-6 hover:border-cyan-100 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+                        <div key={order.id} className="bg-white rounded-xl border border-gray-100 p-6 hover:border-blue-100 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
                           <div className="space-y-1">
                              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Order ID</p>
                              <h4 className="text-sm font-bold text-slate-900">#{order.order_code || order.id}</h4>
@@ -283,7 +283,7 @@ export default function Profile() {
                           </div>
                           <div className={cn(
                             "px-4 py-1.5 rounded-full text-[10px] font-bold border w-fit capitalize",
-                            order.status === 'delivered' ? 'bg-green-50 text-green-600 border-green-100' : 'bg-cyan-50 text-cyan-600 border-cyan-100'
+                            order.status === 'delivered' ? 'bg-green-50 text-green-600 border-green-100' : 'bg-blue-50 text-blue-600 border-blue-100'
                           )}>
                             {order.status.replace('_', ' ')}
                           </div>
@@ -314,9 +314,9 @@ export default function Profile() {
                         <input 
                           type={showPass ? "text" : "password"} required value={securityForm.password}
                           onChange={(e) => setSecurityForm({...securityForm, password: e.target.value})}
-                          className="w-full h-12 pl-12 pr-12 bg-gray-50 border border-gray-100 rounded-xl focus:border-cyan-600 focus:bg-white outline-none text-sm font-medium transition-all"
+                          className="w-full h-12 pl-12 pr-12 bg-gray-50 border border-gray-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none text-sm font-medium transition-all"
                         />
-                        <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-cyan-600 transition-colors">
+                        <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-blue-600 transition-colors">
                           {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
                         </button>
                       </div>
@@ -328,13 +328,13 @@ export default function Profile() {
                         <input 
                           type={showPass ? "text" : "password"} required value={securityForm.confirmPassword}
                           onChange={(e) => setSecurityForm({...securityForm, confirmPassword: e.target.value})}
-                          className="w-full h-12 pl-12 px-6 bg-gray-50 border border-gray-100 rounded-xl focus:border-cyan-600 focus:bg-white outline-none text-sm font-medium transition-all"
+                          className="w-full h-12 pl-12 px-6 bg-gray-50 border border-gray-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none text-sm font-medium transition-all"
                         />
                       </div>
                     </div>
                     <button 
                       disabled={isUpdating}
-                      className="h-12 px-10 bg-slate-900 text-white rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-cyan-600 transition-all active:scale-95 disabled:opacity-50"
+                      className="h-12 px-10 bg-slate-900 text-white rounded-lg font-bold text-xs uppercase tracking-widest hover:bg-blue-600 transition-all active:scale-95 disabled:opacity-50"
                     >
                       {isUpdating ? "Processing..." : "Update password"}
                     </button>

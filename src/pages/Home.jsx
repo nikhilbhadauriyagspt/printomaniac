@@ -86,7 +86,7 @@ export default function Home() {
   return (
     <div className="bg-white font-jakarta overflow-x-hidden text-slate-900">
       <SEO 
-        title="Inktrix Printers | Quality Printers & Printer"
+        title="Printer Club | Quality Printers & Printer"
         description="Your trusted source for high-quality printers and printing printer. Delivering excellence across the USA."
       />
 

@@ -58,7 +58,7 @@ export default function UserLogin() {
 
   return (
     <div className="bg-white min-h-screen font-jakarta text-slate-900 overflow-x-hidden">
-      <SEO title="Sign In |Inktrix Printers" />
+      <SEO title="Sign In |Printer Club" />
 
       {/* --- PAGE HEADER --- */}
       <section className="pt-14 pb-12 bg-white border-b border-slate-50">
@@ -153,7 +153,7 @@ export default function UserLogin() {
 
             <div className="mt-12 pt-8 border-t border-slate-100 text-center">
               <p className="text-slate-500 font-bold">
-                New toInktrix Printers?{' '}
+                New toPrinter Club?{' '}
                 <Link to="/signup" className="text-blue-600 font-black hover:text-blue-700 transition-colors">Create Account</Link>
               </p>
             </div>

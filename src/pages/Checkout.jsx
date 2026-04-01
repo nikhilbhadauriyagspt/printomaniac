@@ -150,7 +150,7 @@ export default function Checkout() {
   if (step === 3) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center pt-20 px-6 font-jakarta text-slate-900">
-        <SEO title="Order Confirmed |Inktrix Printers" />
+        <SEO title="Order Confirmed |Printer Club" />
         <div className="max-w-[500px] w-full text-center space-y-10">
           <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-24 w-24 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto border border-green-100 shadow-xl">
             <CheckCircle2 size={48} />
@@ -159,7 +159,7 @@ export default function Checkout() {
             <h1 className="text-4xl font-bold tracking-tight leading-none">Order confirmed!</h1>
             <p className="text-slate-500 font-medium leading-relaxed">
                 Thank you for your purchase. Your order ID is <span className="font-bold text-slate-900">#{orderId}</span>.
-                We've sent a confirmation email to <a href={`mailto:${formData.email}`} className="font-bold text-slate-900 hover:text-cyan-600 transition-colors underline decoration-cyan-500/30 underline-offset-4">{formData.email}</a>.
+                We've sent a confirmation email to <a href={`mailto:${formData.email}`} className="font-bold text-slate-900 hover:text-blue-600 transition-colors underline decoration-blue-500/30 underline-offset-4">{formData.email}</a>.
             </p>
           </div>
           <div className="pt-4 flex flex-col gap-4">
@@ -177,7 +177,7 @@ export default function Checkout() {
 
   return (
     <div className="min-h-screen bg-white font-jakarta text-slate-900 overflow-x-hidden pt-32 pb-24 px-4 md:px-10">
-      <SEO title="Secure Checkout |Inktrix Printers" />
+      <SEO title="Secure Checkout |Printer Club" />
       
       <div className="w-full px-0 md:px-4">
         
@@ -196,7 +196,7 @@ export default function Checkout() {
           </div>
           
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-50 text-cyan-600 border border-cyan-100 text-xs font-bold">
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-50 text-blue-600 border border-blue-100 text-xs font-bold">
               <ShieldCheck size={16} /> SSL Encrypted Connection
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function Checkout() {
                     </div>
                     <div className="space-y-2 group">
                       <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Email address</label>
-                      <input required type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="john@example.com" className="w-full h-14 px-5 bg-gray-50 border border-gray-100 rounded-xl focus:border-cyan-600 focus:bg-white outline-none text-sm font-medium transition-all" />
+                      <input required type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="john@example.com" className="w-full h-14 px-5 bg-gray-50 border border-gray-100 rounded-xl focus:border-blue-600 focus:bg-white outline-none text-sm font-medium transition-all" />
                     </div>
                   </div>
 
