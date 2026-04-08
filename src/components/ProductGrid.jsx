@@ -57,7 +57,7 @@ export default function ProductGrid({ products = [], loading = false }) {
             transition={{ delay: 0.2 }}
             className="text-slate-400 font-bold text-xs md:text-sm leading-relaxed max-w-xl"
           >
-            Experience the cutting edge of printing technology with our freshest precision-engineered hardware.
+            Experience the cutting edge of printing technology with our freshest precision-engineered printer.
           </motion.p>
         </div>
 

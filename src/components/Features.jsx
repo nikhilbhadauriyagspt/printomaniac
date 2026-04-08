@@ -18,7 +18,7 @@ const features = [
   {
     icon: <Zap size={28} />,
     title: "Elite Selection",
-    desc: "Curated premium hardware",
+    desc: "Curated premium printer",
     color: "amber"
   },
   {

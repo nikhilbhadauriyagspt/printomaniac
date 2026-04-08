@@ -80,7 +80,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
             <div className="flex flex-col gap-1.5 text-center lg:text-left">
               <span className="text-blue-600 text-[9px] font-black uppercase tracking-[4px]">Elevate Your Printing</span>
-              <h3 className="text-xl md:text-2xl font-black text-slate-900 ">Subscribe for Exclusive Hardware Insights.</h3>
+              <h3 className="text-xl md:text-2xl font-black text-slate-900 ">Subscribe for Exclusive printer Insights.</h3>
               <p className="text-slate-400 text-[11px] font-bold">Join our elite list of professionals and receive the latest updates.</p>
             </div>
             

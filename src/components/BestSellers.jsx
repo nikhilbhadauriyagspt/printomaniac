@@ -62,7 +62,7 @@ export default function BestSellers({ products = [], loading = false }) {
             transition={{ delay: 0.2 }}
             className="text-slate-400 font-bold text-xs md:text-sm leading-relaxed max-w-xl"
           >
-            Our most popular precision hardware, engineered for the highest standards of reliability and performance.
+            Our most popular precision printer, engineered for the highest standards of reliability and performance.
           </motion.p>
         </div>
 

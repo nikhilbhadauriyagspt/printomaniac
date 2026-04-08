@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API_BASE_URL from '../config';
 import SEO from '@/components/SEO';
-import { Package, Truck, CheckCircle2, Clock, ChevronRight, ArrowRight, Search, Printer, MapPin, Calendar, ShoppingBag, Layers, Zap, Sparkles } from 'lucide-react';
+import { Package, Truck, CheckCircle2, Clock, ChevronRight, ArrowRight, Search, Printer, MapPin, Calendar, ShoppingBag, Layers, Zap, Sparkles, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -12,6 +12,7 @@ export default function Orders() {
   const [error, setError] = useState(null);
   const [searchEmail, setSearchEmail] = useState('');
   const [searching, setSearching] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem('user'));
@@ -69,7 +70,7 @@ export default function Orders() {
 
   return (
     <div className="bg-white min-h-screen font-jakarta text-slate-900 overflow-x-hidden">
-      <SEO title="Track Orders | Lux Printers" description="Monitor your professional hardware orders and shipment status." />
+      <SEO title="Track Orders | Lux Printers" description="Monitor your professional printer orders and shipment status." />
 
       {/* --- PURE WHITE CENTERED HEADER --- */}
       <section className="pt-28 md:pt-40 pb-16 bg-white border-b border-slate-50">
@@ -180,7 +181,7 @@ export default function Orders() {
                            <div className="h-10 w-[1px] bg-slate-100 hidden md:block" />
                            <div className="flex flex-col items-end">
                               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Unit Value</span>
-                              <span className="text-xl font-black text-slate-900 tracking-tight">${parseFloat(order.total_price).toLocaleString()}</span>
+                              <span className="text-xl font-black text-slate-900 tracking-tight">${parseFloat(order.total_amount || order.total_price || 0).toLocaleString()}</span>
                            </div>
                         </div>
                       </div>
@@ -189,12 +190,6 @@ export default function Orders() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                          {order.items?.map((item, i) => (
                             <div key={i} className="flex items-center gap-5 p-4 bg-slate-50/50 rounded-2xl border border-slate-100 group-hover:bg-white transition-colors">
-                               <div className="h-16 w-16 bg-white border border-slate-100 rounded-xl p-2 shrink-0">
-                                  <img 
-                                    src={item.product?.images ? `/${JSON.parse(item.product.images)[0]}` : "https://via.placeholder.com/100"} 
-                                    alt="" className="w-full h-full object-contain" 
-                                  />
-                               </div>
                                <div className="flex-1 min-w-0">
                                   <h5 className="text-[12px] font-black text-slate-800 uppercase tracking-tight truncate mb-1">{item.product_name}</h5>
                                   <div className="flex items-center gap-3">
@@ -224,8 +219,11 @@ export default function Orders() {
                             </div>
                          </div>
                          <div className="flex items-center sm:justify-end">
-                            <button className="flex items-center gap-2 py-3 px-6 bg-slate-50 hover:bg-slate-900 hover:text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all group/btn">
-                               View Specs <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                            <button 
+                              onClick={() => setSelectedOrder(order)}
+                              className="flex items-center gap-2 py-3 px-6 bg-slate-50 hover:bg-slate-900 hover:text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all group/btn"
+                            >
+                               Order Details <ChevronRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                             </button>
                          </div>
                       </div>
@@ -235,6 +233,121 @@ export default function Orders() {
               </div>
             )}
           </div>
+
+          <AnimatePresence>
+            {selectedOrder && (
+              <>
+                <motion.div 
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  onClick={() => setSelectedOrder(null)}
+                  className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] cursor-pointer"
+                />
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-2xl bg-white rounded-[2.5rem] shadow-2xl z-[101] overflow-hidden flex flex-col"
+                >
+                  {/* Modal Header */}
+                  <div className="p-8 border-b border-slate-50 flex items-center justify-between bg-slate-50/50">
+                    <div>
+                      <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tighter">Order Details</h3>
+                      <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest mt-1">{selectedOrder.order_code || `#${selectedOrder.id}`}</p>
+                    </div>
+                    <button 
+                      onClick={() => setSelectedOrder(null)}
+                      className="h-12 w-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center hover:bg-slate-900 hover:text-white transition-all shadow-sm"
+                    >
+                      <X size={20} />
+                    </button>
+                  </div>
+
+                  <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
+                    {/* Status Tracker */}
+                    <div className="mb-10">
+                       <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Live Status Tracker</h4>
+                       <div className="relative">
+                          {/* Progress Line */}
+                          <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-slate-100" />
+                          
+                          <div className="space-y-8 relative">
+                             {[
+                               { label: 'Order Placed', desc: 'Procurement request received', icon: Package, status: 'completed' },
+                               { label: 'Processing', desc: 'Unit inspection and configuration', icon: Zap, status: selectedOrder.status?.toLowerCase() === 'pending' ? 'current' : 'completed' },
+                               { label: 'Dispatched', desc: 'Handed over to logistics partner', icon: Truck, status: ['shipped', 'delivered'].includes(selectedOrder.status?.toLowerCase()) ? 'completed' : selectedOrder.status?.toLowerCase() === 'processing' ? 'current' : 'pending' },
+                               { label: 'Delivered', desc: 'Unit reached delivery node', icon: CheckCircle2, status: selectedOrder.status?.toLowerCase() === 'delivered' ? 'completed' : selectedOrder.status?.toLowerCase() === 'shipped' ? 'current' : 'pending' }
+                             ].map((step, i) => (
+                               <div key={i} className="flex gap-6">
+                                  <div className={cn(
+                                    "h-12 w-12 rounded-2xl flex items-center justify-center shrink-0 z-10 shadow-sm border transition-all duration-500",
+                                    step.status === 'completed' ? "bg-emerald-500 text-white border-emerald-500" :
+                                    step.status === 'current' ? "bg-blue-600 text-white border-blue-600 animate-pulse" :
+                                    "bg-white text-slate-300 border-slate-100"
+                                  )}>
+                                     <step.icon size={20} />
+                                  </div>
+                                  <div>
+                                     <h5 className={cn("text-sm font-black uppercase tracking-tight", step.status === 'pending' ? "text-slate-300" : "text-slate-900")}>
+                                       {step.label}
+                                     </h5>
+                                     <p className="text-xs font-bold text-slate-400">{step.desc}</p>
+                                  </div>
+                               </div>
+                             ))}
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* Shipping Info */}
+                    <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 mb-8">
+                       <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Delivery Information</h4>
+                       <div className="flex gap-4">
+                          <MapPin size={20} className="text-blue-600 shrink-0" />
+                          <div>
+                             <p className="text-sm font-bold text-slate-900 leading-snug">{selectedOrder.shipping_address}</p>
+                             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Final Destination Node</p>
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* Items */}
+                    <div className="space-y-4">
+                       <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Procured Units</h4>
+                       {selectedOrder.items?.map((item, i) => (
+                         <div key={i} className="flex items-center gap-4 p-4 bg-white border border-slate-100 rounded-2xl">
+                            <div className="flex-1 min-w-0">
+                               <p className="text-sm font-black text-slate-800 uppercase truncate">{item.product_name}</p>
+                               <div className="flex items-center gap-3 mt-1">
+                                  <p className="text-[10px] font-bold text-blue-600">Quantity: {item.quantity}</p>
+                                  <div className="h-1 w-1 rounded-full bg-slate-200" />
+                                  <p className="text-[10px] font-bold text-slate-400">Unit ID: {item.id || 'N/A'}</p>
+                               </div>
+                            </div>
+                            <div className="text-right">
+                               <p className="text-sm font-black text-slate-900">${parseFloat(item.price || 0).toLocaleString()}</p>
+                            </div>
+                         </div>
+                       ))}
+                    </div>
+                  </div>
+
+                  {/* Modal Footer */}
+                  <div className="p-8 border-t border-slate-50 bg-slate-50/30 flex items-center justify-between">
+                     <div className="text-left">
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Total Valuation</p>
+                        <p className="text-2xl font-black text-slate-900 tracking-tighter">${parseFloat(selectedOrder.total_amount || selectedOrder.total_price || 0).toLocaleString()}</p>
+                     </div>
+                     <Link 
+                       to={selectedOrder.items?.[0]?.product?.slug ? `/product/${selectedOrder.items[0].product.slug}` : "/shop"}
+                       className="h-14 px-8 bg-slate-900 text-white rounded-2xl flex items-center justify-center gap-3 font-black text-[11px] uppercase tracking-[2px] hover:bg-blue-600 transition-all shadow-xl active:scale-95"
+                     >
+                       View Unit Specs <ArrowRight size={16} />
+                     </Link>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
 
           <div className="mt-24 pt-12 border-t border-slate-50 flex justify-center">
             <Link to="/shop" className="group inline-flex items-center gap-3 px-10 py-4 bg-white border border-slate-200 text-slate-900 rounded-2xl text-[11px] font-black uppercase tracking-[3px] transition-all hover:bg-slate-900 hover:text-white hover:border-slate-900 shadow-sm active:scale-95">

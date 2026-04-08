@@ -120,7 +120,7 @@ export default function Shop() {
     <div className="bg-white min-h-screen font-jakarta text-slate-900">
       <SEO 
         title="Shop Inventory | Lux Printers" 
-        description="Browse our high-performance inventory of precision hardware."
+        description="Browse our high-performance inventory of precision printer."
       />
 
       {/* --- PURE WHITE HEADER --- */}

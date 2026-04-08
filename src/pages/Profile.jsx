@@ -279,7 +279,7 @@ export default function Profile() {
                           </div>
                           <div className="space-y-1">
                              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Amount</p>
-                             <p className="text-sm font-bold text-slate-900">${parseFloat(order.total_amount).toLocaleString()}</p>
+                             <p className="text-sm font-bold text-slate-900">${parseFloat(order.total_amount || order.total_price || 0).toLocaleString()}</p>
                           </div>
                           <div className={cn(
                             "px-4 py-1.5 rounded-full text-[10px] font-bold border w-fit capitalize",
