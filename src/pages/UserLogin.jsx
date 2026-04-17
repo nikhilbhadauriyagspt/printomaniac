@@ -189,7 +189,7 @@ export default function UserLogin() {
                   </label>
 
                   <Link
-                    to="#"
+                    to="/contact"
                     className="text-[11px] font-semibold text-[#7a4320] hover:underline uppercase tracking-[0.14em]"
                   >
                     Forgot?

@@ -49,30 +49,6 @@ export default function Checkout() {
         phone: user.phone || '',
       }));
     }
-
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        try {
-          const { latitude, longitude } = position.coords;
-          const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
-          );
-          const data = await res.json();
-
-          if (data && data.address) {
-            const addr = data.address;
-            setFormData((prev) => ({
-              ...prev,
-              city: addr.city || addr.town || addr.village || addr.suburb || '',
-              zipCode: addr.postcode || '',
-              address:
-                `${addr.road || ''} ${addr.neighbourhood || addr.suburb || ''}`.trim() ||
-                data.display_name.split(',')[0],
-            }));
-          }
-        } catch (err) {}
-      });
-    }
   }, []);
 
   const handleInputChange = (e) => {

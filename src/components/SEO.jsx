@@ -50,10 +50,10 @@ export default function SEO({ title, description, keywords, schemaType = "Websit
       "description": finalDesc,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "414 SW Adams St",
-        "addressLocality": "Peoria",
-        "addressRegion": "IL",
-        "postalCode": "61602",
+        "streetAddress": "2445 4th Ave S",
+        "addressLocality": "Seattle",
+        "addressRegion": "WA",
+        "postalCode": "98134",
         "addressCountry": "US"
       },
       "contactPoint": {
