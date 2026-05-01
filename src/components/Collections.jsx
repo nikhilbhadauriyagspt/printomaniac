@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 // Using your local asset
-import promoImg from "../assets/bannerr/23.png"; 
+import promoImg from "../assets/bannerr/23.avif"; 
 
 export default function Collections() {
   return (

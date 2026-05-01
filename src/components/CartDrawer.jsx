@@ -1,16 +1,14 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  X,
-  ShoppingBag,
-  Trash2,
-  Plus,
-  Minus,
-  ShieldCheck,
-  Truck,
-  ArrowRight,
-  ShoppingCart,
-} from 'lucide-react';
+import X from 'lucide-react/dist/esm/icons/x';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
+import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
+import Plus from 'lucide-react/dist/esm/icons/plus';
+import Minus from 'lucide-react/dist/esm/icons/minus';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import Truck from 'lucide-react/dist/esm/icons/truck';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import ShoppingCart from 'lucide-react/dist/esm/icons/shopping-cart';
 import { useCart } from '../context/CartContext';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -86,6 +84,7 @@ export default function CartDrawer() {
 
               <button
                 onClick={closeCartDrawer}
+                aria-label="Close cart"
                 className="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center text-gray-400 hover:text-slate-900 transition-colors"
               >
                 <X size={20} />
@@ -137,6 +136,7 @@ export default function CartDrawer() {
                           </h4>
                           <button
                             onClick={() => removeFromCart(item.id)}
+                            aria-label={`Remove ${item.name} from cart`}
                             className="text-gray-300 hover:text-red-500 transition-colors"
                           >
                             <Trash2 size={14} />
@@ -152,6 +152,7 @@ export default function CartDrawer() {
                           <div className="flex items-center bg-gray-50 rounded-xl p-1">
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              aria-label="Decrease quantity"
                               className="w-7 h-7 flex items-center justify-center bg-white rounded-lg shadow-sm text-slate-900 disabled:opacity-30"
                               disabled={item.quantity <= 1}
                             >
@@ -164,6 +165,7 @@ export default function CartDrawer() {
 
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              aria-label="Increase quantity"
                               className="w-7 h-7 flex items-center justify-center bg-white rounded-lg shadow-sm text-slate-900"
                             >
                               <Plus size={10} />

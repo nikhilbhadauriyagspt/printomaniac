@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Search, Download, Trash2, Loader2, Calendar, UserCheck } from 'lucide-react';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import Search from 'lucide-react/dist/esm/icons/search';
+import Download from 'lucide-react/dist/esm/icons/download';
+import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
+import Calendar from 'lucide-react/dist/esm/icons/calendar';
+import UserCheck from 'lucide-react/dist/esm/icons/user-check';
 import { motion } from 'framer-motion';
 import API_BASE_URL from '../../config';
 

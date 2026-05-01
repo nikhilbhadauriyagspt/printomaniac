@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import API_BASE_URL from '../config';
 import SEO from '@/components/SEO';
-import {
-  Package,
-  ArrowRight,
-  X,
-  ChevronRight,
-  ShoppingBag,
-  Clock,
-  CheckCircle2,
-  Truck,
-  HelpCircle,
-} from 'lucide-react';
+import Package from 'lucide-react/dist/esm/icons/package';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import X from 'lucide-react/dist/esm/icons/x';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
+import Clock from 'lucide-react/dist/esm/icons/clock';
+import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
+import Truck from 'lucide-react/dist/esm/icons/truck';
+import HelpCircle from 'lucide-react/dist/esm/icons/help-circle';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -21,8 +19,32 @@ export default function Orders() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [trackEmail, setTrackEmail] = useState('');
+  const [isTrackLoading, setIsTrackLoading] = useState(false);
 
   const user = JSON.parse(localStorage.getItem('user'));
+
+  const handleQuickTrack = async (e) => {
+    e.preventDefault();
+    if (!trackEmail) return;
+    setIsTrackLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`${API_BASE_URL}/orders?email=${trackEmail}`);
+      const data = await res.json();
+      if (data.status === 'success' && data.data.length > 0) {
+        setOrders(data.data);
+      } else {
+        setError('No orders found for this email address.');
+        setOrders([]);
+      }
+    } catch {
+      setError('Failed to fetch orders. Please try again.');
+    } finally {
+      setIsTrackLoading(false);
+      setLoading(false);
+    }
+  };
 
   const fetchOrders = async () => {
     setLoading(true);
@@ -72,7 +94,40 @@ export default function Orders() {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-32 pb-20 font-['Poppins'] text-slate-900">
-      <SEO title="Order History | US Printer Store" />
+      <SEO title="Order History | Printo Maniac" />
+
+      <div className="max-w-[1200px] mx-auto px-4 mb-8">
+        <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-800/20 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
+          
+          <div className="relative z-10 max-w-2xl">
+            <h2 className="text-[32px] md:text-[42px] font-black leading-tight mb-4 tracking-tight">
+              Track Your <span className="text-blue-400 italic">Order.</span>
+            </h2>
+            <p className="text-slate-400 text-[15px] font-medium mb-10 leading-relaxed">
+              Enter your Order ID and the email address used during checkout to get real-time updates on your delivery status.
+            </p>
+
+            <form onSubmit={handleQuickTrack} className="flex flex-col sm:flex-row gap-4">
+              <input
+                required
+                type="email"
+                placeholder="Enter your registered email address"
+                value={trackEmail}
+                onChange={(e) => setTrackEmail(e.target.value)}
+                className="flex-1 h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-[13px] font-bold tracking-widest outline-none focus:border-blue-400 transition-all placeholder:text-slate-600"
+              />
+              <button
+                disabled={isTrackLoading}
+                className="h-14 px-10 bg-blue-800 text-white rounded-2xl font-black text-[13px] uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-900/20 flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50"
+              >
+                {isTrackLoading ? 'Searching...' : 'Find My Orders'}
+                <ArrowRight size={18} />
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
 
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden">

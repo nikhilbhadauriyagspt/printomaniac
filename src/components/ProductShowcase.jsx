@@ -1,23 +1,43 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import ShoppingCart from 'lucide-react/dist/esm/icons/shopping-cart';
+import Heart from 'lucide-react/dist/esm/icons/heart';
+import RefreshCcw from 'lucide-react/dist/esm/icons/refresh-ccw';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 import { useCart } from '../context/CartContext';
+import { cn } from '../lib/utils';
 
-export default function ProductShowcase({ products = [], arrivals = [], loading = false }) {
-  const { addToCart, openCartDrawer } = useCart();
+// left side temporary image
+import showcaseBanner from '../assets/bannerr/bannn1.avif';
 
-  // Use all products passed from parent up to 18
-  const featuredProducts = products.slice(0, 18);
+export default function ProductShowcase({
+  products = [],
+  arrivals = [],
+  loading = false,
+}) {
+  const { addToCart, openCartDrawer, toggleWishlist, isInWishlist } = useCart();
+
+  const featuredProducts = products.slice(0, 9);
 
   const getImagePath = (images) => {
     if (!images) return 'https://via.placeholder.com/400x400?text=Product';
+
     try {
       const parsed = typeof images === 'string' ? JSON.parse(images) : images;
       const img = Array.isArray(parsed) ? parsed[0] : parsed;
-      return img.startsWith('http') ? img : `/${img}`;
+      if (!img) return 'https://via.placeholder.com/400x400?text=Product';
+      return img.startsWith('http') ? img : `/${img.replace(/\\/g, '/')}`;
     } catch (e) {
-      return images.startsWith('http') ? images : `/${images}`;
+      return typeof images === 'string' && images.startsWith('http')
+        ? images
+        : `/${String(images).replace(/\\/g, '/')}`;
     }
+  };
+
+  const getThumbnailPath = (images) => {
+    const original = getImagePath(images);
+    if (original.includes('placeholder') || original.startsWith('http')) return original;
+    return original.replace(/\.png$/, '-300x300.png');
   };
 
   const handleAddToCart = (e, product) => {
@@ -27,72 +47,143 @@ export default function ProductShowcase({ products = [], arrivals = [], loading 
     openCartDrawer();
   };
 
+  const handleToggleWishlist = (e, product) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleWishlist(product);
+  };
+
   return (
-    <section className="w-full bg-white py-16 px-4 md:px-6 lg:px-8 border-t border-gray-100">
-      <div className="max-w-[1820px] mx-auto">
-        <div className="max-w-2xl mb-10">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="h-[2px] w-8 bg-blue-800"></span>
-              <span className="text-blue-800 text-[13px] uppercase tracking-[0.2em]">Our products</span>
-            </div>
-            <h2 className="text-[38px] md:text-[40px]  text-slate-900 leading-[1.1]">
-              Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-indigo-800">Products</span>
-            </h2>
-          </div>
+    <section className="w-full  py-8 md:py-10">
+      <div className="max-w-[1950px] mx-auto px-4 md:px-6 lg:px-8">
+        <div className="bg-white rounded-[8px] p-3 md:p-4 lg:p-5">
+          <div className="grid grid-cols-1 xl:grid-cols-[420px_minmax(0,1fr)] gap-5">
+            {/* LEFT SIDE BANNER */}
+            <div className="relative overflow-hidden rounded-[8px] min-h-[320px] md:min-h-[420px] xl:min-h-full bg-[#d9d9d9]">
+              <img
+                src={showcaseBanner}
+                alt="Showcase Banner"
+                width="420"
+                height="600"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
 
-        {/* Product Grid */}
-        {loading ? (
-          <div className="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-px bg-gray-100 border border-gray-100">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <div key={i} className="aspect-[3/4] bg-white animate-pulse" />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-px bg-gray-200 border border-gray-200">
-            {featuredProducts.map((p, i) => (
-              <div
-                key={p.id || i}
-                className="group relative bg-white transition-colors duration-300 flex flex-col h-full"
-              >
-                <Link to={`/product/${p.slug}`} className="block p-4 flex-grow">
-                  {/* Image Container - Smaller padding */}
-                  <div className="aspect-square flex items-center justify-center mb-4 overflow-hidden">
-                    <img
-                      src={getImagePath(p.images)}
-                      alt={p.name}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
+              <div className="absolute inset-0 " />
 
-                  {/* Content - Compact Text */}
-                  <div className="flex flex-col">
-                    
-                    <h3 className="text-[13px] font-medium text-slate-800 leading-snug mb-2 line-clamp-2 h-8">
-                      {p.name}
-                    </h3>
-                    
-                    <div className="flex items-center gap-2 mt-auto">
-                      <span className="text-[14px] font-bold text-slate-900">${p.price}</span>
-                      {p.original_price && (
-                        <span className="text-[11px] text-gray-400 line-through">${p.original_price}</span>
-                      )}
-                    </div>
-                  </div>
-                </Link>
+              <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-7">
+                <div>
+                 
 
-                {/* Smaller Add to Cart Button */}
-                <div className="px-4 pb-4">
-                  <button
-                    onClick={(e) => handleAddToCart(e, p)}
-                    className="w-full h-8 border border-slate-900 text-slate-900 text-[10px] font-bold uppercase tracking-wider hover:bg-slate-900 hover:text-white transition-colors duration-300"
-                  >
-                    Add to Cart
-                  </button>
+                  
+
+                  
+                </div>
+
+                <div>
+                 
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* RIGHT SIDE PRODUCTS */}
+            <div className="min-w-0">
+              <div className="flex items-center justify-between mb-4 px-1">
+                <h3 className="text-[22px] md:text-[28px] font-semibold text-slate-800">
+                  Printers
+                </h3>
+
+                <Link
+                  to="/shop"
+                  className="inline-flex items-center gap-2 text-[16px] text-slate-600 hover:text-slate-900 transition-colors"
+                >
+                  See All
+                  <ArrowRight size={18} />
+                </Link>
+              </div>
+
+              {loading ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {Array.from({ length: 9 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="h-[126px] rounded-[8px] bg-white animate-pulse border border-[#e7e7e7]"
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {featuredProducts.map((p, i) => (
+                    <Link
+                      to={`/product/${p.slug}`}
+                      key={p.id || i}
+                      className="group bg-white border border-[#e6e6e6] rounded-[8px] p-3 md:p-4 hover:shadow-sm transition-all duration-300"
+                    >
+                      <div className="flex items-start gap-4">
+                        {/* IMAGE */}
+                        <div className="w-[88px] h-[88px] md:w-[96px] md:h-[96px] rounded-[6px] bg-[#f6f6f6] flex items-center justify-center overflow-hidden shrink-0">
+                          <img
+                            src={getThumbnailPath(p.images)}
+                            onError={(e) => { e.target.onerror = null; e.target.src = getImagePath(p.images); }}
+                            alt={p.name}
+                            width="96"
+                            height="96"
+                            loading={i < 3 ? "eager" : "lazy"}
+                            fetchPriority={i === 0 ? "high" : "auto"}
+                            decoding="async"
+                            className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+
+                        {/* CONTENT */}
+                        <div className="min-w-0 flex-1">
+                          <h4 className="text-[16px] md:text-[17px] font-medium text-slate-700 leading-snug line-clamp-2 mb-2">
+                            {p.name}
+                          </h4>
+
+                          <div className="flex items-center gap-2 mb-3 flex-wrap">
+                            <span className="text-[26px] leading-none font-semibold text-slate-900">
+                              ${p.price}
+                            </span>
+
+                            {p.original_price && (
+                              <span className="text-[16px] text-red-400 line-through">
+                                ${p.original_price}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="flex items-center gap-5 text-slate-400 mt-2">
+                            <button
+                              onClick={(e) => handleAddToCart(e, p)}
+                              aria-label="Add to cart"
+                              className="hover:text-blue-800 transition-colors w-11 h-11 flex items-center justify-center bg-slate-50 rounded-full"
+                            >
+                              <ShoppingCart size={18} />
+                            </button>
+
+                            <button
+                              onClick={(e) => handleToggleWishlist(e, p)}
+                              aria-label="Add to wishlist"
+                              className={cn(
+                                "transition-colors w-11 h-11 flex items-center justify-center bg-slate-50 rounded-full",
+                                isInWishlist(p.id) ? "text-red-500" : "hover:text-blue-800"
+                              )}
+                            >
+                              <Heart 
+                                size={18} 
+                                fill={isInWishlist(p.id) ? "currentColor" : "none"} 
+                              />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

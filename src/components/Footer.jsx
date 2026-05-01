@@ -1,40 +1,31 @@
 import { Link } from 'react-router-dom';
-import {
-  Mail,
-  MapPin,
-  Loader2,
-  ShieldCheck,
-  CreditCard,
-  ChevronRight,
-} from 'lucide-react';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import CreditCard from 'lucide-react/dist/esm/icons/credit-card';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import API_BASE_URL from '../config';
 
+import { useGlobal } from '../context/GlobalContext';
+
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
   const { showToast } = useCart();
+  const { categories: globalCategories } = useGlobal();
 
-  useEffect(() => {
-    fetch(`${API_BASE_URL}/categories`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 'success') {
-          const flat = data.data.flatMap((cat) => [cat, ...(cat.children || [])]);
-          const unique = Array.from(new Map(flat.map((item) => [item.slug, item])).values())
-            .filter(
-              (cat) =>
-                !cat.name.toLowerCase().includes('laptop') &&
-                !cat.slug.toLowerCase().includes('laptop') &&
-                !cat.name.toLowerCase().includes('chromebook')
-            )
-            .slice(0, 5);
-          setCategories(unique);
-        }
-      });
-  }, []);
+  // Normalize and filter categories for footer
+  const categories = globalCategories.flatMap(cat => [cat, ...(cat.children || [])])
+    .filter(cat => 
+      !cat.name.toLowerCase().includes('laptop') && 
+      !cat.slug.toLowerCase().includes('laptop') &&
+      !cat.name.toLowerCase().includes('chromebook')
+    )
+    .filter((v, i, a) => a.findIndex(t => t.slug === v.slug) === i)
+    .slice(0, 5);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -62,10 +53,11 @@ export default function Footer() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Shop All', path: '/shop' },
+    { name: 'Shop', path: '/shop' },
     { name: 'Track Order', path: '/orders' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' }, 
+    { name: 'FAQ', path: '/faq' },
   ];
 
   const legalLinks = [
@@ -77,110 +69,123 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-white text-slate-900 pt-20 pb-6 border-t border-gray-100 font-['Poppins']">
-      <div className="max-w-[1820px] mx-auto px-4 md:px-6">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16">
-          {/* Brand Info */}
-          <div className="lg:col-span-4 space-y-8">
-            <Link to="/" className="inline-block">
-              <img src="/logo/logo.png" alt="Logo" className="h-12 object-contain" />
-            </Link>
-            <p className="text-gray-500 text-[15px] leading-relaxed max-w-[400px]">
-              We provide the most reliable printing solutions for home and office. 
-              Our mission is to simplify your printing experience with premium products.
-            </p>
-          </div>
+    <footer className="w-full bg-white text-slate-900 pt-24 pb-8 border-t border-slate-100 relative overflow-hidden">
+      {/* Decorative Top Accent */}
+      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-800 via-blue-400 to-blue-800 opacity-80" />
 
-          {/* Quick Links */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[13px] font-black uppercase tracking-[0.2em] text-slate-900 mb-8">Navigation</h4>
-            <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <Link to={link.path} className="text-gray-500 hover:text-blue-800 text-[14px] font-medium transition-colors">{link.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Categories */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[13px] font-black uppercase tracking-[0.2em] text-slate-900 mb-8">Collections</h4>
-            <ul className="space-y-4">
-              {categories.map((cat) => (
-                <li key={cat.id}>
-                  <Link to={`/shop?category=${cat.slug}`} className="text-gray-500 hover:text-blue-800 text-[14px] font-medium transition-colors">{cat.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter & Contact */}
+      <div className="max-w-[1820px] mx-auto px-6 md:px-10 lg:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-y-16 lg:gap-x-20 pb-20">
+          
+          {/* --- BRAND COLUMN --- */}
           <div className="lg:col-span-4 space-y-10">
+            <Link to="/" className="inline-block">
+              <img 
+                src="/logo/logo.png" 
+                alt="Logo" 
+                width="205" 
+                height="56" 
+                className="h-14 w-auto object-contain" 
+              />
+            </Link>
+            <div className="space-y-6">
+              <p className="text-slate-500 text-[15px] font-medium leading-relaxed max-w-[300px]">
+We help small businesses and home offices get printing right without the usual hassle. Whether it’s everyday documents or important work, you can count on clean, sharp results every time you print.
+              </p>
+             
+            </div>
+          </div>
+
+          {/* --- LINKS COLUMNS --- */}
+          <div className="lg:col-span-5 grid grid-cols-2 gap-10">
             <div>
-              <h4 className="text-[13px] font-black uppercase tracking-[0.2em] text-slate-900 mb-6">Stay Updated</h4>
-              <form onSubmit={handleSubscribe} className="flex gap-2">
+              <h3 className="text-[11px] font-black uppercase tracking-[0.25em] text-blue-800 mb-10 flex items-center gap-3">
+                <div className="w-6 h-px bg-blue-800" /> Navigation
+              </h3>
+              <ul className="space-y-4">
+                {navLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link to={link.path} className="text-slate-900 text-[13px] font-bold uppercase tracking-widest">{link.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-[11px] font-black uppercase tracking-[0.25em] text-blue-800 mb-10 flex items-center gap-3">
+                <div className="w-6 h-px bg-blue-800" /> Categories
+              </h3>
+              <ul className="space-y-4 min-h-[200px]">
+                {categories.map((cat) => (
+                  <li key={cat.id}>
+                    <Link to={`/shop?category=${cat.slug}`} className="text-slate-900 text-[13px] font-bold uppercase tracking-widest">{cat.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* --- UTILITY / NEWSLETTER COLUMN --- */}
+          <div className="lg:col-span-3">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.25em] text-blue-800 mb-10 flex items-center gap-3">
+              <div className="w-6 h-px bg-blue-800" /> Newsletter
+            </h3>
+            <div className="bg-slate-50 border border-slate-100 p-8 rounded-[2.5rem]">
+              <p className="text-[13px] font-bold text-slate-900 uppercase tracking-widest mb-6">Join our network</p>
+              <form onSubmit={handleSubscribe} className="space-y-3">
                 <input
                   required
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="flex-1 h-12 px-5 bg-gray-50 border border-gray-100 rounded-xl text-[14px] outline-none focus:border-blue-800 transition-all"
+                  placeholder="Email"
+                  className="w-full h-14 px-6 bg-white border border-slate-200 rounded-2xl text-[12px] font-bold tracking-widest outline-none focus:border-blue-800"
                 />
                 <button
                   disabled={loading}
-                  className="h-12 px-6 bg-blue-800 text-white text-[12px] font-bold uppercase tracking-wider rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-100"
+                  aria-label={loading ? "Subscribing..." : "Subscribe Now"}
+                  className="w-full h-14 bg-blue-800 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl active:scale-95 transition-transform"
                 >
-                  {loading ? <Loader2 className="animate-spin" size={16} /> : 'Join'}
+                  {loading ? <Loader2 className="animate-spin mx-auto" size={16} /> : 'Subscribe Now'}
                 </button>
               </form>
             </div>
-
-            <div className="space-y-4 pt-4 border-t border-gray-50">
-              <div className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-800 flex items-center justify-center transition-all group-hover:bg-blue-800 group-hover:text-white">
-                  <Mail size={18} />
-                </div>
-                <a href="mailto:info@usprinterstore.shop" className="text-[14px] font-bold text-slate-900 hover:text-blue-800 transition-colors">info@usprinterstore.shop</a>
-              </div>
-              <div className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-800 flex items-center justify-center transition-all group-hover:bg-blue-800 group-hover:text-white">
-                  <MapPin size={18} />
-                </div>
-                <p className="text-[14px] font-bold text-slate-900">4352 13th Ave S, Fargo, ND 58103, USA</p>
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 pb-4 border-t border-gray-50 flex flex-col lg:flex-row justify-between items-center gap-8">
-          <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3">
-            <p className="text-[12px]  text-gray-400">© {new Date().getFullYear()} US Printer Store.All rights reserved.</p>
+        {/* --- CONTACT STRIP --- */}
+        <div className=" border-t border-slate-50 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div className="flex items-center gap-5">
+              <div className="h-12 w-12 bg-slate-50 border border-slate-100 flex items-center justify-center rounded-2xl text-blue-800"><Mail size={20} /></div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Electronic Mail</p>
+                <a href="mailto:info@printomaniac.com" className="text-[14px] font-bold text-slate-900">info@printomaniac.com</a>
+              </div>
+           </div>
+           <div className="flex items-center gap-5 lg:justify-center">
+              <div className="h-12 w-12 bg-slate-50 border border-slate-100 flex items-center justify-center rounded-2xl text-blue-800"><MapPin size={20} /></div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Business HQ</p>
+                <p className="text-[14px] font-bold text-slate-900">4352 13th Ave S, Fargo, ND 58103</p>
+              </div>
+           </div>
+           <div className="flex items-center gap-5 lg:justify-end">
+              <div className="flex items-center gap-4 grayscale opacity-80">
+                 <img src="/assets/paypal.svg" alt="PayPal" width="60" height="16" className="h-4 w-auto" />
+                 <div className="w-px h-6 bg-slate-200" />
+                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-700">Encrypted Payments</p>
+              </div>
+           </div>
+        </div>
+
+        {/* --- LEGAL FOOTER --- */}
+        <div className="pt-10 border-t border-slate-50 flex flex-col xl:flex-row justify-between items-center gap-10">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-10">
+            <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">© {new Date().getFullYear()} Printo Maniac. All rights reserved. </p>
             {legalLinks.map((link) => (
-              <Link key={link.name} to={link.path} className="text-[12px] font-bold text-gray-400 hover:text-blue-800 transition-colors">{link.name}</Link>
+              <Link key={link.name} to={link.path} className="text-[11px] font-bold text-slate-500 uppercase tracking-widest hover:text-blue-700 transition-colors">{link.name}</Link>
             ))}
           </div>
-
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-2">
-              <ShieldCheck size={18} className="text-blue-800" />
-              <span className="text-[11px] font-black text-slate-900 uppercase tracking-widest">Secure Checkout</span>
-            </div>
-            <div className="flex items-center gap-4 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4" />
-              <CreditCard size={20} />
-            </div>
-          </div>
-        </div>
-
-        {/* Disclaimer Bar at absolute bottom */}
-        <div className="pt-4 mt-4 border-t border-gray-50">
-           <p className="text-[10px] font-bold text-gray-400 text-center uppercase tracking-[0.2em] leading-relaxed">
-             Disclaimer - For Informational only. No software installation or distribution.
-           </p>
+          
+         
         </div>
       </div>
     </footer>

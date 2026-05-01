@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, Info, XCircle, X } from 'lucide-react';
+import CheckCircle from 'lucide-react/dist/esm/icons/check-circle';
+import Info from 'lucide-react/dist/esm/icons/info';
+import XCircle from 'lucide-react/dist/esm/icons/x-circle';
+import X from 'lucide-react/dist/esm/icons/x';
 import { useCart } from '../context/CartContext';
 
 export default function Toast() {
@@ -26,7 +29,7 @@ export default function Toast() {
 
             <div className={`h-10 w-10 rounded-xl flex items-center justify-center shrink-0 ${
               toast.type === 'success' ? 'bg-emerald-500/20 text-emerald-400' : 
-              toast.type === 'info' ? 'bg-blue-500/20 text-blue-400' : 'bg-red-500/20 text-red-400'
+              toast.type === 'info' ? 'bg-blue-500/20 text-blue-400' : 'bg-red-500/20 text-blue-800'
             }`}>
               {toast.type === 'success' ? <CheckCircle size={20} /> : 
                toast.type === 'info' ? <Info size={20} /> : <XCircle size={20} />}

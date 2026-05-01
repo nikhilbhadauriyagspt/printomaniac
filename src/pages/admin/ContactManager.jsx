@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import {
-  MessageCircle,
-  Mail,
-  Phone,
-  Clock,
-  CheckCircle,
-  Eye,
-  X,
-  Search,
-  Loader2,
-  Trash2
-} from 'lucide-react';
+import MessageCircle from 'lucide-react/dist/esm/icons/message-circle';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import Phone from 'lucide-react/dist/esm/icons/phone';
+import Clock from 'lucide-react/dist/esm/icons/clock';
+import CheckCircle from 'lucide-react/dist/esm/icons/check-circle';
+import Eye from 'lucide-react/dist/esm/icons/eye';
+import X from 'lucide-react/dist/esm/icons/x';
+import Search from 'lucide-react/dist/esm/icons/search';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
+import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
 import { motion, AnimatePresence } from 'framer-motion';
 import API_BASE_URL from '../../config';
 

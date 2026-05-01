@@ -10,8 +10,8 @@ export default function CookiePolicy() {
       lastUpdated="April 21, 2026"
     >
       <p className="lead">
-        This cookie policy explains howUS Printer Store
-        ("company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://usprinterstore.shop/">https://usprinterstore.shop/</a>
+        This cookie policy explains howPrinto Maniac
+        ("company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://printomaniac.com/">https://printomaniac.com/</a>
       </p>
       <p>
         This policy should be read together with our <Link to="/privacy-policy">Privacy policy</Link> and <Link to="/terms-and-conditions">Terms and conditions</Link>.
@@ -80,7 +80,7 @@ export default function CookiePolicy() {
         We do not sell personal information. If you have any concerns regarding how your data is shared for advertising, you may exercise your rights by:
       </p>
       <ul>
-        <li>Emailing: <a href="mailto:info@usprinterstore.shop">info@usprinterstore.shop</a></li>
+        <li>Emailing: <a href="mailto:info@printomaniac.com">info@printomaniac.com</a></li>
         <li>Visiting: <Link to="/contact">Contact us</Link></li>
       </ul>
 
@@ -89,9 +89,9 @@ export default function CookiePolicy() {
       <p>If you have any questions regarding this cookie policy, please contact us:</p>
       <div className="bg-gray-50 p-8 rounded-xl border border-gray-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-1">
-          <p className="text-slate-900">US Printer Store</p>
+          <p className="text-slate-900">Printo Maniac</p>
           <p>4352 13th Ave S, Fargo, ND 58103, USA</p>
-          <p className="pt-4 text-black font-bold">info@usprinterstore.shop</p>
+          <p className="pt-4 text-black font-bold">info@printomaniac.com</p>
         </address>
       </div>
     </PolicyLayout>

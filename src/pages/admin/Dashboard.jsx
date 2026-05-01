@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Package, Users, ShoppingCart, AlertTriangle } from 'lucide-react';
+import Package from 'lucide-react/dist/esm/icons/package';
+import Users from 'lucide-react/dist/esm/icons/users';
+import ShoppingCart from 'lucide-react/dist/esm/icons/shopping-cart';
+import AlertTriangle from 'lucide-react/dist/esm/icons/alert-triangle';
 import API_BASE_URL from '../../config';
 
 export default function Dashboard() {

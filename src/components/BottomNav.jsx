@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Search, ShoppingBag, Heart, User } from 'lucide-react';
+import Home from 'lucide-react/dist/esm/icons/home';
+import Search from 'lucide-react/dist/esm/icons/search';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
+import Heart from 'lucide-react/dist/esm/icons/heart';
+import User from 'lucide-react/dist/esm/icons/user';
 import { useCart } from '../context/CartContext';
 import { motion } from 'framer-motion';
 
@@ -30,10 +34,10 @@ export default function BottomNav() {
                 onClick={item.onClick}
                 className="flex flex-col items-center justify-center gap-1.5 w-full active:scale-90 transition-transform"
               >
-                <div className="relative text-slate-400">
+                <div className="relative text-slate-500">
                   <Icon size={22} strokeWidth={2} />
                 </div>
-                <span className="text-[10px] font-medium text-slate-400">
+                <span className="text-[10px] font-medium text-slate-500">
                   {item.name}
                 </span>
               </button>
@@ -46,7 +50,7 @@ export default function BottomNav() {
               to={item.path}
               className="flex flex-col items-center justify-center gap-1.5 w-full relative group active:scale-90 transition-transform"
             >
-              <div className={`relative transition-all duration-300 ${isActive ? 'text-black' : 'text-slate-400'}`}>
+              <div className={`relative transition-all duration-300 ${isActive ? 'text-black' : 'text-slate-500'}`}>
                 <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
                 {item.name === 'Store' && cartCount > 0 && (
                   <span className="absolute -top-2 -right-2 h-[18px] w-[18px] bg-black text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white shadow-lg shadow-blue-100">
@@ -60,7 +64,7 @@ export default function BottomNav() {
                   />
                 )}
               </div>
-              <span className={`text-[10px] font-medium transition-colors duration-300 ${isActive ? 'text-black' : 'text-slate-500'}`}>
+              <span className={`text-[10px] font-medium transition-colors duration-300 ${isActive ? 'text-black' : 'text-slate-600'}`}>
                 {item.name}
               </span>
             </Link>

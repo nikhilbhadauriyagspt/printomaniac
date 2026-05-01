@@ -2,7 +2,7 @@ import React from 'react';
 import PolicyLayout from '../layouts/PolicyLayout';
 
 export default function PrivacyPolicy() {
-  const email = "info@usprinterstore.shop";
+  const email = "info@printomaniac.com";
   const emailLink = <a href={`mailto:${email}`} className="hover:underline text-black">{email}</a>;
 
   return (
@@ -12,11 +12,11 @@ export default function PrivacyPolicy() {
       lastUpdated="April 21, 2026"
     >
       <p className="lead">
-        This Privacy Notice forUS Printer Store ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you:
+        This Privacy Notice forPrinto Maniac ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you:
       </p>
       <ul>
-        <li>Visit our website at <a href="https://usprinterstore.shop/">http://usprinterstore.shop/</a> or any website of ours that links to this Privacy Notice</li>
-        <li>Use Printers, Consumables & Accessories.US Printer Store is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands.</li>
+        <li>Visit our website at <a href="https://printomaniac.com/">http://printomaniac.com/</a> or any website of ours that links to this Privacy Notice</li>
+        <li>Use Printers, Consumables & Accessories.Printo Maniac is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands.</li>
         <li>Engage with us in other related ways, including any marketing or events</li>
       </ul>
       <p>
@@ -119,7 +119,7 @@ export default function PrivacyPolicy() {
       <p>We may use cookies and similar tracking technologies (like web beacons and pixels) to gather information when you interact with our Services. Some online tracking technologies help us maintain the security of our Services and your account, prevent crashes, fix bugs, save your preferences, and assist with basic site functions.</p>
       <p>We also permit third parties and service providers to use online tracking technologies on our Services for analytics and advertising, including to help manage and display advertisements, to tailor advertisements to your interests, or to send abandoned shopping cart reminders. The third parties and service providers use their technology to provide advertising about products and services tailored to your interests which may appear either on our Services or on other websites.</p>
       <p>To the extent these online tracking technologies are deemed to be a "sale"/"sharing" (which includes targeted advertising, as defined under the applicable laws) under applicable US state laws, you can opt out of these online tracking technologies by submitting a request as described below under section "DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?"</p>
-      <p>Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice: <a href="https://usprinterstore.shop/cookie-policy">https://usprinterstore.shop/cookie-policy</a>.</p>
+      <p>Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice: <a href="https://printomaniac.com/cookie-policy">https://printomaniac.com/cookie-policy</a>.</p>
       <h3>Google Analytics</h3>
       <p>We may share your information with Google Analytics to track and analyze the use of the Services. The Google Analytics Advertising Features that we may use include: Google Display Network Impressions Reporting and Google Analytics Demographics and Interests Reporting. To opt out of being tracked by Google Analytics across the Services, visit <a href="https://tools.google.com/dlpage/gaoptout">https://tools.google.com/dlpage/gaoptout</a>. You can opt out of Google Analytics Advertising Features through Ads Settings and Ad Settings for mobile apps. Other opt out means include <a href="http://optout.networkadvertising.org/">http://optout.networkadvertising.org/</a>. For more information on the privacy practices of Google, please visit the Google Privacy & Terms page.</p>
 
@@ -148,7 +148,7 @@ export default function PrivacyPolicy() {
         <li>Contact us using the contact information provided.</li>
       </ul>
       <p>Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, we may retain some information in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our legal terms and/or comply with applicable legal requirements.</p>
-      <p><strong>Cookies and similar technologies:</strong> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services. For further information, please see our Cookie Notice: <a href="https://usprinterstore.shop/cookie-policy">https://usprinterstore.shop/cookie-policy</a>.</p>
+      <p><strong>Cookies and similar technologies:</strong> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services. For further information, please see our Cookie Notice: <a href="https://printomaniac.com/cookie-policy">https://printomaniac.com/cookie-policy</a>.</p>
       <p>If you have questions or comments about your privacy rights, you may email us at {emailLink}.</p>
 
       <h2 className="text-xl font-bold text-slate-900">10. Controls for do-not-track features</h2>
@@ -265,7 +265,7 @@ export default function PrivacyPolicy() {
         <li>Right to know know the categories of personal data that we have sold or shared (as permitted by applicable law, including the privacy law in Minnesota)</li>
         <li>Right to opt out of the processing of your personal data for profiling in furtherance of decisions that produce legal or similarly significant effects (as permitted by applicable law, including the privacy law in Minnesota)</li>
       </ul>
-      <p>To exercise any of these rights, please contact us by {emailLink} or by visiting <a href="https://usprinterstore.shop/contact">https://usprinterstore.shop/contact</a>.</p>
+      <p>To exercise any of these rights, please contact us by {emailLink} or by visiting <a href="https://printomaniac.com/contact">https://printomaniac.com/contact</a>.</p>
       <h3>Appeals</h3>
       <p>If we decline to take action regarding your request, you may appeal our decision by emailing us at {emailLink}. We will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may submit a complaint to your state attorney general.</p>
 
@@ -277,7 +277,7 @@ export default function PrivacyPolicy() {
       <p>If you have questions or comments about this notice, you may email us at {emailLink} or contact us by post at:</p>
       <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed">
-         US Printer Store <br/>
+         Printo Maniac <br/>
           4352 13th Ave S, Fargo, ND 58103, USA
         </address>
       </div>

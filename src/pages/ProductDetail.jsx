@@ -2,20 +2,18 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { useCart } from '../context/CartContext';
-import {
-  Heart,
-  ChevronRight,
-  Truck,
-  ShieldCheck,
-  RefreshCcw,
-  Loader2,
-  Plus,
-  Minus,
-  CheckCircle,
-  ShoppingBag,
-  ArrowRight,
-  LayoutGrid,
-} from 'lucide-react';
+import Heart from 'lucide-react/dist/esm/icons/heart';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
+import Truck from 'lucide-react/dist/esm/icons/truck';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import RefreshCcw from 'lucide-react/dist/esm/icons/refresh-ccw';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
+import Plus from 'lucide-react/dist/esm/icons/plus';
+import Minus from 'lucide-react/dist/esm/icons/minus';
+import CheckCircle from 'lucide-react/dist/esm/icons/check-circle';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import LayoutGrid from 'lucide-react/dist/esm/icons/layout-grid';
 import { motion, AnimatePresence } from 'framer-motion';
 import API_BASE_URL from '../config';
 import { cn } from '../lib/utils';
@@ -122,27 +120,30 @@ export default function ProductDetail() {
     images.length > 0 ? images[activeImage] : 'https://via.placeholder.com/600x600?text=No+Image';
 
   return (
-    <div className="bg-white font-['Poppins'] text-slate-900 pt-32 pb-20">
+    <div className="bg-[#fcfdfe] min-h-screen pt-28 pb-20">
       <SEO
         title={`${product.name} | US Printer Store`}
         description={product.description?.substring(0, 160)}
       />
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
-        {/* Breadcrumb - Minimal */}
-        <div className="flex items-center gap-3 text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-10 overflow-hidden whitespace-nowrap">
+      <div className="max-w-[1820px] mx-auto px-6 md:px-10 lg:px-16">
+        {/* --- MINIMAL BREADCRUMB --- */}
+        <div className="flex items-center gap-2 text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-10 overflow-hidden whitespace-nowrap">
           <Link to="/" className="hover:text-blue-800 transition-colors shrink-0">Home</Link>
-          <ChevronRight size={12} className="shrink-0" />
-          <Link to="/shop" className="hover:text-blue-800 transition-colors shrink-0">Shop</Link>
-          <ChevronRight size={12} className="shrink-0" />
-          <span className="text-slate-900 truncate">{product.name}</span>
+          <ChevronRight size={12} className="shrink-0 text-slate-400" />
+          <Link to="/shop" className="hover:text-blue-800 transition-colors shrink-0">Catalog</Link>
+          <ChevronRight size={12} className="shrink-0 text-slate-400" />
+          <span className="text-blue-800 truncate">{product.name}</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Side: Gallery */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          
+          {/* --- LEFT: GALLERY --- */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="relative aspect-[4/3] md:aspect-square bg-white rounded-[2.5rem] border border-gray-100 overflow-hidden flex items-center justify-center p-8 md:p-12 lg:p-20">
-              {/* Main Image */}
+            <div className="relative aspect-square bg-white rounded-[3rem] border border-slate-100 flex items-center justify-center p-12 md:p-20 overflow-hidden group">
+              {/* Soft Blue Glow */}
+              <div className="absolute inset-0 bg-blue-50/30 rounded-full blur-[80px] scale-75 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeImage}
@@ -152,36 +153,37 @@ export default function ProductDetail() {
                   transition={{ duration: 0.4 }}
                   src={mainImage}
                   alt={product.name}
-                  className="max-h-[85%] max-w-[85%] object-contain"
+                  className="relative z-10 max-h-full max-w-full object-contain transition-transform duration-1000 group-hover:scale-110"
                 />
               </AnimatePresence>
 
-              {/* Wishlist Toggle */}
+              {/* Heart Toggle */}
               <button
                 onClick={() => toggleWishlist(product)}
+                aria-label={isInWishlist(product.id) ? "Remove from wishlist" : "Add to wishlist"}
                 className={cn(
-                  'absolute top-6 right-6 w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-500 shadow-sm backdrop-blur-md',
+                  'absolute top-8 right-8 w-12 h-12 rounded-2xl flex items-center justify-center border transition-all duration-500 shadow-sm backdrop-blur-md',
                   isInWishlist(product.id)
-                    ? 'bg-red-500 border-red-500 text-white shadow-red-200'
-                    : 'bg-white/80 border-white text-gray-400 hover:text-blue-800 hover:border-blue-800'
+                    ? 'bg-red-500 border-red-500 text-white'
+                    : 'bg-white/80 border-white text-slate-300 hover:text-red-500 hover:bg-white'
                 )}
               >
-                <Heart size={20} className={cn(isInWishlist(product.id) && 'fill-current')} />
+                <Heart size={20} fill={isInWishlist(product.id) ? 'currentColor' : 'none'} />
               </button>
             </div>
 
-            {/* Thumbnails */}
+            {/* Thumbnails Grid */}
             {images.length > 1 && (
-              <div className="flex gap-3 overflow-x-auto pb-4 px-1 no-scrollbar">
+              <div className="flex flex-wrap gap-4 px-2">
                 {images.map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveImage(idx)}
                     className={cn(
-                      'w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-2xl border-2 transition-all p-2 bg-white flex items-center justify-center shadow-sm',
+                      'w-20 h-20 rounded-2xl border-2 transition-all p-3 bg-white flex items-center justify-center',
                       activeImage === idx
-                        ? 'border-blue-800 scale-105'
-                        : 'border-gray-100 hover:border-blue-200'
+                        ? 'border-blue-800 scale-105 shadow-lg shadow-blue-900/5'
+                        : 'border-slate-50 hover:border-blue-200'
                     )}
                   >
                     <img src={img} alt="" className="max-h-full max-w-full object-contain" />
@@ -191,89 +193,90 @@ export default function ProductDetail() {
             )}
           </div>
 
-          {/* Right Side: Product Info */}
-          <div className="lg:col-span-6 space-y-8">
-            <div>
-              <h1 className="text-[28px] md:text-[36px] font-medium text-slate-900 leading-[1.2] mb-5">
+          {/* --- RIGHT: PRODUCT CONTENT --- */}
+          <div className="lg:col-span-6 space-y-10">
+            <div className="space-y-4">
+              <span className="text-blue-800 text-[10px] font-black uppercase tracking-[0.3em] block">Certified Hardware</span>
+              <h1 className="text-[34px] md:text-[44px]  text-slate-950 leading-[1.1] tracking-tighter">
                 {product.name}
               </h1>
-
-              <div className="flex items-center gap-6">
-                <span className="text-[24px] md:text-[30px] font-black text-slate-900">
+              <div className="flex items-center gap-6 pt-2">
+                <span className="text-[32px] md:text-[40px] font-black text-slate-950 tracking-tighter">
                   ${parseFloat(product.price).toLocaleString()}
                 </span>
-                {product.sale_price && (
-                  <span className="text-[16px] md:text-[18px] text-gray-400 line-through font-bold">
-                    ${parseFloat(product.sale_price).toLocaleString()}
-                  </span>
-                )}
+                <div className="flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-100">
+                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                   <span className="text-[10px] font-black uppercase tracking-widest">In Stock</span>
+                </div>
               </div>
             </div>
 
-            {/* Description */}
-            <div className="bg-gray-50 rounded-[2rem] p-6 border border-gray-100">
-              <h4 className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-3 pl-1">
-                Overview
-              </h4>
-              <p className="text-slate-700 text-[15px] leading-relaxed">
+            {/* Structured Overview */}
+            <div className="bg-white rounded-[2.5rem] p-10 border border-slate-100 space-y-4">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Technical Overview</h4>
+              <p className="text-slate-600 text-[16px] font-medium leading-relaxed">
                 {product.description ||
-                  'Experience efficient, high-quality results with this precision printing solution. Designed for those who demand reliability and consistency in their daily workflow.'}
+                  'Professional enterprise solution designed for high-volume productivity and seamless integration into your modern office workflow. Every detail is optimized for performance.'}
               </p>
             </div>
 
-            {/* Controls */}
-            <div className="space-y-6">
+            {/* Interactive Controls */}
+            <div className="space-y-6 pt-4">
               <div className="flex flex-col sm:flex-row gap-4">
-                {/* Quantity Picker */}
-                <div className="flex items-center bg-gray-50 rounded-2xl p-1 border border-gray-100 h-14 w-full sm:w-auto">
+                {/* Quantity */}
+                <div className="flex items-center bg-slate-50 rounded-2xl p-1.5 border border-slate-200 h-16 w-full sm:w-auto">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow-sm text-slate-900 hover:text-blue-800 transition-colors"
+                    aria-label="Decrease quantity"
+                    className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-sm text-slate-900 hover:text-blue-800 transition-colors"
                   >
-                    <Minus size={16} />
+                    <Minus size={18} />
                   </button>
-                  <span className="w-12 text-center text-[16px] font-black text-slate-900">{quantity}</span>
+                  <span className="w-14 text-center text-[16px] font-black text-slate-900">{quantity}</span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="w-10 h-10 flex items-center justify-center bg-white rounded-xl shadow-sm text-slate-900 hover:text-blue-800 transition-colors"
+                    aria-label="Increase quantity"
+                    className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-sm text-slate-900 hover:text-blue-800 transition-colors"
                   >
-                    <Plus size={16} />
+                    <Plus size={18} />
                   </button>
                 </div>
 
-                {/* Add to Cart */}
+                {/* Purchase Button */}
                 <button
                   onClick={handleAddToCart}
                   disabled={isAdded}
                   className={cn(
-                    "flex-1 h-14 rounded-2xl font-black text-[13px] uppercase tracking-widest transition-all flex items-center justify-center gap-3 shadow-lg active:scale-95 disabled:opacity-70",
-                    isAdded ? "bg-emerald-600 text-white shadow-emerald-100" : "bg-blue-800 text-white shadow-blue-100 hover:bg-blue-700"
+                    "flex-1 h-16 rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 shadow-2xl active:scale-95 disabled:opacity-70",
+                    isAdded 
+                      ? "bg-emerald-600 text-white shadow-emerald-900/20" 
+                      : "bg-slate-950 text-white shadow-slate-900/20 hover:bg-blue-800"
                   )}
                 >
                   {isAdded ? (
                     <>
-                      <CheckCircle size={18} /> Added
+                      <CheckCircle size={20} /> Item Added
                     </>
                   ) : (
                     <>
-                      <ShoppingBag size={18} /> Add to Cart
+                      <ShoppingBag size={20} /> Add to Cart
                     </>
                   )}
                 </button>
               </div>
 
-              {/* Trust Indicators */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {/* Global Support Features */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
                 {[
-                  { icon: Truck, label: 'Free Delivery' },
-                  { icon: ShieldCheck, label: 'Secure Payment' },
-                  { icon: RefreshCcw, label: '7-Day Returns' },
+                  { icon: Truck, label: 'Express Fleet' },
+                  { icon: ShieldCheck, label: 'Safe Pay' },
+                  { icon: RefreshCcw, label: 'Verified' },
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="h-12 rounded-xl border border-gray-100 bg-white flex items-center justify-center gap-3 text-[10px] font-bold uppercase tracking-widest text-gray-500"
+                    className="h-14 rounded-2xl border border-slate-50 bg-white flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-400 group"
                   >
-                    <item.icon size={14} className="text-blue-800" />
+                    <item.icon size={16} className="text-blue-800" />
                     {item.label}
                   </div>
                 ))}
@@ -282,51 +285,57 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Related Section */}
+        {/* --- RELATED HARDWARE --- */}
         {relatedProducts.length > 0 && (
-          <div className="mt-24 pt-16 border-t border-gray-100">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+          <div className="mt-32 pt-20 border-t border-slate-100">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-8">
               <div>
-                <span className="text-blue-800 font-bold text-[11px] uppercase tracking-[0.3em] mb-3 block">Recommended</span>
-                <h2 className="text-[28px] md:text-[36px] font-black text-slate-900 leading-none">
-                  Related <span className="text-blue-800">Picks.</span>
+                <span className="text-blue-800 text-[10px] font-black uppercase tracking-[0.3em] mb-4 block">Fleet Integration</span>
+                <h2 className="text-[34px] md:text-[44px] font-bold text-slate-950 leading-none tracking-tighter">
+                  Related <span className="text-blue-700 italic font-light">Picks.</span>
                 </h2>
               </div>
               <Link
                 to="/shop"
-                className="group flex items-center gap-2 text-[13px] font-bold text-slate-900 uppercase tracking-widest hover:text-blue-800 transition-colors"
+                className="group flex items-center gap-4 text-slate-400 hover:text-blue-800 transition-all font-bold uppercase tracking-widest text-xs"
               >
-                View More <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                View Full Series 
+                <div className="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center group-hover:border-blue-800 group-hover:bg-blue-800 group-hover:text-white transition-all">
+                   <ArrowRight size={18} />
+                </div>
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-px bg-gray-200 border border-gray-200 overflow-hidden rounded-[2rem]">
-              {relatedProducts.slice(0, 5).map((p, i) => (
-                <div
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
+              {relatedProducts.slice(0, 5).map((p) => (
+                <motion.div
                   key={p.id}
-                  className="group relative bg-white flex flex-col h-full"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="group flex flex-col"
                 >
-                  <Link to={`/product/${p.slug}`} className="block p-5 flex-grow">
-                    <div className="aspect-square flex items-center justify-center mb-5 overflow-hidden">
+                  <Link to={`/product/${p.slug}`} className="block">
+                    <div className="aspect-square bg-white border border-slate-50 rounded-[2rem] flex items-center justify-center p-6 mb-6 transition-all duration-500 group-hover:border-blue-100 group-hover:shadow-xl group-hover:shadow-blue-900/5 overflow-hidden">
                       <img
                         src={getImagePath(p.images)}
                         alt={p.name}
-                        className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                        className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-110"
                       />
                     </div>
-                    <div>
-                      <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-gray-400 mb-1.5 block">
-                        {p.brand_name || 'Selection'}
+                    <div className="px-1">
+                      <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-300 mb-2 block">
+                        {p.brand_name || 'Premium'}
                       </span>
-                      <h4 className="text-slate-800 text-[13px] font-medium leading-tight line-clamp-2 h-9 mb-3 group-hover:text-blue-800 transition-colors">
+                      <h4 className="text-slate-800 text-[15px] font-medium leading-tight line-clamp-2 h-10 mb-4 group-hover:text-blue-800 transition-colors">
                         {p.name}
                       </h4>
-                      <p className="text-[16px] font-bold text-slate-900">
+                      <p className="text-[20px] font-black text-slate-950 tracking-tighter">
                         ${parseFloat(p.price).toLocaleString()}
                       </p>
                     </div>
                   </Link>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

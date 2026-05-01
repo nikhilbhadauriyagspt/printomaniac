@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Plus, Trash2, FolderTree, ChevronRight } from 'lucide-react';
+import Plus from 'lucide-react/dist/esm/icons/plus';
+import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
+import FolderTree from 'lucide-react/dist/esm/icons/folder-tree';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import API_BASE_URL from '../../config';
 
 export default function CategoryManager() {

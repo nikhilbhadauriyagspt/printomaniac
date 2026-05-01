@@ -1,13 +1,11 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import {
-  Heart,
-  ShoppingCart,
-  Trash2,
-  ChevronLeft,
-  ShoppingBag,
-} from 'lucide-react';
+import Heart from 'lucide-react/dist/esm/icons/heart';
+import ShoppingCart from 'lucide-react/dist/esm/icons/shopping-cart';
+import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
+import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '@/components/SEO';
 
@@ -34,7 +32,7 @@ export default function Wishlist() {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-32 pb-20 font-['Poppins']">
-      <SEO title="Wishlist | US Printer Store" />
+      <SEO title="Wishlist | Printo Maniac" />
 
       <div className="max-w-[1400px] mx-auto px-4">
         <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">
@@ -71,7 +69,7 @@ export default function Wishlist() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {wishlist.map((p) => (
                     <div key={p.id} className="group bg-white border border-gray-100 rounded-3xl p-4 flex flex-col hover:border-blue-800 transition-all duration-300">
-                      <div className="relative aspect-square flex items-center justify-center mb-4 bg-gray-50 rounded-2xl overflow-hidden">
+                      <div className="relative aspect-square flex items-center justify-center mb-4  rounded-2xl overflow-hidden">
                         <img
                           src={getImagePath(p.images)}
                           alt={p.name}

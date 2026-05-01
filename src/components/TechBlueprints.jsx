@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { Cpu, Zap, Activity, Monitor } from "lucide-react";
+import Cpu from "lucide-react/dist/esm/icons/cpu";
+import Zap from "lucide-react/dist/esm/icons/zap";
+import Activity from "lucide-react/dist/esm/icons/activity";
+import Monitor from "lucide-react/dist/esm/icons/monitor";
 
 const techProducts = [
   {

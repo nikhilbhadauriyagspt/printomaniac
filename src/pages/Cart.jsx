@@ -1,17 +1,15 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  Trash2,
-  Plus,
-  Minus,
-  ArrowRight,
-  ShoppingBag,
-  ShieldCheck,
-  Truck,
-  ChevronLeft,
-  ShoppingCart,
-} from 'lucide-react';
+import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
+import Plus from 'lucide-react/dist/esm/icons/plus';
+import Minus from 'lucide-react/dist/esm/icons/minus';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import Truck from 'lucide-react/dist/esm/icons/truck';
+import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
+import ShoppingCart from 'lucide-react/dist/esm/icons/shopping-cart';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '@/components/SEO';
 
@@ -39,7 +37,7 @@ export default function Cart() {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-32 pb-20 font-['Poppins'] text-slate-900">
-      <SEO title="Shopping Cart | US Printer Store" />
+      <SEO title="Shopping Cart | Printo Maniac" />
 
       <div className="max-w-[1400px] mx-auto px-4">
         <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden">

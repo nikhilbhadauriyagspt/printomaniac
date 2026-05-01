@@ -1,24 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 // Images
-import mid1 from '../assets/middle-imges/1.png';
-import mid2 from '../assets/middle-imges/2.png';
-import mid3 from '../assets/middle-imges/3.png';
+import mid1 from '../assets/middle-imges/1.avif';
+import mid2 from '../assets/middle-imges/2.avif';
+import mid3 from '../assets/middle-imges/3.avif';
 
 const banners = [
-  {
-    id: 1,
-    image: mid2,
-  },
-  {
-    id: 2,
-    image: mid1,
-  },
-  {
-    id: 3,
-    image: mid3,
-  }
+  { id: 1, image: mid2 },
+  { id: 2, image: mid1 },
+  { id: 3, image: mid3 }
 ];
 
 export default function TripleBanners() {
@@ -33,18 +25,20 @@ export default function TripleBanners() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="relative h-[300px] md:h-[350px] rounded-[2.5rem]  transition-all duration-500"
+              className="relative h-[300px] md:h-[250px] rounded-[2.5rem] overflow-hidden group"
             >
-              {/* Background Image */}
-              <img
-                 to={`/shop`}
-                src={banner.image}
-                alt={`Banner ${banner.id}`}
-                className="absolute  w-full h-full object-cover"
-              />
-
-             
-
+              <Link to="/shop" className="block w-full h-full">
+                <img
+                  src={banner.image}
+                  alt={`Banner ${banner.id}`}
+                  width="600"
+                  height="300"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Subtle Overlay */}
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
+              </Link>
             </motion.div>
           ))}
         </div>

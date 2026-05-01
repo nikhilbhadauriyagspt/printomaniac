@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  ChevronLeft,
-  ChevronRight,
-  CreditCard,
-  ArrowRight,
-  Lock,
-  MapPin,
-  Mail,
-  CheckCircle2,
-  Package,
-  Phone,
-  Wallet,
-  ShoppingBag,
-  ShieldCheck,
-  Truck,
-} from 'lucide-react';
+import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
+import CreditCard from 'lucide-react/dist/esm/icons/credit-card';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import Lock from 'lucide-react/dist/esm/icons/lock';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
+import Package from 'lucide-react/dist/esm/icons/package';
+import Phone from 'lucide-react/dist/esm/icons/phone';
+import Wallet from 'lucide-react/dist/esm/icons/wallet';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import Truck from 'lucide-react/dist/esm/icons/truck';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PayPalButtons } from '@paypal/react-paypal-js';
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import API_BASE_URL from '../config';
 import SEO from '@/components/SEO';
 import { cn } from '../lib/utils';
@@ -68,7 +66,7 @@ export default function Checkout() {
         total: cartTotal,
         items: cart,
         payment_details: paymentDetails,
-        source: 'usprinterstore.shop',
+        source: 'printomaniac.com',
       };
 
       const response = await fetch(`${API_BASE_URL}/orders`, {
@@ -115,7 +113,7 @@ export default function Checkout() {
 
   if (cart.length === 0 && step !== 3) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 font-['Poppins']">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-[2.5rem] border border-gray-100 p-12 text-center shadow-sm">
           <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-8 shadow-sm">
             <ShoppingBag size={34} className="text-gray-300" />
@@ -137,8 +135,8 @@ export default function Checkout() {
 
   if (step === 3) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4 font-['Poppins'] text-slate-900">
-        <SEO title="Order Confirmed | US Printer Store" />
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4 text-slate-900">
+        <SEO title="Order Confirmed | Printo Maniac" />
         <div className="max-w-xl w-full bg-white rounded-[3rem] border border-gray-100 p-12 text-center shadow-2xl shadow-blue-900/5">
           <div className="w-24 h-24 bg-blue-800 text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl shadow-blue-100">
             <CheckCircle2 size={42} />
@@ -149,7 +147,7 @@ export default function Checkout() {
           </h1>
 
           <p className="text-gray-500 leading-relaxed text-[16px] max-w-md mx-auto mb-10">
-            Thank you for choosing US Printer Store. Your order <span className="text-slate-900 font-bold">#{orderId}</span> is being processed. 
+            Thank you for choosing Printo Maniac. Your order <span className="text-slate-900 font-bold">#{orderId}</span> is being processed. 
             We've sent a confirmation to <span className="text-slate-900 font-bold">{formData.email}</span>.
           </p>
 
@@ -174,8 +172,8 @@ export default function Checkout() {
   }
 
   return (
-    <div className="bg-white font-['Poppins'] text-slate-900 pt-32 pb-20">
-      <SEO title="Secure Checkout | US Printer Store" />
+    <div className="bg-white text-slate-900 pt-32 pb-20">
+      <SEO title="Secure Checkout | Printo Maniac" />
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         {/* Header / Breadcrumb */}
@@ -422,23 +420,29 @@ export default function Checkout() {
                   <div className="space-y-6">
                     {formData.paymentMethod === 'paypal' ? (
                       <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm">
-                        <PayPalButtons
-                          style={{ layout: 'vertical', shape: 'pill', label: 'pay' }}
-                          createOrder={(data, actions) => {
-                            return actions.order.create({
-                              purchase_units: [
-                                {
-                                  amount: { value: cartTotal.toString() },
-                                },
-                              ],
-                            });
-                          }}
-                          onApprove={(data, actions) => {
-                            return actions.order.capture().then((details) => {
-                              handleOrderSuccess(details);
-                            });
-                          }}
-                        />
+                        <PayPalScriptProvider options={{
+                          "client-id": "Aa7mAnBKh44YCdokTrFjIP1wIB6mVVjrN8z-NZc_G2VLYJle_Xz9pMdOO7DRXx7zYT7Gh0dzbJUY9DDm",
+                          currency: "USD",
+                          intent: "capture"
+                        }}>
+                          <PayPalButtons
+                            style={{ layout: 'vertical', shape: 'pill', label: 'pay' }}
+                            createOrder={(data, actions) => {
+                              return actions.order.create({
+                                purchase_units: [
+                                  {
+                                    amount: { value: cartTotal.toString() },
+                                  },
+                                ],
+                              });
+                            }}
+                            onApprove={(data, actions) => {
+                              return actions.order.capture().then((details) => {
+                                handleOrderSuccess(details);
+                              });
+                            }}
+                          />
+                        </PayPalScriptProvider>
                       </div>
                     ) : (
                       <button

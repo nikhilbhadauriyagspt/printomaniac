@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Clock } from 'lucide-react';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
+import Clock from 'lucide-react/dist/esm/icons/clock';
 import { Link } from 'react-router-dom';
 
 export default function PolicyLayout({ title, subtitle, lastUpdated, children }) {

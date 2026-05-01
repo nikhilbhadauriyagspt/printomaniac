@@ -10,7 +10,7 @@ export default function ShippingPolicy() {
       lastUpdated="April 21, 2026"
     >
       <p className="lead">
-        This shipping & delivery policy is part of our terms and conditions ("terms") and should be therefore read alongside our main terms: <Link to="/terms-and-conditions">https://usprinterstore.shop/terms-and-conditions</Link>.
+        This shipping & delivery policy is part of our terms and conditions ("terms") and should be therefore read alongside our main terms: <Link to="/terms-and-conditions">https://printomaniac.com/terms-and-conditions</Link>.
       </p>
       <p>
         Please carefully review our shipping & delivery policy when purchasing our products. This policy will apply to any order you place with us.
@@ -37,7 +37,7 @@ export default function ShippingPolicy() {
 
       <h2>Questions about returns?</h2>
       <p>
-        If you have questions about returns, please review our return policy: <Link to="/return-policy">https://usprinterstore.shop/return-policy</Link>.
+        If you have questions about returns, please review our return policy: <Link to="/return-policy">https://printomaniac.com/return-policy</Link>.
       </p>
 
       <hr />
@@ -45,12 +45,11 @@ export default function ShippingPolicy() {
       <p>If you have any further questions or comments, you may contact us by:</p>
       <div className="bg-gray-50 p-8 rounded-xl border border-gray-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-3">
-          <p className="flex items-center gap-3 text-black font-bold ">Email: <a href="mailto:info@usprinterstore.shop" className="hover:underline">info@usprinterstore.shop</a></p>
+          <p className="flex items-center gap-3 text-black font-bold ">Email: <a href="mailto:info@printomaniac.com" className="hover:underline">info@printomaniac.com</a></p>
           <p className="flex items-center gap-3">
-            <span className="text-slate-400 font-bold text-[10px] tracking-widest uppercase">Online form:</span>
+            <span className="text-slate-500 font-bold text-[10px] tracking-widest uppercase">Online form:</span>
             <Link to="/contact" className="text-black font-bold ml-2 underline">Contact us</Link>
-          </p>
-        </address>
+          </p>        </address>
       </div>
     </PolicyLayout>
   );

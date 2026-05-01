@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  LayoutDashboard, 
-  ShoppingBag, 
-  Users, 
-  Package, 
-  Settings, 
-  LogOut, 
-  Menu, 
-  X,
-  Bell,
-  Search,
-  User,
-  PlusCircle,
-  TrendingUp,
-  Mail,
-  HelpCircle,
-  FileText
-} from 'lucide-react';
+import LayoutDashboard from 'lucide-react/dist/esm/icons/layout-dashboard';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
+import Users from 'lucide-react/dist/esm/icons/users';
+import Package from 'lucide-react/dist/esm/icons/package';
+import Settings from 'lucide-react/dist/esm/icons/settings';
+import LogOut from 'lucide-react/dist/esm/icons/log-out';
+import Menu from 'lucide-react/dist/esm/icons/menu';
+import X from 'lucide-react/dist/esm/icons/x';
+import Bell from 'lucide-react/dist/esm/icons/bell';
+import Search from 'lucide-react/dist/esm/icons/search';
+import User from 'lucide-react/dist/esm/icons/user';
+import PlusCircle from 'lucide-react/dist/esm/icons/plus-circle';
+import TrendingUp from 'lucide-react/dist/esm/icons/trending-up';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import HelpCircle from 'lucide-react/dist/esm/icons/help-circle';
+import FileText from 'lucide-react/dist/esm/icons/file-text';
 import { Link, useNavigate, useLocation, Outlet } from 'react-router-dom';
 
 const AdminLayout = () => {
@@ -52,7 +50,7 @@ const AdminLayout = () => {
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:relative lg:translate-x-0`}>
         <div className="flex items-center justify-between h-16 px-6 border-b border-slate-800">
           <div className="flex items-center">
-            <span className="text-xl font-bold er">US Printer Store<span className="text-blue-500">.</span>ADMIN</span>
+            <span className="text-xl font-bold er">Printo Maniac<span className="text-blue-500">.</span>ADMIN</span>
           </div>
           <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-slate-400 hover:text-white">
             <X size={20} />
@@ -79,7 +77,7 @@ const AdminLayout = () => {
         <div className="absolute bottom-0 w-full p-4 border-t border-slate-800">
           <button 
             onClick={handleLogout}
-            className="flex items-center gap-3 w-full px-4 py-3 text-slate-400 hover:text-red-400 hover:bg-red-400/5 rounded-xl transition-all"
+            className="flex items-center gap-3 w-full px-4 py-3 text-slate-400 hover:text-blue-800 hover:bg-blue-800/5 rounded-xl transition-all"
           >
             <LogOut size={20} />
             <span className="font-bold text-sm">Sign Out</span>

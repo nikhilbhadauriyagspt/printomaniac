@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://usprinterstore.shop/sitemap.xml
+Sitemap: https://printomaniac.com/sitemap.xml

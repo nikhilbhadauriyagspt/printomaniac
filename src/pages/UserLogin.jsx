@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Mail,
-  Lock,
-  Eye,
-  EyeOff,
-  Loader2,
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  Users,
-} from 'lucide-react';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import Lock from 'lucide-react/dist/esm/icons/lock';
+import Eye from 'lucide-react/dist/esm/icons/eye';
+import EyeOff from 'lucide-react/dist/esm/icons/eye-off';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
+import Users from 'lucide-react/dist/esm/icons/users';
 import API_BASE_URL from '../config';
 import SEO from '@/components/SEO';
 
@@ -64,7 +62,7 @@ export default function UserLogin() {
 
   return (
     <div className=" bg-gray-50 font-['Poppins'] text-slate-900 flex items-center justify-center py-20 px-4">
-      <SEO title="Sign In | US Printer Store" />
+      <SEO title="Sign In | Printo Maniac" />
 
       <div className="w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-2 rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-blue-900/5 border border-gray-100">
         {/* Left Side: Brand & Benefits */}
@@ -197,7 +195,7 @@ export default function UserLogin() {
 
             <div className="mt-10 pt-8 border-t border-gray-50 text-center">
               <p className="text-[14px] font-bold text-gray-400">
-                New to US Printer Store?
+                New to Printo Maniac?
                 <Link
                   to="/signup"
                   className="text-blue-800 hover:underline ml-2"

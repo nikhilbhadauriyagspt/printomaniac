@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Search, Trash2, Loader2, User, Mail, Phone, Calendar } from 'lucide-react';
+import Search from 'lucide-react/dist/esm/icons/search';
+import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
+import User from 'lucide-react/dist/esm/icons/user';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import Phone from 'lucide-react/dist/esm/icons/phone';
+import Calendar from 'lucide-react/dist/esm/icons/calendar';
 import API_BASE_URL from '../../config';
 
 export default function UserManager() {

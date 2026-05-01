@@ -1,5 +1,8 @@
 import React from 'react';
-import { Truck, RotateCcw, ShieldCheck, Headphones } from 'lucide-react';
+import Truck from 'lucide-react/dist/esm/icons/truck';
+import RotateCcw from 'lucide-react/dist/esm/icons/rotate-ccw';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import Headphones from 'lucide-react/dist/esm/icons/headphones';
 import { motion } from 'framer-motion';
 
 const features = [
@@ -31,37 +34,26 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="w-full bg-gray-50 py-16 px-4 md:px-8">
-      <div className="max-w-[1820px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center"
-            >
-              <div className="mb-6 relative">
-                <div className="absolute inset-0 bg-blue-800/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
-                <div className="relative h-16 w-16 flex items-center justify-center rounded-2xl bg-blue-50 text-blue-800 group-hover:bg-blue-800 group-hover:text-white transition-all duration-300 shadow-sm">
-                  {item.icon}
-                </div>
-              </div>
-
-              <h3 className="text-[17px]  text-gray-900 mb-2">
+    <section className="w-full bg-blue-900 h-[80px] flex items-center justify-center">
+      <div className="w-full px-4 md:px-10 flex flex-row items-center justify-between gap-2 md:gap-8 max-w-[1820px]">
+        {features.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-2 md:gap-4 text-white"
+          >
+            <div className="text-blue-300 shrink-0 scale-75 md:scale-100">
+              {item.icon}
+            </div>
+            <div className="flex flex-col">
+              <h3 className="text-[11px] md:text-[13px]  leading-none tracking-tight uppercase whitespace-nowrap">
                 {item.title}
               </h3>
-
-              <p className="text-[14px] text-gray-500 leading-relaxed max-w-[240px]">
+              <p className="text-[9px] md:text-[10px] text-white/70 font-medium uppercase  mt-1 hidden lg:block">
                 {item.desc}
               </p>
-              
-              <div className="mt-6 w-10 h-1 bg-gray-100 rounded-full group-hover:w-20 group-hover:bg-blue-800 transition-all duration-300" />
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

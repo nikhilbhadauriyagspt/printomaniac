@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import SEO from '@/components/SEO';
-import {
-  Mail,
-  CheckCircle2,
-  Loader2,
-  Send,
-  Link,
-  MapPin,
-  ChevronDown,
-  Phone,
-  Clock3,
-  ArrowRight,
-  Headphones,
-  MessagesSquare,
-} from 'lucide-react';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import ChevronDown from 'lucide-react/dist/esm/icons/chevron-down';
+import Clock3 from 'lucide-react/dist/esm/icons/clock-3';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import { Link } from 'react-router-dom';
 import API_BASE_URL from '../config';
 import { cn } from '../lib/utils';
 
@@ -64,29 +58,31 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-white font-['Poppins'] text-slate-900">
+    <div className="bg-[#fcfdfe] text-slate-950 overflow-hidden">
       <SEO
-        title="Contact Us | US Printer Store Support"
+        title="Contact Us | Printo Maniac Support"
         description="Connect with our professional support team for printer inquiries and order assistance."
       />
 
-      {/* Hero Section */}
-      <section className="relative pt-15 pb-16 md:pt-20 md:pb-24 bg-gray-50 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50 -mr-20 -mt-20" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-50 -ml-20 -mb-20" />
-        
-        <div className="max-w-[1820px] mx-auto px-4 md:px-6 relative z-10 text-center">
+      {/* --- REFINED HERO --- */}
+      <section className="relative pt-32 pb-20 lg:pt-20 lg:pb-28 bg-white border-b border-slate-50">
+        {/* Abstract Background Shapes */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[120px] -mr-64 -mt-64" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50/30 rounded-full blur-[100px] -ml-48 -mb-48" />
+
+        <div className="max-w-[1820px] mx-auto px-6 md:px-10 lg:px-16 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <span className="inline-block px-4 py-1.5 bg-blue-50 text-blue-800 text-[12px]  uppercase tracking-[0.2em] rounded-full mb-6">
-              Support Center
-            </span>
-            <h1 className="text-[40px] md:text-[60px]  text-slate-900 leading-tight mb-8">
-              We’re Here to <span className="text-blue-800">Help.</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 rounded-full border border-blue-100 mb-8">
+              <div className="w-1.5 h-1.5 bg-blue-800 rounded-full animate-pulse" />
+              <span className="text-blue-700 text-[10px] font-black uppercase tracking-[0.2em]">contact</span>
+            </div>
+            <h1 className="text-[48px] md:text-[60px] lg:text-[60px]  leading-none tracking-tighter mb-8">
+              We’re Here to <span className="text-blue-700 italic font-light">Help.</span>
             </h1>
-            <p className="text-gray-500 text-[16px] md:text-[18px] leading-relaxed max-w-[700px] mx-auto">
+            <p className="text-slate-500 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed mb-10">
               Got a question about a printer? Need help with an order? 
               Our team is ready to provide the answers you need.
             </p>
@@ -94,67 +90,69 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-[1820px] mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+      {/* --- MAIN CONTENT GRID --- */}
+      <section className=" bg-white">
+        <div className="max-w-[1820px] mx-auto px-6 md:px-10 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
             
             {/* Left Info Column */}
             <div className="lg:col-span-4 space-y-12">
-              <div>
-                <h2 className="text-[32px]  text-slate-900 mb-6">Get in Touch</h2>
-                <p className="text-gray-500 text-[16px] leading-relaxed">
+              <motion.div
+                 initial={{ opacity: 0, x: -30 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 viewport={{ once: true }}
+              >
+                <h2 className="text-[32px] md:text-[42px] font-bold leading-tight mb-6">Get in Touch</h2>
+                <p className="text-slate-500 text-[16px] leading-relaxed">
                   We value clear communication and fast responses. Reach out through any of these 
                   channels and we'll get back to you as soon as possible.
                 </p>
-              </div>
+              </motion.div>
 
               <div className="space-y-8">
-                <div className="flex items-start gap-6 group">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center shrink-0 group-hover:bg-blue-800 group-hover:text-white transition-all">
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-widest text-gray-400 mb-1">Email Support</p>
-                    <a href="mailto:info@usprinterstore.shop" className="text-[18px]  text-slate-900 hover:text-blue-800 transition-colors">
-                      info@usprinterstore.shop
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-6 group">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center shrink-0 group-hover:bg-blue-800 group-hover:text-white transition-all">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-widest text-gray-400 mb-1">Our Office</p>
-                    <p className="text-[18px]  text-slate-900 leading-snug">
-                      4352 13th Ave S, Fargo, ND 58103, USA
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-6 group">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center shrink-0 group-hover:bg-blue-800 group-hover:text-white transition-all">
-                    <Clock3 size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-widest text-gray-400 mb-1">Availability</p>
-                    <p className="text-[18px]  text-slate-900">
-                      24/7 Online Assistance
-                    </p>
-                  </div>
-                </div>
+                {[
+                  { icon: Mail, title: "Email Support", desc: "info@printomaniac.com", link: "mailto:info@printomaniac.com" },
+                  { icon: MapPin, title: "Our Office", desc: "4352 13th Ave S, Fargo, ND 58103, USA", link: "#" },
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-5 group"
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center shrink-0 group-hover:bg-blue-800 group-hover:text-white transition-all shadow-sm">
+                      <item.icon size={24} />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-black uppercase tracking-widest text-slate-500 mb-1">{item.title}</p>
+                      {item.link !== "#" ? (
+                        <a href={item.link} className="text-[16px] font-bold text-slate-900 hover:text-blue-800 transition-colors">
+                          {item.desc}
+                        </a>
+                      ) : (
+                        <p className="text-[16px] font-bold text-slate-900 leading-snug">
+                          {item.desc}
+                        </p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-
             </div>
 
             {/* Right Form Column */}
             <div className="lg:col-span-8">
-              <div className="bg-gray-50 rounded-[3rem] p-8 md:p-12 lg:p-16 border border-gray-100 shadow-sm">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-[#f8fafc] rounded-[3rem] p-8 md:p-12 lg:p-16 border border-slate-100 shadow-sm"
+              >
                 <div className="mb-12">
-                  <h3 className="text-[28px] md:text-[36px] text-slate-900 mb-4">Send a Message</h3>
-                  <p className="text-gray-500">Fill out the form below and our team will be in touch shortly.</p>
+                  <h3 className="text-[28px] md:text-[36px] font-bold text-slate-950 mb-4 tracking-tight">Send a Message</h3>
+                  <p className="text-slate-500 font-medium">Fill out the form below and our team will be in touch shortly.</p>
                 </div>
 
                 <AnimatePresence mode="wait">
@@ -162,18 +160,18 @@ export default function Contact() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="bg-white rounded-[2rem] border border-gray-100 text-center py-20 px-8"
+                      className="bg-white rounded-[2.5rem] border border-blue-50 text-center py-20 px-8 shadow-xl shadow-blue-900/5"
                     >
                       <div className="w-20 h-20 bg-blue-50 text-blue-800 rounded-full flex items-center justify-center mx-auto mb-6">
                         <CheckCircle2 size={40} />
                       </div>
-                      <h4 className="text-[32px] font-black mb-4">Message Sent!</h4>
-                      <p className="text-gray-500 max-w-md mx-auto mb-10 text-[16px] leading-relaxed">
+                      <h4 className="text-[32px] font-black text-slate-900 mb-4 tracking-tight">Message Sent!</h4>
+                      <p className="text-slate-500 max-w-md mx-auto mb-10 text-[15px] font-medium leading-relaxed">
                         Thank you for reaching out. We have received your message and will respond within 24 hours.
                       </p>
                       <button
                         onClick={() => setStatus(null)}
-                        className="h-14 px-10 bg-slate-900 text-white font-bold rounded-2xl hover:bg-blue-800 transition-all active:scale-95"
+                        className="h-14 px-10 bg-blue-800 text-white font-black uppercase tracking-widest text-[11px] rounded-2xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/20 active:scale-95"
                       >
                         Send Another Message
                       </button>
@@ -182,7 +180,7 @@ export default function Contact() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label className="text-[12px] font-black uppercase tracking-widest text-gray-400 pl-2">
+                          <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 pl-2">
                             Full Name
                           </label>
                           <input
@@ -191,11 +189,11 @@ export default function Contact() {
                             placeholder="Your name"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full h-14 rounded-2xl bg-white border border-gray-100 px-6 text-[15px] font-medium focus:border-blue-800 outline-none transition-all"
+                            className="w-full h-14 rounded-2xl bg-white border border-slate-200 px-6 text-[14px] font-medium text-slate-900 focus:border-blue-800 focus:ring-4 focus:ring-blue-800/10 outline-none transition-all"
                           />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-[12px] font-black uppercase tracking-widest text-gray-400 pl-2">
+                          <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 pl-2">
                             Email Address
                           </label>
                           <input
@@ -204,14 +202,14 @@ export default function Contact() {
                             placeholder="email@example.com"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full h-14 rounded-2xl bg-white border border-gray-100 px-6 text-[15px] font-medium focus:border-blue-800 outline-none transition-all"
+                            className="w-full h-14 rounded-2xl bg-white border border-slate-200 px-6 text-[14px] font-medium text-slate-900 focus:border-blue-800 focus:ring-4 focus:ring-blue-800/10 outline-none transition-all"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label className="text-[12px] font-black uppercase tracking-widest text-gray-400 pl-2">
+                          <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 pl-2">
                             Phone (Optional)
                           </label>
                           <input
@@ -219,31 +217,31 @@ export default function Contact() {
                             placeholder="Your phone number"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="w-full h-14 rounded-2xl bg-white border border-gray-100 px-6 text-[15px] font-medium focus:border-blue-800 outline-none transition-all"
+                            className="w-full h-14 rounded-2xl bg-white border border-slate-200 px-6 text-[14px] font-medium text-slate-900 focus:border-blue-800 focus:ring-4 focus:ring-blue-800/10 outline-none transition-all"
                           />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-[12px] font-black uppercase tracking-widest text-gray-400 pl-2">
+                          <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 pl-2">
                             Subject
                           </label>
                           <div className="relative">
                             <select
                               value={formData.subject}
                               onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                              className="w-full h-14 rounded-2xl bg-white border border-gray-100 px-6 text-[15px] font-medium focus:border-blue-800 outline-none transition-all appearance-none cursor-pointer"
+                              className="w-full h-14 rounded-2xl bg-white border border-slate-200 px-6 text-[14px] font-medium text-slate-900 focus:border-blue-800 focus:ring-4 focus:ring-blue-800/10 outline-none transition-all appearance-none cursor-pointer"
                             >
                               <option>General Inquiry</option>
                               <option>Product Question</option>
                               <option>Order Support</option>
                               <option>Technical Help</option>
                             </select>
-                            <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={18} />
+                            <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" size={18} />
                           </div>
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label className="text-[12px] font-black uppercase tracking-widest text-gray-400 pl-2">
+                        <label className="text-[11px] font-black uppercase tracking-widest text-slate-500 pl-2">
                           Your Message
                         </label>
                         <textarea
@@ -252,14 +250,14 @@ export default function Contact() {
                           placeholder="How can we help you today?"
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          className="w-full rounded-2xl bg-white border border-gray-100 p-6 text-[15px] font-medium focus:border-blue-800 outline-none transition-all resize-none"
+                          className="w-full rounded-2xl bg-white border border-slate-200 p-6 text-[14px] font-medium text-slate-900 focus:border-blue-800 focus:ring-4 focus:ring-blue-800/10 outline-none transition-all resize-none"
                         />
                       </div>
 
-                      <div className="pt-4">
+                      <div className="pt-6">
                         <button
                           disabled={loading}
-                          className="w-full md:w-auto h-16 px-12 bg-blue-800 text-white font-black text-[14px] uppercase tracking-widest rounded-2xl flex items-center justify-center gap-3 hover:bg-blue-700 transition-all shadow-xl shadow-blue-100 disabled:opacity-70 active:scale-95"
+                          className="w-full md:w-auto h-16 px-12 bg-slate-950 text-white font-black text-[12px] uppercase tracking-widest rounded-2xl flex items-center justify-center gap-3 hover:bg-blue-800 transition-all shadow-xl shadow-slate-900/10 disabled:opacity-70 active:scale-95"
                         >
                           {loading ? (
                             <>
@@ -267,7 +265,7 @@ export default function Contact() {
                             </>
                           ) : (
                             <>
-                              Send Message <ArrowRight size={20} />
+                              Send Message <ArrowRight size={18} />
                             </>
                           )}
                         </button>
@@ -282,7 +280,7 @@ export default function Contact() {
                     </form>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

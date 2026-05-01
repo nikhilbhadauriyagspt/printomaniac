@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Package,
-  Search,
-  Eye,
-  Truck,
-  CheckCircle,
-  XCircle,
-  Clock,
-  Calendar,
-  CreditCard,
-  User,
-  MapPin,
-  Phone,
-  Mail,
-  X,
-  ChevronRight,
-  Loader2
-} from 'lucide-react';
+import Package from 'lucide-react/dist/esm/icons/package';
+import Search from 'lucide-react/dist/esm/icons/search';
+import Eye from 'lucide-react/dist/esm/icons/eye';
+import Truck from 'lucide-react/dist/esm/icons/truck';
+import CheckCircle from 'lucide-react/dist/esm/icons/check-circle';
+import XCircle from 'lucide-react/dist/esm/icons/x-circle';
+import Clock from 'lucide-react/dist/esm/icons/clock';
+import Calendar from 'lucide-react/dist/esm/icons/calendar';
+import CreditCard from 'lucide-react/dist/esm/icons/credit-card';
+import User from 'lucide-react/dist/esm/icons/user';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import Phone from 'lucide-react/dist/esm/icons/phone';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import X from 'lucide-react/dist/esm/icons/x';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
 import { motion, AnimatePresence } from 'framer-motion';
 import API_BASE_URL from '../../config';
 

@@ -15,11 +15,11 @@ export default function ReturnPolicy() {
 
       <h2>RETURN PROCESS</h2>
       <p>
-                 To return an item, please email customer service at <a href="mailto:info@usprinterstore.shop">info@usprinterstore.shop</a>.      </p>
+                 To return an item, please email customer service at <a href="mailto:info@printomaniac.com">info@printomaniac.com</a>.      </p>
       <div className="bg-slate-50 p-8 rounded-none border border-slate-100 mt-6 not-prose">
         <p className="font-medium text-slate-700 mb-4 italic">Place the item securely in its original packaging and include your proof of purchase, then mail your return to the following address:</p>
         <address className="not-italic text-slate-900 font-bold leading-relaxed uppercase er">
-                    US Printer Store <br />
+                    Printo Maniac <br />
                     4352 13th Ave S, Fargo, ND 58103, USA
         </address>
         <p className="mt-6 text-black font-bold uppercase text-xs tracking-widest">
@@ -42,10 +42,9 @@ export default function ReturnPolicy() {
       <p>If you have any questions concerning our return policy, please contact us at:</p>
       <div className="bg-slate-50 p-8 rounded-none border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-3">
-                     <p className="flex items-center gap-3 text-black font-bold ">info@usprinterstore.shop</p>          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">Contact support for immediate assistance</p>
+                     <p className="flex items-center gap-3 text-black font-bold ">info@printomaniac.com</p>          <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">Contact support for immediate assistance</p>
         </address>
-      </div>
-    </PolicyLayout>
+      </div>    </PolicyLayout>
   );
 }
 

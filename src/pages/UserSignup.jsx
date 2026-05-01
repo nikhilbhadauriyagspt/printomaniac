@@ -1,19 +1,17 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Mail,
-  Lock,
-  User,
-  Eye,
-  EyeOff,
-  ArrowRight,
-  Loader2,
-  Phone,
-  ShieldCheck,
-  CheckCircle2,
-  ShoppingBag,
-} from 'lucide-react';
+import Mail from 'lucide-react/dist/esm/icons/mail';
+import Lock from 'lucide-react/dist/esm/icons/lock';
+import User from 'lucide-react/dist/esm/icons/user';
+import Eye from 'lucide-react/dist/esm/icons/eye';
+import EyeOff from 'lucide-react/dist/esm/icons/eye-off';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
+import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
+import Phone from 'lucide-react/dist/esm/icons/phone';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check';
+import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
+import ShoppingBag from 'lucide-react/dist/esm/icons/shopping-bag';
 import API_BASE_URL from '../config';
 import SEO from '@/components/SEO';
 
@@ -73,7 +71,7 @@ export default function UserSignup() {
 
   return (
     <div className=" bg-gray-50 font-['Poppins'] text-slate-900 flex items-center justify-center py-20 px-4">
-      <SEO title="Create Account | US Printer Store" />
+      <SEO title="Create Account | Printo Maniac" />
 
       <div className="w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-blue-900/5 border border-gray-100">
         {/* Left Side: Benefits */}
@@ -91,7 +89,7 @@ export default function UserSignup() {
               Start Your <span className="text-blue-400">Journey.</span>
             </h1>
             <p className="text-white/60 text-[16px] leading-relaxed max-w-[340px] mb-12">
-              Join US Printer Store today for a faster checkout experience and exclusive member deals.
+              Join Printo Maniac today for a faster checkout experience and exclusive member deals.
             </p>
 
             <div className="space-y-6">
