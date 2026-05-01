@@ -131,12 +131,15 @@ We help small businesses and home offices get printing right without the usual h
             <div className="bg-slate-50 border border-slate-100 p-8 rounded-[2.5rem]">
               <p className="text-[13px] font-bold text-slate-900 uppercase tracking-widest mb-6">Join our network</p>
               <form onSubmit={handleSubscribe} className="space-y-3">
+                <label htmlFor="footer-email" className="sr-only">Email address for newsletter</label>
                 <input
+                  id="footer-email"
                   required
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
+                  aria-label="Email address for newsletter"
                   className="w-full h-14 px-6 bg-white border border-slate-200 rounded-2xl text-[12px] font-bold tracking-widest outline-none focus:border-blue-800"
                 />
                 <button

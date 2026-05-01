@@ -223,9 +223,9 @@ const Hero = ({ topSellers: dynamicTopSellers = [], categoryList = [] }) => {
           {/* RIGHT TOP SELLERS */}
           <aside className="hidden xl:block bg-white rounded-sm border border-[#e5e7eb] h-[526px] overflow-hidden">
             <div className="h-full px-6 py-6">
-              <h3 className="text-[22px] font-semibold text-[#1f2937] mb-4 uppercase tracking-tight">
+              <h2 className="text-[22px] font-semibold text-[#1f2937] mb-4 uppercase tracking-tight">
                 Top Sellers
-              </h3>
+              </h2>
 
               <div className="space-y-0">
                 {(dynamicTopSellers.length > 0 ? dynamicTopSellers : topSellers).map((item, index) => (
@@ -239,9 +239,9 @@ const Hero = ({ topSellers: dynamicTopSellers = [], categoryList = [] }) => {
                     </div>
 
                     <div className="min-w-0">
-                      <h4 className="truncate text-[13px] font-medium text-[#5b5b5b] group-hover:text-blue-800 transition-colors uppercase tracking-tight">
+                      <h3 className="truncate text-[13px] font-medium text-[#5b5b5b] group-hover:text-blue-800 transition-colors uppercase tracking-tight">
                         {item.name || item.title}
-                      </h4>
+                      </h3>
                       <p className="text-[15px] leading-none font-bold text-[#111827] mt-0.5">
                         ${item.price}
                       </p>

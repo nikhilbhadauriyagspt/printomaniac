@@ -139,7 +139,7 @@ export default function Shop() {
     <div className="bg-white min-h-screen">
       <SEO
         title="Shop Printers & Supplies | US Printer Store"
-        description="Browse our selection of quality printers and accessories."
+        description="Browse our wide selection of high-quality printers and accessories. Find the perfect printing solutions for your home or office needs."
       />
 
       {/* --- SIMPLE HEADER --- */}

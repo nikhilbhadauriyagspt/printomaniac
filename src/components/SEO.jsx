@@ -9,7 +9,7 @@ export default function SEO({ title, description, keywords, schemaType = "Websit
 
     // Update Description
     const metaDescription = document.querySelector('meta[name="description"]');
-    const finalDesc = description || "Quality printing specialist specializing in pro workstations, precision printing, and reliable printing accessories.";
+    const finalDesc = description || "Quality printing specialist specializing in pro workstations, precision printing, and reliable printing accessories for all your home and office needs.";
     if (metaDescription) {
       metaDescription.setAttribute('content', finalDesc);
     }

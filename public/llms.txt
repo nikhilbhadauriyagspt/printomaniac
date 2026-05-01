@@ -1,0 +1,26 @@
+# Printo Maniac
+
+> Quality destination for high-performance printers and reliable printer accessories.
+
+## Overview
+Printo Maniac is a premier online retailer specializing in precision printing hardware, including laser printers, inkjet printers, and professional workstations. We provide expert consulting and nationwide delivery across the USA.
+
+## Key Information
+- **Website:** https://printomaniac.com
+- **Core Products:** All-in-One Printers, Laser Printers, Inkjet Printers, Thermal Printers, Large Format Printers, and Accessories.
+- **Service Area:** Nationwide USA
+- **Support Email:** info@printomaniac.com
+
+## Pages
+- [Home](https://printomaniac.com/) - Overview of top products and featured collections.
+- [Shop](https://printomaniac.com/shop) - Full product catalog with filtering by category and brand.
+- [About Us](https://printomaniac.com/about) - Our mission and commitment to quality printing solutions.
+- [FAQ](https://printomaniac.com/faq) - Common questions about shipping, warranty, and orders.
+- [Contact](https://printomaniac.com/contact) - Support and inquiry form.
+
+## Technology Stack
+- **Frontend:** React with Vite
+- **Styling:** Tailwind CSS
+- **Interactions:** Framer Motion, Lucide Icons
+- **Payments:** PayPal Integration
+- **Backend:** Hostinger-hosted API

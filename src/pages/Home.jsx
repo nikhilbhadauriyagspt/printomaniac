@@ -81,7 +81,7 @@ export default function Home() {
     <div className="bg-white font-jakarta overflow-x-hidden text-slate-900">
       <SEO 
         title="Printo Maniac | Quality Printers & Accessories"
-        description="Your trusted source for high-quality printers and printing printer. Delivering excellence across the USA."
+        description="Your trusted source for high-quality printers and professional printing solutions. We provide expert consulting and reliable nationwide delivery across the USA."
       />
 
       <Hero 

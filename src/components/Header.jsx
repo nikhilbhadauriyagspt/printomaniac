@@ -182,7 +182,7 @@ export default function Header() {
                               <LayoutGrid size={20} />
                             </div>
                             <div>
-                              <h3 className="text-lg font-bold text-slate-900 leading-none">Catalog Browser</h3>
+                              <h2 className="text-lg font-bold text-slate-900 leading-none">Catalog Browser</h2>
                               <p className="text-[10px] text-slate-400 font-bold mt-1 uppercase tracking-widest">Select Category</p>
                             </div>
                           </div>
@@ -201,7 +201,7 @@ export default function Header() {
                           </div>
                         </div>
                         <div className="w-[280px] bg-slate-900 rounded-[2rem] p-8 flex flex-col justify-center relative overflow-hidden group/cta">
-                          <h4 className="text-2xl font-black text-white leading-tight mb-4 relative z-10">Verified<br/>Hardware.</h4>
+                          <h3 className="text-2xl font-black text-white leading-tight mb-4 relative z-10">Verified<br/>Hardware.</h3>
                           <Link to="/shop" onClick={() => setActiveMegaMenu(null)} className="flex items-center justify-center gap-3 w-full py-4 bg-white text-blue-800 rounded-xl text-[11px] font-bold uppercase tracking-widest hover:bg-blue-50 transition-all shadow-xl relative z-10">
                             Explore All <ChevronRight size={16} />
                           </Link>
@@ -219,9 +219,12 @@ export default function Header() {
             <form onSubmit={handleSearchSubmit} className="w-full">
               <div className="relative flex items-center bg-slate-100/50 border border-blue-100/50 rounded-2xl px-5 py-2 transition-all focus-within:bg-white focus-within:border-blue-400 focus-within:shadow-[0_0_20px_rgba(59,130,246,0.04)]">
                 <Search size={16} className="text-blue-400" />
+                <label htmlFor="search-input" className="sr-only">Search products</label>
                 <input
+                  id="search-input"
                   type="text"
                   placeholder="Search..."
+                  aria-label="Search products"
                   value={searchQuery}
                   onChange={(e) => { setSearchQuery(e.target.value); setIsSearchOpen(true); }}
                   onFocus={() => setIsSearchOpen(true)}
@@ -267,7 +270,7 @@ export default function Header() {
                               )}
                             </div>
                             <div className="flex-1">
-                              <h4 className="text-[11px] font-semibold text-slate-800 truncate group-hover:text-blue-800 transition-colors">{p.name}</h4>
+                              <h3 className="text-[11px] font-semibold text-slate-800 truncate group-hover:text-blue-800 transition-colors">{p.name}</h3>
                               <p className="text-blue-800 font-bold text-[11px]">${p.price}</p>
                             </div>
                           </Link>
@@ -324,7 +327,7 @@ export default function Header() {
                     <div className="w-14 h-14 bg-blue-50 text-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
                       <User size={28} strokeWidth={1.5} />
                     </div>
-                    <h4 className="text-sm font-bold text-slate-900 leading-none mb-4">Member Portal</h4>
+                    <h3 className="text-sm font-bold text-slate-900 leading-none mb-4">Member Portal</h3>
                     <Link to="/login" className="block w-full py-2.5 bg-blue-800 text-white rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-800/20">
                       Sign In
                     </Link>

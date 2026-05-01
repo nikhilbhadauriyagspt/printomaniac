@@ -35,6 +35,23 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #2563eb;
+  color: white;
+  padding: 8px;
+  z-index: 1000;
+  transition: top 0.3s;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 @utility no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
