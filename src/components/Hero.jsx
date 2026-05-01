@@ -273,7 +273,7 @@ const Hero = ({ topSellers: dynamicTopSellers = [], categoryList = [] }) => {
             <Link
               key={item.id}
               to="/shop"
-              className="relative h-[220px] overflow-hidden rounded-sm bg-white"
+              className="relative h-[140px] sm:h-[180px] lg:h-[150px] xl:h-[170px] 2xl:h-[220px] overflow-hidden rounded-sm bg-white group"
             >
               <img
                 src={item.image}
@@ -282,11 +282,9 @@ const Hero = ({ topSellers: dynamicTopSellers = [], categoryList = [] }) => {
                 height="280"
                 loading="lazy"
                 decoding="async"
-                className={`absolute inset-0 h-full w-full object-cover  ${
-                  index === 2 ? "" : ""
-                }`}
+                className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0  pointer-events-none" />
+              <div className="absolute inset-0 pointer-events-none" />
             </Link>
           ))}
         </div>

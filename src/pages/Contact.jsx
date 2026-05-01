@@ -4,13 +4,9 @@ import SEO from '@/components/SEO';
 import Mail from 'lucide-react/dist/esm/icons/mail';
 import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
 import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
-import MapPin from 'lucide-react/dist/esm/icons/map-pin';
 import ChevronDown from 'lucide-react/dist/esm/icons/chevron-down';
-import Clock3 from 'lucide-react/dist/esm/icons/clock-3';
 import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
-import { Link } from 'react-router-dom';
 import API_BASE_URL from '../config';
-import { cn } from '../lib/utils';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -111,8 +107,7 @@ export default function Contact() {
 
               <div className="space-y-8">
                 {[
-                  { icon: Mail, title: "Email Support", desc: "info@printomaniac.com", link: "mailto:info@printomaniac.com" },
-                  { icon: MapPin, title: "Our Office", desc: "4352 13th Ave S, Fargo, ND 58103, USA", link: "#" },
+                  { icon: Mail, title: "Email Us", desc: "info@printomaniac.com", link: "mailto:info@printomaniac.com" },
                 ].map((item, i) => (
                   <motion.div 
                     key={i}

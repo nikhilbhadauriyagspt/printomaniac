@@ -277,8 +277,7 @@ export default function PrivacyPolicy() {
       <p>If you have questions or comments about this notice, you may email us at {emailLink} or contact us by post at:</p>
       <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed">
-         Printo Maniac <br/>
-          4352 13th Ave S, Fargo, ND 58103, USA
+         Printo Maniac
         </address>
       </div>
 

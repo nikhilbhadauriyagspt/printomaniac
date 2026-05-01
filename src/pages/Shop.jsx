@@ -34,6 +34,12 @@ export default function Shop() {
   const sort = searchParams.get('sort') || 'newest';
   const search = searchParams.get('search') || '';
 
+  const handleAddToCart = (e, product) => {
+    e.preventDefault();
+    addToCart(product);
+    openCartDrawer();
+  };
+
   // Normalize and filter categories for sidebar
   const categories = globalCategories.flatMap(parent => [parent, ...(parent.children || [])])
     .filter(cat => 

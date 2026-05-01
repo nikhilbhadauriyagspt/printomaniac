@@ -17,10 +17,9 @@ export default function ReturnPolicy() {
       <p>
                  To return an item, please email customer service at <a href="mailto:info@printomaniac.com">info@printomaniac.com</a>.      </p>
       <div className="bg-slate-50 p-8 rounded-none border border-slate-100 mt-6 not-prose">
-        <p className="font-medium text-slate-700 mb-4 italic">Place the item securely in its original packaging and include your proof of purchase, then mail your return to the following address:</p>
+        <p className="font-medium text-slate-700 mb-4 italic">Place the item securely in its original packaging and include your proof of purchase, then contact us for return instructions:</p>
         <address className="not-italic text-slate-900 font-bold leading-relaxed uppercase er">
-                    Printo Maniac <br />
-                    4352 13th Ave S, Fargo, ND 58103, USA
+                    Printo Maniac
         </address>
         <p className="mt-6 text-black font-bold uppercase text-xs tracking-widest">
           Return shipping charges will be paid or reimbursed by us.

@@ -155,22 +155,15 @@ We help small businesses and home offices get printing right without the usual h
         </div>
 
         {/* --- CONTACT STRIP --- */}
-        <div className=" border-t border-slate-50 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className=" border-t border-slate-50 flex flex-col md:flex-row items-center justify-between gap-8 py-10">
            <div className="flex items-center gap-5">
               <div className="h-12 w-12 bg-slate-50 border border-slate-100 flex items-center justify-center rounded-2xl text-blue-800"><Mail size={20} /></div>
               <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Electronic Mail</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Email Us</p>
                 <a href="mailto:info@printomaniac.com" className="text-[14px] font-bold text-slate-900">info@printomaniac.com</a>
               </div>
            </div>
-           <div className="flex items-center gap-5 lg:justify-center">
-              <div className="h-12 w-12 bg-slate-50 border border-slate-100 flex items-center justify-center rounded-2xl text-blue-800"><MapPin size={20} /></div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Business HQ</p>
-                <p className="text-[14px] font-bold text-slate-900">4352 13th Ave S, Fargo, ND 58103</p>
-              </div>
-           </div>
-           <div className="flex items-center gap-5 lg:justify-end">
+           <div className="flex items-center gap-5">
               <div className="flex items-center gap-4 grayscale opacity-80">
                  <img src="/assets/paypal.svg" alt="PayPal" width="60" height="16" className="h-4 w-auto" />
                  <div className="w-px h-6 bg-slate-200" />

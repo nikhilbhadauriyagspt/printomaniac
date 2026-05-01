@@ -25,7 +25,7 @@ export default function TripleBanners() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="relative h-[300px] md:h-[250px] rounded-[2.5rem] overflow-hidden group"
+              className="relative h-[250px] sm:h-[280px] lg:h-[200px] xl:h-[220px] 2xl:h-[280px] rounded-[2.5rem] overflow-hidden group"
             >
               <Link to="/shop" className="block w-full h-full">
                 <img

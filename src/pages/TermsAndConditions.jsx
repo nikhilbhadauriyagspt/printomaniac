@@ -12,7 +12,7 @@ export default function TermsAndConditions() {
       <p>
         We arePrinto Maniac
  
-  ("Company," "we," "us," "our"), a company registered in Minnesota, United States at 4352 13th Ave S, Fargo, ND 58103, USA
+  ("Company," "we," "us," "our"), a company registered in  United States at info@printomaniac.com
       </p>
       <p>
         We operate the website <a href="http://printomaniac.com/">http://printomaniac.com/</a> (the "Site"), as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services").
@@ -20,10 +20,10 @@ export default function TermsAndConditions() {
       <p>
        Printo Maniac
  
-  is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands.
+  is your trusted destination for authentic, high-performance printers and printing accessories .
       </p>
       <p>
-        You can contact us by email at <a href="mailto:info@printomaniac.com">info@printomaniac.com</a>, or by mail to 4352 13th Ave S, Fargo, ND 58103, USA
+        You can contact us by email at <a href="mailto:info@printomaniac.com">info@printomaniac.com</a>, or by mail at info@printomaniac.com
       </p>
       <p>
         These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), andPrinto Maniac
@@ -207,7 +207,6 @@ export default function TermsAndConditions() {
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase er">
           <p className="text-slate-900 font-bold">Printo Maniac </p>
-          <p>4352 13th Ave S, Fargo, ND 58103, USA</p>
           
           <p className="pt-4 text-black font-bold lowercase">Email: <a href="mailto:info@printomaniac.com" className="hover:underline">info@printomaniac.com</a></p>
         </address>
