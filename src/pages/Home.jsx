@@ -81,7 +81,7 @@ export default function Home() {
     <div className="bg-white font-jakarta overflow-x-hidden text-slate-900">
       <SEO 
         title="Printo Maniac | Quality Printers & Accessories"
-        description="Your trusted source for high-quality printers and professional printing solutions. We provide expert consulting and reliable nationwide delivery across the USA."
+        description="Your trusted source for high-quality printers and professional printing solutions. Reliable nationwide delivery and dedicated guidance across the USA."
       />
 
       <Hero 
@@ -134,7 +134,7 @@ export default function Home() {
           </div>
           
           <h2 className="text-[38px] md:text-[48px] text-slate-950  leading-none  mb-6">
-            Need Expert <span className="text-blue-700 italic">Guidance?</span>
+            Need Personalized <span className="text-blue-700 italic">Guidance?</span>
           </h2>
           
           <p className="text-slate-500 text-base md:text-lg font-medium max-w-2xl mx-auto leading-relaxed mb-12">

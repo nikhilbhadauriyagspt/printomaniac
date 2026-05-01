@@ -211,7 +211,7 @@ const Hero = ({ topSellers: dynamicTopSellers = [], categoryList = [] }) => {
                   width="1200"
                   height="526"
                   fetchPriority={idx === 0 ? "high" : "auto"}
-                  loading={idx === 0 ? "eager" : "lazy"}
+                  loading={idx < 2 ? "eager" : "lazy"}
                   decoding="async"
                   className="absolute inset-0 w-full h-full object-cover"
                 />

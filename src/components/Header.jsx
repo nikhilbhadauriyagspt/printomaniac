@@ -138,6 +138,7 @@ export default function Header() {
                 width="161"
                 height="44"
                 fetchPriority="high"
+                loading="eager"
                 className="h-8 md:h-10 lg:h-14 w-auto object-contain"
               />
             </Link>
@@ -201,7 +202,7 @@ export default function Header() {
                           </div>
                         </div>
                         <div className="w-[280px] bg-slate-900 rounded-[2rem] p-8 flex flex-col justify-center relative overflow-hidden group/cta">
-                          <h3 className="text-2xl font-black text-white leading-tight mb-4 relative z-10">Verified<br/>Hardware.</h3>
+                          <h2 className="text-2xl font-black text-white leading-tight mb-4 relative z-10">Verified<br/>Hardware.</h2>
                           <Link to="/shop" onClick={() => setActiveMegaMenu(null)} className="flex items-center justify-center gap-3 w-full py-4 bg-white text-blue-800 rounded-xl text-[11px] font-bold uppercase tracking-widest hover:bg-blue-50 transition-all shadow-xl relative z-10">
                             Explore All <ChevronRight size={16} />
                           </Link>

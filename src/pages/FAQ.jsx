@@ -139,9 +139,9 @@ export default function FAQ() {
             {/* Sidebar: Categories */}
             <aside className="lg:col-span-4 space-y-12">
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-800 mb-8 flex items-center gap-3">
+                <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-800 mb-8 flex items-center gap-3">
                   <div className="w-8 h-px bg-blue-800" /> Topic Groups
-                </h3>
+                </h2>
                 <div className="flex flex-col gap-2">
                   {faqs.map((f) => (
                     <button
@@ -175,7 +175,7 @@ export default function FAQ() {
               {/* Still Unsure Box */}
               <div className="bg-slate-900 p-10 rounded-[3rem] relative overflow-hidden group">
                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-800 rounded-full blur-[60px] opacity-30 group-hover:opacity-50 transition-opacity" />
-                 <h4 className="text-white text-2xl font-black mb-4 relative z-10 leading-tight tracking-tight italic">Still Unsure?</h4>
+                 <h3 className="text-white text-2xl font-black mb-4 relative z-10 leading-tight tracking-tight italic">Still Unsure?</h3>
                  <p className="text-slate-400 text-[14px] leading-relaxed mb-8 relative z-10">If you couldn't find your answer here, our team is happy to help you personally.</p>
                  <Link to="/contact" className="w-12 h-12 rounded-full bg-white flex items-center justify-center group-hover:bg-blue-800 group-hover:text-white transition-all relative z-10 shadow-xl">
                     <ArrowRight size={20} />

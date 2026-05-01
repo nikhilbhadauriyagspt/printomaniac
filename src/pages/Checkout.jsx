@@ -472,7 +472,7 @@ export default function Checkout() {
           {/* Right Summary Area */}
           <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
             <div className="bg-white rounded-[2.5rem] border border-gray-100 p-8 shadow-sm">
-              <h3 className="text-[20px] font-black text-slate-900 mb-8">Order Summary</h3>
+              <h2 className="text-[20px] font-black text-slate-900 mb-8">Order Summary</h2>
 
               <div className="max-h-[350px] overflow-y-auto pr-2 space-y-6 mb-8 custom-scrollbar">
                 {cart.map((item) => (
@@ -486,9 +486,9 @@ export default function Checkout() {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-[13px] font-bold text-slate-800 line-clamp-2 leading-tight">
+                      <h3 className="text-[13px] font-bold text-slate-800 line-clamp-2 leading-tight">
                         {item.name}
-                      </h4>
+                      </h3>
                       <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mt-1">Qty: {item.quantity}</p>
                     </div>
 

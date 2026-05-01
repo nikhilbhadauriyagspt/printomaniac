@@ -106,9 +106,9 @@ export default function Cart() {
                         <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
                            {item.brand_name || 'Premium Selection'}
                         </p>
-                        <h3 className="text-[16px] sm:text-[18px] font-bold text-slate-900 line-clamp-2 group-hover:text-blue-800 transition-colors">
+                        <h2 className="text-[16px] sm:text-[18px] font-bold text-slate-900 line-clamp-2 group-hover:text-blue-800 transition-colors">
                           {item.name}
-                        </h3>
+                        </h2>
                         <p className="text-[15px] font-black text-slate-900">
                           ${parsePrice(item.price).toLocaleString()}
                         </p>
@@ -158,7 +158,7 @@ export default function Cart() {
                 <div className="lg:col-span-4">
                   <div className="bg-gray-50 rounded-[2.5rem] p-8 space-y-8 sticky top-28 border border-gray-100 shadow-sm">
                     <div>
-                      <h3 className="text-[20px] font-black text-slate-900 mb-6">Order Summary</h3>
+                      <h2 className="text-[20px] font-black text-slate-900 mb-6">Order Summary</h2>
                       <div className="space-y-4">
                         <div className="flex justify-between text-[14px] font-bold text-gray-400 uppercase tracking-widest">
                           <span>Subtotal</span>

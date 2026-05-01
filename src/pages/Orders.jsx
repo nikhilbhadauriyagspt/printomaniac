@@ -248,7 +248,7 @@ export default function Orders() {
             >
               <div className="p-8 border-b border-gray-50 flex items-center justify-between bg-gray-50/30">
                 <div>
-                  <h3 className="text-[20px] font-black text-slate-900">Order # {selectedOrder.id}</h3>
+                  <h2 className="text-[20px] font-black text-slate-900">Order # {selectedOrder.id}</h2>
                   <p className="text-[12px] font-bold text-gray-400 uppercase tracking-widest">Transaction Summary</p>
                 </div>
                 <button 
@@ -271,7 +271,7 @@ export default function Orders() {
                 </div>
 
                 <div>
-                  <h4 className="text-[12px] font-black uppercase tracking-widest text-gray-400 mb-4 pl-1">Purchased Items</h4>
+                  <h3 className="text-[12px] font-black uppercase tracking-widest text-gray-400 mb-4 pl-1">Purchased Items</h3>
                   <div className="space-y-3">
                     {selectedOrder.items?.map((i, idx) => (
                       <div key={idx} className="flex items-center justify-between p-4 border border-gray-100 rounded-2xl">

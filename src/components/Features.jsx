@@ -26,7 +26,7 @@ const features = [
   },
   {
     icon: <Headphones size={28} />,
-    title: 'Expert Support',
+    title: 'Reliable Help',
     desc: 'Helpful printer assistance anytime',
     color: 'emerald',
   },
