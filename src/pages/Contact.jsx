@@ -56,7 +56,7 @@ export default function Contact() {
   return (
     <div className="bg-[#fcfdfe] text-slate-950 overflow-hidden">
       <SEO
-        title="Contact Us | Printo Maniac Support"
+        title="Contact Us | Printomaniac Support"
         description="Connect with our professional support team for detailed printer inquiries and order assistance. We are here to help you find the perfect printing solution."
       />
 

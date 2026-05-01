@@ -32,7 +32,7 @@ export default function Wishlist() {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-32 pb-20 font-['Poppins']">
-      <SEO title="Wishlist | Printo Maniac" />
+      <SEO title="Wishlist | Printomaniac" />
 
       <div className="max-w-[1400px] mx-auto px-4">
         <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">

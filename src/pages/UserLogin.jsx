@@ -62,7 +62,7 @@ export default function UserLogin() {
 
   return (
     <div className=" bg-gray-50 font-['Poppins'] text-slate-900 flex items-center justify-center py-20 px-4">
-      <SEO title="Sign In | Printo Maniac" />
+      <SEO title="Sign In | Printomaniac" />
 
       <div className="w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-2 rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-blue-900/5 border border-gray-100">
         {/* Left Side: Brand & Benefits */}
@@ -72,9 +72,7 @@ export default function UserLogin() {
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-400 rounded-full blur-[80px] opacity-10 -ml-24 -mb-24" />
           
           <div className="relative z-10">
-            <Link to="/" className="inline-block mb-12">
-              <img src="/logo/logo.png" alt="Logo" className="h-12 brightness-0 invert" />
-            </Link>
+            
 
             <h1 className="text-[36px] md:text-[48px]  text-white leading-tight mb-6">
               Welcome <span className="text-blue-400">Back.</span>
@@ -195,7 +193,7 @@ export default function UserLogin() {
 
             <div className="mt-10 pt-8 border-t border-gray-50 text-center">
               <p className="text-[14px] font-bold text-gray-400">
-                New to Printo Maniac?
+                New to Printomaniac?
                 <Link
                   to="/signup"
                   className="text-blue-800 hover:underline ml-2"

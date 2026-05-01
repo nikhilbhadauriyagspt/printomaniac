@@ -10,7 +10,7 @@ export default function CookiePolicy() {
       lastUpdated="April 21, 2026"
     >
       <p className="lead">
-        This cookie policy explains howPrinto Maniac
+        This cookie policy explains howPrintomaniac
         ("company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://printomaniac.com/">https://printomaniac.com/</a>
       </p>
       <p>
@@ -89,7 +89,7 @@ export default function CookiePolicy() {
       <p>If you have any questions regarding this cookie policy, please contact us:</p>
       <div className="bg-gray-50 p-8 rounded-xl border border-gray-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-1">
-          <p className="text-slate-900">Printo Maniac</p>
+          <p className="text-slate-900">Printomaniac</p>
           <p className="pt-4 text-black font-bold">info@printomaniac.com</p>
         </address>
       </div>

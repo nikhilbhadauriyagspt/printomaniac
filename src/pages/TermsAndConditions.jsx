@@ -10,7 +10,7 @@ export default function TermsAndConditions() {
     >
       <h2>AGREEMENT TO OUR LEGAL TERMS</h2>
       <p>
-        We arePrinto Maniac
+        We arePrintomaniac
  
   ("Company," "we," "us," "our"), a company registered in  United States at info@printomaniac.com
       </p>
@@ -18,7 +18,7 @@ export default function TermsAndConditions() {
         We operate the website <a href="http://printomaniac.com/">http://printomaniac.com/</a> (the "Site"), as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services").
       </p>
       <p>
-       Printo Maniac
+       Printomaniac
  
   is your trusted destination for authentic, high-performance printers and printing accessories .
       </p>
@@ -26,7 +26,7 @@ export default function TermsAndConditions() {
         You can contact us by email at <a href="mailto:info@printomaniac.com">info@printomaniac.com</a>, or by mail at info@printomaniac.com
       </p>
       <p>
-        These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), andPrinto Maniac
+        These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), andPrintomaniac
  
   , concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. <strong>IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.</strong>
       </p>
@@ -206,7 +206,7 @@ export default function TermsAndConditions() {
       <p>In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us at:</p>
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase er">
-          <p className="text-slate-900 font-bold">Printo Maniac </p>
+          <p className="text-slate-900 font-bold">Printomaniac </p>
           
           <p className="pt-4 text-black font-bold lowercase">Email: <a href="mailto:info@printomaniac.com" className="hover:underline">info@printomaniac.com</a></p>
         </address>

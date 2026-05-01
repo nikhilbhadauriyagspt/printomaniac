@@ -84,7 +84,7 @@ export default function Footer() {
                 alt="Logo" 
                 width="205" 
                 height="56" 
-                className="h-14 w-auto object-contain" 
+                className="h-8 w-auto object-contain" 
               />
             </Link>
             <div className="space-y-6">
@@ -175,7 +175,7 @@ We help small businesses and home offices get printing right without the usual h
         {/* --- LEGAL FOOTER --- */}
         <div className="pt-10 border-t border-slate-50 flex flex-col xl:flex-row justify-between items-center gap-10">
           <div className="flex flex-wrap justify-center lg:justify-start gap-10">
-            <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">© {new Date().getFullYear()} Printo Maniac. All rights reserved. </p>
+            <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">© {new Date().getFullYear()} Printomaniac. All rights reserved. </p>
             {legalLinks.map((link) => (
               <Link key={link.name} to={link.path} className="text-[11px] font-bold text-slate-500 uppercase tracking-widest hover:text-blue-700 transition-colors">{link.name}</Link>
             ))}

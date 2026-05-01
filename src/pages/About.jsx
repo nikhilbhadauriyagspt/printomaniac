@@ -19,8 +19,8 @@ const About = () => {
   return (
     <div className="bg-white text-slate-950 overflow-hidden">
       <SEO
-        title="About Us | Printo Maniac"
-        description="Printo Maniac makes choosing the right printing products easier with clear, straightforward choices and a smooth interface."
+        title="About Us | Printomaniac"
+        description="Printomaniac makes choosing the right printing products easier with clear, straightforward choices and a smooth interface."
       />
 
       {/* --- HERO SECTION --- */}
@@ -44,7 +44,7 @@ const About = () => {
                 </h1>
                 
                 <p className="text-slate-600 text-lg md:text-xl font-medium max-w-xl leading-relaxed mb-10">
-                  Printo Maniac is built around a simple goal — to make choosing the right printing products easier. 
+                  Printomaniac is built around a simple goal — to make choosing the right printing products easier. 
                   We keep things clear, straightforward, and easy to explore.
                 </p>
 
@@ -154,7 +154,7 @@ const About = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
                   <p className="text-slate-600 text-lg leading-relaxed font-medium">
-                    We started Printo Maniac because we noticed how frustrating it was to find a reliable printer online. It had become a maze of confusing words, complicated descriptions, and options that just didn't last.
+                    We started Printomaniac because we noticed how frustrating it was to find a reliable printer online. It had become a maze of confusing words, complicated descriptions, and options that just didn't last.
                   </p>
                   <p className="text-slate-600 text-lg leading-relaxed font-medium">
                     As people who use these tools every day, we realized that nobody needs thousands of confusing choices. They just need a place they can trust for items that actually work. 
@@ -205,7 +205,7 @@ const About = () => {
           <div className="mt-20 pt-16 border-t border-white/5">
             <h3 className="text-2xl md:text-3xl  mb-4 tracking-tight">Who It’s For</h3>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed font-medium">
-              Printo Maniac is designed for individuals and small businesses who want 
+              Printomaniac is designed for individuals and small businesses who want 
               practical and dependable printing solutions for everyday use.
             </p>
           </div>

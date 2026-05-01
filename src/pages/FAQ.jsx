@@ -102,7 +102,7 @@ export default function FAQ() {
   return (
     <div className="bg-[#fcfdfe] text-slate-950 overflow-hidden">
       <SEO
-        title="FAQ | Printo Maniac Support"
+        title="FAQ | Printomaniac Support"
         description="Find instant answers to common questions about orders, shipping, and printer setups. Explore our FAQ to make your experience smoother."
       />
 

@@ -71,7 +71,7 @@ export default function UserSignup() {
 
   return (
     <div className=" bg-gray-50 font-['Poppins'] text-slate-900 flex items-center justify-center py-20 px-4">
-      <SEO title="Create Account | Printo Maniac" />
+      <SEO title="Create Account | Printomaniac" />
 
       <div className="w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-blue-900/5 border border-gray-100">
         {/* Left Side: Benefits */}
@@ -81,15 +81,13 @@ export default function UserSignup() {
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-400 rounded-full blur-[80px] opacity-10 -ml-24 -mb-24" />
           
           <div className="relative z-10">
-            <Link to="/" className="inline-block mb-12">
-              <img src="/logo/logo.png" alt="Logo" className="h-12 brightness-0 invert" />
-            </Link>
+            
 
             <h1 className="text-[36px] md:text-[48px]  text-white leading-tight mb-6">
               Start Your <span className="text-blue-400">Journey.</span>
             </h1>
             <p className="text-white/60 text-[16px] leading-relaxed max-w-[340px] mb-12">
-              Join Printo Maniac today for a faster checkout experience and exclusive member deals.
+              Join Printomaniac today for a faster checkout experience and exclusive member deals.
             </p>
 
             <div className="space-y-6">

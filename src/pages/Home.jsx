@@ -80,7 +80,7 @@ export default function Home() {
   return (
     <div className="bg-white font-jakarta overflow-x-hidden text-slate-900">
       <SEO 
-        title="Printo Maniac | Quality Printers & Accessories"
+        title="Printomaniac | Quality Printers & Accessories"
         description="Your trusted source for high-quality printers and professional printing solutions. Reliable nationwide delivery and dedicated guidance across the USA."
       />
 

@@ -94,7 +94,7 @@ export default function Orders() {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-32 pb-20 font-['Poppins'] text-slate-900">
-      <SEO title="Order History | Printo Maniac" />
+      <SEO title="Order History | Printomaniac" />
 
       <div className="max-w-[1200px] mx-auto px-4 mb-8">
         <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">

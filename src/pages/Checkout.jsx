@@ -136,7 +136,7 @@ export default function Checkout() {
   if (step === 3) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center py-20 px-4 text-slate-900">
-        <SEO title="Order Confirmed | Printo Maniac" />
+        <SEO title="Order Confirmed | Printomaniac" />
         <div className="max-w-xl w-full bg-white rounded-[3rem] border border-gray-100 p-12 text-center shadow-2xl shadow-blue-900/5">
           <div className="w-24 h-24 bg-blue-800 text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl shadow-blue-100">
             <CheckCircle2 size={42} />
@@ -147,7 +147,7 @@ export default function Checkout() {
           </h1>
 
           <p className="text-gray-500 leading-relaxed text-[16px] max-w-md mx-auto mb-10">
-            Thank you for choosing Printo Maniac. Your order <span className="text-slate-900 font-bold">#{orderId}</span> is being processed. 
+            Thank you for choosing Printomaniac. Your order <span className="text-slate-900 font-bold">#{orderId}</span> is being processed. 
             We've sent a confirmation to <span className="text-slate-900 font-bold">{formData.email}</span>.
           </p>
 
@@ -173,7 +173,7 @@ export default function Checkout() {
 
   return (
     <div className="bg-white text-slate-900 pt-32 pb-20">
-      <SEO title="Secure Checkout | Printo Maniac" />
+      <SEO title="Secure Checkout | Printomaniac" />
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         {/* Header / Breadcrumb */}

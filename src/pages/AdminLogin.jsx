@@ -42,7 +42,7 @@ export default function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-slate-900 font-urbanist px-4">
       <div className="max-w-md w-full bg-white p-8 rounded-3xl shadow-2xl">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-slate-900 er">Printo Maniac
+          <h2 className="text-3xl font-bold text-slate-900 er">Printomaniac
  
  <span className="text-black">.</span></h2>
           <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mt-2">Admin Portal</p>
